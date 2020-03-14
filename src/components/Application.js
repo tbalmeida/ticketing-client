@@ -9,6 +9,7 @@ import EventInfo from "./EventInfo";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Order from "./Order";
+import Header from "./Header";
 
 
 import "components/Application.scss";
@@ -20,29 +21,30 @@ export default function Application() {
     return (
         <Router>
           <div>
-            <Switch>
-              <Route exact path="/">
-                <MainPage/>
-              </Route>
-              <Route path="/login">
-                {userId ? <Redirect to="/" /> : <Login />}
-              </Route>               
-              <Route path="/signup">
-                {userId ? <Redirect to="/" /> : <Signup />}
-              </Route>
-              <Route path="/event">
-                <EventInfo/>
-              </Route>
-              <Route path="/cart">
-                <Cart/>
-              </Route>
-              <Route path="/checkout">
-                <Checkout/>
-              </Route>
-              <Route path="/order">
-                <Order/>
-              </Route>
-            </Switch>
+            <Header />
+              <Switch>
+                <Route exact path="/">
+                  <MainPage/>
+                </Route>
+                <Route path="/login">
+                  {userId ? <Redirect to="/" /> : <Login />}
+                </Route>               
+                <Route path="/signup">
+                  {userId ? <Redirect to="/" /> : <Signup />}
+                </Route>
+                <Route path="/event/:id">
+                  <EventInfo/>
+                </Route>
+                <Route path="/cart">
+                  <Cart/>
+                </Route>
+                <Route path="/checkout">
+                  <Checkout/>
+                </Route>
+                <Route path="/order">
+                  <Order/>
+                </Route>
+              </Switch>
           </div>
         </Router>
     );  
