@@ -42,10 +42,8 @@ const useStyles = makeStyles(theme => ({
 
 const logoutFunction = () => {
     sessionStorage.removeItem("userId");
-    sessionStorage.removeItem("inspectionId");
     sessionStorage.removeItem("uName");
     sessionStorage.removeItem("uEmail");
-    sessionStorage.removeItem("mechanicId");
 };
 
 function HideOnScroll(props) {
@@ -75,7 +73,7 @@ export default function ButtonAppBar() {
     const classes = useStyles();
 
     return (
-        <Box className={classes.root} maxWidth="xs">
+        <Box className={classes.root} maxWidth="xs" marginTop={10}>
             <HideOnScroll>
                 <AppBar>
                     <Toolbar>
