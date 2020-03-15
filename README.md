@@ -1,4 +1,4 @@
-# Interview Scheduler
+# Ticketing Application
 
 ## Setup
 
