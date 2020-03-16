@@ -1,5 +1,4 @@
 import React from "react";
-// import Footer from './components/Footer.js'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage from "./MainPage";
 import Login from "./Login";
@@ -9,6 +8,7 @@ import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Order from "./Order";
 import Header from "./Header";
+import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 
@@ -21,6 +21,7 @@ export default function Application() {
     return (
         <Router>
           <div>
+            <CssBaseline />
             <Header />
               <Switch>
                 <Route exact path="/">
@@ -45,6 +46,7 @@ export default function Application() {
                   <Order/>
                 </Route>
               </Switch>
+            <Footer />
           </div>
         </Router>
     );  
