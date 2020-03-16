@@ -1,5 +1,4 @@
 import React from "react";
-// import Header from './components/Header.js'
 // import Footer from './components/Footer.js'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage from "./MainPage";
@@ -10,6 +9,7 @@ import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Order from "./Order";
 import Header from "./Header";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 import "components/Application.scss";

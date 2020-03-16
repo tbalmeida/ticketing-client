@@ -13,15 +13,15 @@ import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/tickets-logo.png";
 
-const userId = sessionStorage.getItem("userId");
-const uName = sessionStorage.getItem("uName");
+const userId = sessionStorage.getItem("userId"); //native sessionStorage
+const uName = sessionStorage.getItem("uName"); //we use uName because when we login or signup we use setItem and give it this specific 'uName'
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
     menuButton: {
-        marginRight: theme.spacing(2)
+        marginRight: theme.spacing(2) 
     },
     title: {
         flexGrow: 1
@@ -34,19 +34,15 @@ const useStyles = makeStyles(theme => ({
             border: "#8b8e94 solid 1px"
         }
     },
-    small: {
+    small: { //small here is just a small tag of html
         width: theme.spacing(3),
         height: theme.spacing(3)
     }
 }));
 
-const logoutFunction = () => {
-    sessionStorage.removeItem("userId");
-    sessionStorage.removeItem("uName");
-    sessionStorage.removeItem("uEmail");
-};
+const logoutFunction = sessionStorage.clear(); //removing all data from sessionStorage
 
-function HideOnScroll(props) {
+function HideOnScroll(props) { //hide the upper panel with login, signup etc when approaching the bottom of the page
     const { children, window } = props;
     // Note that you normally won't need to set the window ref as useScrollTrigger
     // will default to window.
