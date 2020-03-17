@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,70 +22,74 @@ import Divider from '@material-ui/core/Divider';
 import classNames from 'classnames';
  
 export default function EventList({eventData}) {  
-//   const [modalOpen, setModalOpen] = useState(false)
-//   const [mechanicData, setMechanic] = useState({})
-//   const [select, setSelect] = useState('')
-//   const [mechanicList, setMechanicList] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [EventData, setEventData] = useState({})
+  const [select, setSelect] = useState('')
   const [EventsList, setEventsList] = useState('')
   
 //   const {show, hide} = useContext(AlertContext);
   const classes = useStyles(); 
 
-//   const openModal = (id) => {    
-//     const filteredMechanic = mechanics.filter(mechanic=>{
-//          return mechanic.id === id
-//     })    
-//     setMechanic(filteredMechanic[0])
-//     setModalOpen(true);
-//   }
+  const openModal = (id) => {    
+    const filteredEvents = eventData.filter(events=>{
+         return events.id === id
+    })    
+    setEventData(filteredEvents[0])
+    setModalOpen(true);
+  }
 
-//   const closeModal = () => {    
-//     setModalOpen(false);
-//   };
+  const closeModal = () => {    
+    setModalOpen(false);
+  };
 
 //   const mechanicRequest = (mechanic) => {    
 //     onRequest();  
 //     setMechanicInfo(mechanic)      
 //   }
 
-//   const selectMechanic = (e) => setSelect(e.target.value);
+  const selectEvent = (e) => setSelect(e.target.value);
   
-//   const clearSearch = () => {
-//     setSelect('');    
-//   }
+  const clearSearch = () => {
+    setSelect('');    
+  }
     
-//   useEffect(() => {            
-//       const filtered = mechanics.filter(mechanic => 
-//         mechanic.first_name.toLowerCase().search(select.toLowerCase()) !== -1 ||
-//         mechanic.last_name.toLowerCase().search(select.toLowerCase()) !== -1         
-//       ); 
-//       filtered.length !== 0? setMechanicList(filtered) : setMechanicList(mechanics)  
-//       !select && hide()
-//       select && mechanicList === mechanics && show(' No match found', 'success')                
-//     },[select, mechanics]);    
+  useEffect(() => {            
+      const filtered = eventData.filter(event => 
+        event.title.toLowerCase().search(select.toLowerCase()) !== -1
+              
+      ); 
+      filtered.length !== 0? setEventsList(filtered) : setEventsList(eventData)  
+    //   !select && hide()
+    //   select && mechanicList === mechanics && show(' No match found', 'success')                
+    },[select, eventData]);    
     
-//     const userId = sessionStorage.getItem('userId')
+    const userId = sessionStorage.getItem('userId')
 
   return (
-    <Fragment>   
-        <h2>Event {eventData.event_id}</h2>
-        <p>{eventData.event_id}</p>   
-        <p>{eventData.title}</p>   
-        <p>{eventData.event_description}</p>   
-        <p>{eventData.event_date}</p>   
-        <p>{eventData.event_time}</p>   
-        <p>{eventData.duration}</p>   
-        <p>{eventData.total_issued}</p>   
-        <p>{eventData.limit_per_user}</p>   
-        <p>{eventData.price}</p>   
-        <p>{eventData.venue_id}</p>   
-        <p>{eventData.venue_name}</p>   
-        <p>{eventData.venue_description}</p>   
-        <p>{eventData.capacity}</p>   
-        <p>{eventData.fee}</p>   
-        <p>{eventData.percent_capacity}</p>   
-        <p>{eventData.max_revenue}</p>   
-        <hr></hr>
+    <Fragment> 
+          {eventData.map(event => (
+                    <Link to={`events/${event.event_id}`}>
+                        <h2>Event {event.event_id}</h2>
+                        <p>{event.event_id}</p>   
+                        <p>{event.title}</p>   
+                        <p>{event.event_description}</p>   
+                        <p>{event.event_date}</p>   
+                        <p>{event.event_time}</p>   
+                        <p>{event.duration}</p>   
+                        <p>{event.total_issued}</p>   
+                        <p>{event.limit_per_user}</p>   
+                        <p>{event.price}</p>   
+                        <p>{event.venue_id}</p>   
+                        <p>{event.venue_name}</p>   
+                        <p>{event.venue_description}</p>   
+                        <p>{event.capacity}</p>   
+                        <p>{event.fee}</p>   
+                        <p>{event.percent_capacity}</p>   
+                        <p>{event.max_revenue}</p>   
+                        <hr></hr>
+                    </Link>
+                ))}
+        
 
 
     {/* <div className={classes.heroContent}>
