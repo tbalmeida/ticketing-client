@@ -16,8 +16,8 @@ import TypeSentence from './TypedSentence';
 // import {AlertContext} from '../../context/alert/alertContext';
 // import PropTypes from 'prop-types';
 // import UserBadge from '../../components/UserBadge';
-// import FixitLogo from "../../Photos/Fixit_font.png"
-// import Avatar from "../../Photos/mechanic-grey.png"
+import Theatre from "./img/theatre.png"
+import Golden from "./img/golden-ticket.png"
 // import MechanicCardRating from '../../components/MechanicCardRating';
 import classNames from 'classnames';
  
@@ -96,10 +96,10 @@ export default function EventList({eventData}) {
       <Container maxWidth="sm" >      
         <Typography component="h1"  variant="h2" align="center" color="textPrimary" gutterBottom  className={classes.gutterBottom}>
       <img 
-    //   src={Avatar} 
+      src={Golden} 
       alt="site logo" height={100} margin="1em"/>
           <img 
-        //   src={FixitLogo} 
+          src={Theatre} 
           alt="site logo" height={70} />
         </Typography>             
         <TypeSentence /> 
@@ -151,7 +151,7 @@ export default function EventList({eventData}) {
                     {mechanic.first_name} is currently unavailable 
                     </Typography>}                        */}
                   </div>                                   
-                  </Card> 
+                </Card> 
                 {/* { modalOpen &&  */}
             {/* //   <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal}  */}
             {/* //   onRequest={onRequest}
