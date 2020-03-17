@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage from "./MainPage";
-import Login from "./Login";
 import Signup from "./Signup";
 import EventInfo from "./EventInfo";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Order from "./Order";
 import Header from "./Header";
+import { Login } from "./Login";
 import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 

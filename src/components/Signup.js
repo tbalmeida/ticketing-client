@@ -23,7 +23,7 @@ const validateMessages = {
       number: 'Not a validate number!',
     },
     number: {
-      range: 'Must be between ${min} and ${max}',
+      range: 'Must be between ${min} and ${max}'
     },
   };
 
