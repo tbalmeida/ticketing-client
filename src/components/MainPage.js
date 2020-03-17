@@ -41,7 +41,7 @@ function MainPage() {
                 <li ><EventList eventData={events}/></li>
             </ul>
         </div>
-        <input type="Search" placeholder="type in events you want to find"></input>
+        {/* <input type="Search" placeholder="type in events you want to find"></input> */}
         </>
 
     )

@@ -11,7 +11,7 @@ import useStyles from './EventListStyles.js';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 // import SimpleDialogDemo from '../../components/openDialog';
-// import TypeSentence from '../../components/TypedSentence';
+import TypeSentence from './TypedSentence';
 // import  {Alert} from '../../components/Alert';
 // import {AlertContext} from '../../context/alert/alertContext';
 // import PropTypes from 'prop-types';
@@ -67,7 +67,7 @@ export default function EventList({eventData}) {
 
   return (
     <Fragment> 
-          {eventData.map(event => (
+          {/* {eventData.map(event => (
                     <Link to={`events/${event.event_id}`}>
                         <h2>Event {event.event_id}</h2>
                         <p>{event.event_id}</p>   
@@ -88,70 +88,79 @@ export default function EventList({eventData}) {
                         <p>{event.max_revenue}</p>   
                         <hr></hr>
                     </Link>
-                ))}
+                ))} */}
         
 
 
-    {/* <div className={classes.heroContent}>
+    <div className={classes.heroContent}>
       <Container maxWidth="sm" >      
         <Typography component="h1"  variant="h2" align="center" color="textPrimary" gutterBottom  className={classes.gutterBottom}>
-      <img src={Avatar} alt="site logo" height={100} margin="1em"/>
-          <img src={FixitLogo} alt="site logo" height={70} />
+      <img 
+    //   src={Avatar} 
+      alt="site logo" height={100} margin="1em"/>
+          <img 
+        //   src={FixitLogo} 
+          alt="site logo" height={70} />
         </Typography>             
         <TypeSentence /> 
-        <Alert />             
+        {/* <Alert />              */}
         <form className="form-inline my-2 my-lg-0">
-          <input id="searchMechanic" value={select} className="form-control mr-2 mx-sm-auto" onChange={selectMechanic} type="search" placeholder="Search for a Mechanic" aria-label="Search" style={{minWidth:'125px', width:'85%'}}/>
+          <input id="searchEvents" value={select} className="form-control mr-2 mx-sm-auto" onChange={selectEvent} type="search" placeholder="Search for an Event" aria-label="Search" style={{minWidth:'125px', width:'85%'}}/>
           <button className="btn btn-outline-primary my-2 my-sm-0" type="button" onClick={clearSearch}>Clear</button>
         </form> 
       </Container>
       {!userId && <div className={classes.loginRequest}>
-        Please login or signup to start using FixIT now
+        Please login or signup to buy an event ticket
       </div>}         
     </div>
         <Divider variant="middle" />       
      
         <Container className={classes.cardGrid} maxWidth="md">                  
           <Grid container spacing={4}>
-            {[...mechanicList].map(mechanic => (                            
-              <Grid item key={mechanic.id} xs={12} sm={6} md={4} >                          
-                <Card className={classes.card} onClick={()=>openModal(mechanic.id)} >           
+            {[...EventsList].map(event => (                            
+              <Grid item key={event.event_id} xs={12} sm={6} md={4} >                          
+                <Card className={classes.card} onClick={()=>openModal(event.event_id)} >           
                   <CardMedia
                     className={classes.cardMedia}
-                    image = {mechanic.avatar}
+                    // image = {mechanic.avatar}
                     title="Image title"                    
                     />
-                  < MechanicCardRating stars={mechanic.avg}/>               
+                  {/* < MechanicCardRating stars={mechanic.avg}/>                */}
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h5">
-                      {mechanic.first_name} {mechanic.last_name}
+                      {event.title} 
+                      {/* {event.event_id} */}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="h6">
+                      {event.event_description} 
+                      {/* {event.event_id} */}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">                    
-                      Inspection Fee: ${mechanic.hourly_rate} 
+                      Event Fee: {event.fee} 
                     </Typography>                    
                   </CardContent>
                   <div className={classes.buttonStyle}>
-                    <CardActions>
+                    {/* <CardActions>
                       { userId && mechanic.active && 
                       <Button size="small" color="primary" type="button" onClick={()=>mechanicRequest(mechanic)} style={{cursor:'pointer'}} >
                         Request {mechanic.first_name}
                       </Button> }                             
-                    </CardActions>        
-                    {mechanic.active? <UserBadge /> : 
+                    </CardActions>         */}
+                    {/* {mechanic.active? <UserBadge /> : 
                     <Typography gutterBottom variant="body1" className={classNames(classes.cardContent,classes.userUnavailableText)} >                    
                     {mechanic.first_name} is currently unavailable 
-                    </Typography>}                       
+                    </Typography>}                        */}
                   </div>                                   
                   </Card> 
-                { modalOpen && 
-              <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal} 
-              onRequest={onRequest}
-              setMechanicInfo={setMechanicInfo}                
-                /> }               
+                {/* { modalOpen &&  */}
+            {/* //   <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal}  */}
+            {/* //   onRequest={onRequest}
+            //   setMechanicInfo={setMechanicInfo}                 */}
+            {/* //     /> }                */}
               </Grid>                                       
             ))}
           </Grid>          
-        </Container>           */}
+        </Container>          
     </Fragment>
   );
 }
