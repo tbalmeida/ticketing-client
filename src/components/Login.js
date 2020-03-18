@@ -15,7 +15,7 @@ import  {Alert} from './Alert';
 import {AlertContext} from './context/alert/alertContext';
 import axios from 'axios';
 
-function postData(url, data) {
+export function postData(url, data) {
   return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data)
 }
 

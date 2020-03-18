@@ -1,115 +1,308 @@
-import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import React, { useState, useContext } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+// import { AlertContext } from '../context/alert/alertContext';
+import  { Alert } from './Alert';
+import axios from 'axios';
+import { postData } from './Login';
 
-const layout = {
-  labelCol: {
-    span: 8,
+// INSERT INTO users (first_name, last_name, email, password) 
+//       VALUES ($1, $2, $3, $4) RETURNING *;
+
+const useStyles = makeStyles(theme => ({
+  paper: {    
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minHeight: '90vh' 
   },
-  wrapperCol: {
-    span: 16,
+  avatar: {
+    marginTop: theme.spacing(9),
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
   },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(3),
   },
-};
+  submit: {
+    margin: theme.spacing(0.5, 0, 0.5),
+  }
+}));
 
-const validateMessages = {
-    required: 'This field is required!',
-    types: {
-      email: 'Not a validate email!',
-      number: 'Not a validate number!',
-    },
-    number: {
-      range: 'Must be between ${min} and ${max}'
-    },
-  };
+export default function SignUp() {
+  // const {show, hide} = useContext(AlertContext);
+  const classes = useStyles();
+    
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    firstNameText: '',
+    lastNameText: '',
+    emailText: '',    
+    passwordText: '',
+    passwordConfirmationText: '',
+    checked: false,
+    firstNameError: false,
+    lastNameError: false,
+    emailError: false,    
+    passwordError: false,
+    passwordConfirmationError: false
+    
+  })   
 
-const Signup = () => {
-  const onFinish = values => {
-    console.log('Success:', values);
-  };
+  const handleCheckBox = (e) => { //toggles check
+    setForm(previouseValues =>(
+      {...previouseValues, 
+        checked: e.target.checked
+      })
+    )
+  }
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
+  const changeHandler = event => { //updating form and trimming
+    setForm({ ...form, [event.target.name]: event.target.value.trim() })
+  }  
 
-  return (
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      validateMessages ={validateMessages}
-    >
-      <Form.Item
-        label="Name"
-        name="name"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your name!',
-          },
-        ]}
-      >
-        <Input />
-        
-      </Form.Item>
+  const clearForm = () => { //remove all the errors
+    setForm(previouseValues =>(
+    {...previouseValues, 
+      firstNameText: '',
+      lastNameText: '',
+      emailText: '',     
+      passwordText: '',
+      passwordConfirmationText: '',
+      firstNameError: false,
+      lastNameError: false,
+      emailError: false,      
+      passwordError: false,      
+      passwordConfirmationError: false
+      })
+      )
+    // hide();
+  }    
 
-      <Form.Item
-        label="LastName"
-        name="lastname"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your last name!',
-          },
-        ]}
-      >
-        <Input />
-        
-      </Form.Item>
+  const clearData = () => { //clears form and also clears all errors (previous function)
+    setForm(previouseValues => (
+      { ...previouseValues, 
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+        checked: false}))    
+    clearForm()       
+  }
 
-      <Form.Item
-        name={['user', 'email']}
-        label="Email"
-        rules={[
-          {
-            type: 'email',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+  const signUpData = (e) =>{
+    e.preventDefault();
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+    let dataValid = true
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+    if (form.checked === false){
+      // show('Please agree with the terms', 'success');
+      dataValid = false;
+    }
+    
+    if (!form.firstName){ 
+      setForm(previouseValues => ({ ...previouseValues, firstNameText: "First name required", firstNameError: true}));
+      dataValid = false;
+    }   
+      
+    if (!form.lastName){ 
+      setForm(previouseValues => ({ ...previouseValues, lastNameText: "Last name required", lastNameError: true}));  
+      dataValid = false; 
+    }     
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+    if (!form.email){
+      setForm(previouseValues => ({ ...previouseValues, emailText: "Email required", emailError: true})); 
+      dataValid = false;    
+    } 
+    
+     if (!form.password){
+      setForm(previouseValues => ({ ...previouseValues, passwordText: "Password required", passwordError: true})); 
+      dataValid = false;     
+    }
+    
+    if (!form.passwordConfirmation){
+      setForm(previouseValues => ({ ...previouseValues, passwordConfirmationText: "Password confirmation required", passwordConfirmationError: true})); 
+      dataValid = false;      
+    }
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+    if (form.password !== form.passwordConfirmation){
+      // show("Please check that password and password confirmation are the same", 'danger')
+      setForm(previouseValues => ({ ...previouseValues, passwordError: true, passwordConfirmationError: true})); 
+      dataValid = false;
+    }
+
+    if (!re.test(form.email.toLowerCase())){
+        setForm(previouseValues => ({ ...previouseValues, emailText: "Email format is incorrect", emailError: true}));
+        dataValid = false;    
+      }     
+     
+    const userData = {
+      'first_name':form.firstName.trim(),
+      'last_name':form.lastName.trim(),
+      'email':form.email.trim(),
+      'password':form.password.trim()
+    }      
+
+    if (dataValid === true){ 
+      postData('/signup', userData )
+              .then(response => {                  
+              console.log("signUpData -> response", response)
+              sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
+              sessionStorage.setItem('uName', `${response.data[0].first_name} ${response.data[0].last_name}`); 
+              sessionStorage.setItem('uEmail', `${response.data[0].email}`); 
+              sessionStorage.setItem('handle', `${response.data[0].handle}`); 
+              window.location.reload();              
+              })
+              .catch(error => {                                       
+                // show(error.response.data.message, 'danger');   
+                console.log('the following error occurred', error)                 
+              }) 
+           }      
+    }    
+
+  return (   
+      <Container component="main" maxWidth="xs" >        
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={signUpData}>
+          <Alert />
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  value={form.firstName}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"                                
+                  onChange={changeHandler}
+                  autoFocus
+                  helperText={form.firstNameText}
+                  error={form.firstNameError}
+                  onFocus={clearForm}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  value={form.lastName}
+                  label="Last Name"                 
+                  onChange={changeHandler}
+                  name="lastName"  
+                  helperText={form.lastNameText}  
+                  error={form.lastNameError}  
+                  onFocus={clearForm}          
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  type="email"
+                  id="email"
+                  value={form.email}
+                  label="Email Address"                 
+                  value={form.email}
+                  onChange={changeHandler}
+                  name="email"  
+                  helperText={form.emailText}
+                  error={form.emailError}  
+                  onFocus={clearForm}      
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password should have minimum 3 characters"      value={form.password}             
+                  onChange={changeHandler}
+                  type="password"
+                  id="password" 
+                  helperText={form.passwordText} 
+                  error={form.passwordError} 
+                  onFocus={clearForm}     
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="passwordConfirmation"
+                  value={form.passwordConfirmation}  
+                  label="Password Confirmation"        
+                  onChange={changeHandler}
+                  type="password"
+                  id="passwordConfirmation" 
+                  helperText={form.passwordConfirmationText} 
+                  error={form.passwordConfirmationError}   
+                  onFocus={clearForm}     
+                />
+              </Grid>
+              
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox onChange={handleCheckBox} required value="allowExtraEmails" color="primary" />}
+                  label="I agree with the terms of service"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}               
+            >
+              Sign Up
+            </Button>
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"              
+              className={classes.submit}
+              onClick= {clearData}
+              style={{backgroundColor:'grey', outline: 'none'}}
+            >
+              Clear
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>        
+      </Container>    
   );
-};
-export default Signup;
+  }
