@@ -15,8 +15,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 
 export default function Application() { 
-  // const userId = sessionStorage.getItem('userId')
-  const userId = null;
+  const userId = sessionStorage.getItem('userId')
+  // const userId = null;
 
     return (
         <Router>
@@ -42,9 +42,9 @@ export default function Application() {
                 <Route path="/checkout">
                   <Checkout/>
                 </Route>
-                <Route path="/order">
+                <Route path="/order"> */}
                   <Order/>
-                </Route>
+                </Route> 
               </Switch>
             <Footer />
           </div>

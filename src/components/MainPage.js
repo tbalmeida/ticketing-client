@@ -36,7 +36,7 @@ function MainPage() {
     return (
        <>
         <div>
-            <h2>List of Events</h2>
+            {/* <h2>List of Events</h2> */}
             <ul>
                 <li ><EventList eventData={events}/></li>
             </ul>

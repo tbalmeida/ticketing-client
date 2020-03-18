@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const logoutFunction = sessionStorage.clear(); //removing all data from sessionStorage
+const logoutFunction = () => sessionStorage.clear(); //removing all data from sessionStorage
 
 function HideOnScroll(props) { //hide the upper panel with login, signup etc when approaching the bottom of the page
     const { children, window } = props;

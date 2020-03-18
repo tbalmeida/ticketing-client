@@ -13,7 +13,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import  {Alert} from './Alert';
 import {AlertContext} from './context/alert/alertContext';
-// import axios from 'axios';
+import axios from 'axios';
+
+function postData(url, data) {
+  return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data)
+}
 
 const useStyles = makeStyles(theme => ({ //we take in theme because we need to change one
   paper: {    
@@ -60,43 +64,46 @@ export const Login = () => {
   const classes = useStyles();
   // const {show, hide} = useContext(AlertContext); //use context again
   
-  // const loginValidation = e => {
-  //   let dataValid = true;
-  //   e.preventDefault(); //prevents submit of this form
-  //   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;  //checks email   
-  //   if (!form.email){       
-  //     setForm(previouseValues => ({ ...previouseValues, emailHelperText: "Email required", emailError: true }));
-  //     dataValid = false;           
-  //   } 
+  const loginValidation = e => {
+    let dataValid = true;
+    e.preventDefault(); //prevents submit of this form
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;  //checks email   
+    if (!form.email){       
+      setForm(previouseValues => ({ ...previouseValues, emailHelperText: "Email required", emailError: true }));
+      dataValid = false;           
+    } 
 
-  //   if (!form.password){      
-  //   setForm(previouseValues => ({ ...previouseValues, passwordHelperText: "Password required", passwordError: true }))
-  //   dataValid = false;        
-  //   }  
+    if (!form.password){      
+    setForm(previouseValues => ({ ...previouseValues, passwordHelperText: "Password required", passwordError: true }))
+    dataValid = false;        
+    }  
 
-  //   if (form.email && !re.test(form.email.toLowerCase())){
-  //     setForm(previouseValues =>({ ...previouseValues, emailHelperText: "Email format is incorrect",emailError: true}));   
-  //     dataValid = false;     
-  //   } 
+    if (form.email && !re.test(form.email.toLowerCase())){
+      setForm(previouseValues =>({ ...previouseValues, emailHelperText: "Email format is incorrect",emailError: true}));   
+      dataValid = false;     
+    } 
 
-  //   const userData = { //checking for whitespaces
-  //     'email':form.email.trim(),
-  //     'password':form.password.trim()
-  //   }
- 
-  //   if (dataValid){
-  //   axios.post('/api/user-login', userData )
-  //   .then(response => {     
-  //     sessionStorage.setItem('userId', response.data.user[0].id);   //creating a new user with key userId and value responce.bla.bla
-  //     sessionStorage.setItem('uName', `${response.data.user[0].first_name} ${response.data.user[0].last_name}`); 
-  //     sessionStorage.setItem('uEmail', `${response.data.user[0].email}`); 
-  //     window.location.reload();     
-  //   })
-  //   .catch(error => {        
-  //     show(error.response.data.message, 'danger');  //use alert context with danger class        
-  //   })
-  // } 
-  // }   
+    const userData = { //checking for whitespaces
+      'email':form.email.trim(),
+      'password':form.password.trim()
+    }
+   
+    if (dataValid){
+    postData('/login', userData )
+    .then(response => {     
+      console.log("Login -> response.data[0]", response.data[0])
+      sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
+      sessionStorage.setItem('uName', `${response.data[0].first_name} ${response.data[0].last_name}`); 
+      sessionStorage.setItem('uEmail', `${response.data[0].email}`); 
+      sessionStorage.setItem('handle', `${response.data[0].handle}`); 
+      window.location.reload();     
+    })
+    .catch(error => {        
+      // show(error.response.data.message, 'danger');  //use alert context with danger class     
+      console.log('the following error occurred', error)   
+    })
+  } 
+  }   
   
   const clearForm = () => { //we do that if we have errors while filling out form and then if you move on focus some input then it removes errors, warnings etc
     setForm(previouseValues =>({...previouseValues, emailHelperText: "",passwordHelperText:"", emailError: false, passwordError: false, loginDataValid: true}))  
@@ -118,9 +125,7 @@ export const Login = () => {
             Sign in
           </Typography>
           <Alert />
-          <form className={classes.form} noValidate>
-          {/*onSubmit={loginValidation}> 
-        {/* on submit we call loginValidation*/}
+          <form className={classes.form} noValidate onSubmit={loginValidation}> 
             <TextField
               variant="outlined"
               margin="normal"
