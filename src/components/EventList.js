@@ -58,7 +58,6 @@ export default function EventList({eventData}) {
         event.title.toLowerCase().search(select.toLowerCase()) !== -1
               
       ); 
-      console.log("EventList -> eventData", eventData)
       filtered.length !== 0? setEventsList(filtered) : setEventsList(eventData)  
     //   !select && hide()
     //   select && mechanicList === mechanics && show(' No match found', 'success')                

@@ -21,7 +21,6 @@ function MainPage() {
          getData('/venues'),
         ])
           .then((all) => {
-          console.log("MainPage -> all", all[0])
           
             const [events, venues] = all;
             setEvents(events.data);
