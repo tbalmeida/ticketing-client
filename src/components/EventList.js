@@ -58,6 +58,7 @@ export default function EventList({eventData}) {
         event.title.toLowerCase().search(select.toLowerCase()) !== -1
               
       ); 
+      console.log("EventList -> eventData", eventData)
       filtered.length !== 0? setEventsList(filtered) : setEventsList(eventData)  
     //   !select && hide()
     //   select && mechanicList === mechanics && show(' No match found', 'success')                
@@ -114,12 +115,12 @@ export default function EventList({eventData}) {
       </div>}         
     </div>
         <Divider variant="middle" />       
-     
         <Container className={classes.cardGrid} maxWidth="md">                  
           <Grid container spacing={4}>
             {[...EventsList].map(event => (                            
               <Grid item key={event.event_id} xs={12} sm={6} md={4} >                          
-                <Card className={classes.card} onClick={()=>openModal(event.event_id)} >           
+              <Link to={`/event/${event.event_id}`}>
+                <Card className={classes.card} onClick={()=><a href="event/1"/>} >           
                   <CardMedia
                     className={classes.cardMedia}
                     // image = {mechanic.avatar}
@@ -142,16 +143,17 @@ export default function EventList({eventData}) {
                   <div className={classes.buttonStyle}>
                     {/* <CardActions>
                       { userId && mechanic.active && 
-                      <Button size="small" color="primary" type="button" onClick={()=>mechanicRequest(mechanic)} style={{cursor:'pointer'}} >
+                        <Button size="small" color="primary" type="button" onClick={()=>mechanicRequest(mechanic)} style={{cursor:'pointer'}} >
                         Request {mechanic.first_name}
-                      </Button> }                             
-                    </CardActions>         */}
+                        </Button> }                             
+                      </CardActions>         */}
                     {/* {mechanic.active? <UserBadge /> : 
                     <Typography gutterBottom variant="body1" className={classNames(classes.cardContent,classes.userUnavailableText)} >                    
                     {mechanic.first_name} is currently unavailable 
-                    </Typography>}                        */}
+                  </Typography>}                        */}
                   </div>                                   
                 </Card> 
+                  </Link>
                 {/* { modalOpen &&  */}
             {/* //   <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal}  */}
             {/* //   onRequest={onRequest}
