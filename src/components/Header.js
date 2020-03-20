@@ -12,6 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/tickets-logo.png";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
 const uName = sessionStorage.getItem("uName"); //we use uName because when we login or signup we use setItem and give it this specific 'uName'
@@ -65,8 +66,14 @@ HideOnScroll.propTypes = {
     window: PropTypes.func
 };
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({cartItems}) {
+    console.log("ButtonAppBar -> cartItems[0]", cartItems)
     const classes = useStyles();
+    const cartTotalQuantity = cartItems.reduce((sum, cartItem) => {
+        const quantity = cartItem.quantity;
+        sum += quantity;
+        return sum;
+    }, 0);
 
     return (
         <Box className={classes.root} maxWidth="xs" marginTop={10}>
@@ -98,6 +105,8 @@ export default function ButtonAppBar() {
                                     className={classes.small}
                                 />
                                 {uName}
+                                <ShoppingCartIcon>add_shopping_cart</ShoppingCartIcon>
+                                {cartItems[0] ? `( ${cartTotalQuantity} )` : null}
                                 <Tooltip
                                     title="Logout"
                                     aria-label="Logout button"

@@ -31,26 +31,19 @@ export default function Application() {
       existingCartItem.quantity++;
       existingCartItem.subTotal += existingCartItem.unitPrice;
 
-      const cartItemsCopy = cartItems.map(item => {
-        if (item.event_id === existingCartItem.event_id) {
-          return {
-            ...item,
-            ...existingCartItem
-          }
-        }
-        return item;
-      })
+      // const cartItemsCopy = cartItems.map(item => {
+      //   if (item.event_id === existingCartItem.event_id) {
+      //     return {
+      //       ...item,
+      //       ...existingCartItem
+      //     }
+      //   }
+      //   return item;
+      // })
 
     } else {
       // otherwise, create new cartItem and add it to cartItems
-      // Example cartItem:
-        //  {
-        // eventI_id
-        // product,
-        // unitPrice,
-        // quantity,
-        // subTotal
-        //  }
+      
       const event = getEventFromEventsByEventId(eventId, events);
 
       const cartItem = {
@@ -84,7 +77,7 @@ export default function Application() {
         <Router>
           <div>
             <CssBaseline />
-            <Header />
+            <Header cartItems={cartItems}/>
               <Switch>
                 <Route exact path="/">
                   <MainPage events={events}/>
