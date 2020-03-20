@@ -12,11 +12,8 @@ export const getEventFromEventsByEventId = (eventId, events) => {
 }
 
 export default function EventInfo({ addToCart, events, location, match }) {
-    // console.log("EventInfo -> props", props)
     const classes = useStyles();
-    // useEffect(() => {   
-        // },[])
-        
+    
         // if the component is loaded as a result of user clicking on an event from the home page
           // props.location.state should exist
           // otherwise event is looked up from the events array with props.match.params.id
@@ -25,15 +22,15 @@ export default function EventInfo({ addToCart, events, location, match }) {
           getEventFromEventsByEventId(match.params.id, events);
         return (
         <>
+        <h1>Event Info page</h1>
         <Grid item key={event.event_id} xs={12} sm={6} md={4} >
-          <button onClick={() => addToCart(event.event_id)}>Add to Cart</button>
               <Link to={`/event/${event.event_id}`}>
-                <Card className={classes.card} onClick={()=><a href="event/1"/>} >           
-                  <CardMedia
+                <Card className={classes.card} >           
+                  {/* <CardMedia
                     className={classes.cardMedia}
                     // image = {mechanic.avatar}
                     title="Image title"                    
-                    />
+                /> */}
                   {/* < MechanicCardRating stars={mechanic.avg}/>                */}
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h5">
@@ -54,11 +51,11 @@ export default function EventInfo({ addToCart, events, location, match }) {
                         <Button size="small" color="primary" type="button" onClick={()=>mechanicRequest(mechanic)} style={{cursor:'pointer'}} >
                         Request {mechanic.first_name}
                         </Button> }                             
-                      </CardActions>         */}
+                    </CardActions>         */}
                     {/* {mechanic.active? <UserBadge /> : 
                     <Typography gutterBottom variant="body1" className={classNames(classes.cardContent,classes.userUnavailableText)} >                    
                     {mechanic.first_name} is currently unavailable 
-                  </Typography>}                        */}
+                </Typography>}                        */}
                   </div>                                   
                 </Card> 
                   </Link>
@@ -69,16 +66,15 @@ export default function EventInfo({ addToCart, events, location, match }) {
             {/* //     /> }                */}
               </Grid>                    
         <div>
-            <h1>Event Info page</h1>
-            <p>Product Infomation</p>
-            <p><Link to='/'>
+            <button><Link to='/'>
                 Go Home
             </Link>
-            </p>
-            <p><Link to='/cart'>
-                Add to cart
+            </button>
+            <button><Link to='/cart'>
+                Go to cart
             </Link>
-            </p>
+            </button>
+            <button onClick={() => addToCart(event.event_id)}>Add to Cart</button>
         </div>
         </>
 
