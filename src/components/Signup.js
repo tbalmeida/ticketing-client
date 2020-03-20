@@ -161,11 +161,12 @@ export default function SignUp() {
     if (dataValid === true){ 
       postData('/signup', userData )
               .then(response => {                  
-              console.log("signUpData -> response", response)
-              sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
-              sessionStorage.setItem('uName', `${response.data[0].first_name} ${response.data[0].last_name}`); 
-              sessionStorage.setItem('uEmail', `${response.data[0].email}`); 
-              sessionStorage.setItem('handle', `${response.data[0].handle}`); 
+              console.log("signUpData -> response", response.data)
+              // sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
+              sessionStorage.setItem('uName', `${userData.first_name} ${userData.last_name}`); 
+              // sessionStorage.setItem('uEmail', `${response.data[0].email}`);
+              sessionStorage.setItem('uEmail', `${userData.email}`); 
+              sessionStorage.setItem('userId', `${response.data[0].handle}`); 
               window.location.reload();              
               })
               .catch(error => {                                       

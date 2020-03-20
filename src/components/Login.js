@@ -92,10 +92,10 @@ export const Login = () => {
     postData('/login', userData )
     .then(response => {     
       console.log("Login -> response.data[0]", response.data[0])
-      sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
+      sessionStorage.setItem('userId', response.data[0].handle);   //creating a new user with key userId and value responce.bla.bla
       sessionStorage.setItem('uName', `${response.data[0].first_name} ${response.data[0].last_name}`); 
       sessionStorage.setItem('uEmail', `${response.data[0].email}`); 
-      sessionStorage.setItem('handle', `${response.data[0].handle}`); 
+      // sessionStorage.setItem('handle', `${response.data[0].handle}`); 
       window.location.reload();     
     })
     .catch(error => {        

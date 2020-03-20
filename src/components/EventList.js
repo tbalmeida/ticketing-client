@@ -118,8 +118,13 @@ export default function EventList({eventData}) {
           <Grid container spacing={4}>
             {[...EventsList].map(event => (                            
               <Grid item key={event.event_id} xs={12} sm={6} md={4} >                          
-              <Link to={`/event/${event.event_id}`}>
-                <Card className={classes.card} onClick={()=><a href="event/1"/>} >           
+              <Link to={{
+                  pathname: `/events/${event.event_id}`,
+                  state: event
+                }}>
+
+                {/* </Grid> */}
+                <Card className={classes.card} >           
                   <CardMedia
                     className={classes.cardMedia}
                     // image = {mechanic.avatar}
@@ -152,7 +157,7 @@ export default function EventList({eventData}) {
                   </Typography>}                        */}
                   </div>                                   
                 </Card> 
-                  </Link>
+                </Link>
                 {/* { modalOpen &&  */}
             {/* //   <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal}  */}
             {/* //   onRequest={onRequest}
