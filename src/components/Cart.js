@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-// import {Elements} from '@stripe/react-stripe-js';
-// import {loadStripe} from '@stripe/stripe-js';
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
+import { Link } from "react-router-dom";
+import {Elements} from '@stripe/react-stripe-js';
+// import {loadStripe} from '@stripe/stripe-js';
 
 const events = [
     {sku: 'sku_GwjMoUH1KxmpRo', quantity: 1, price: 400, title: '2020 Town Hall'},
@@ -21,11 +22,9 @@ function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0)
 }
 export default function Cart ( { stripeToken }) {
-    const [stripe, setStripe] = useState(null)
-
-    useEffect(()=> {
-        if(window.Stripe)  setStripe(window.Stripe(stripeToken))
-           }, [stripeToken])
+    const stripe = useStripe()
+    const elements = useElements()
+    console.log(stripe, elements)
 
     function checkout () {
         stripe.redirectToCheckout({
