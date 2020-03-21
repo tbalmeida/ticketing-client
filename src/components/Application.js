@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage, { getData } from "./MainPage";
 import Signup from "./Signup";
-import EventInfo, { getEventFromEventsByEventId
- } from "./EventInfo";
+import EventInfo, { getEventFromEventsByEventId } from "./EventInfo";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Order from "./Order";
@@ -13,6 +12,9 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import axios from 'axios';
+import { AlertState } from './context/alert/AlertState'
+import { StripeProvider, Elements } from 'react-stripe-elements';
+
 
 
 export default function Application() { 
@@ -74,6 +76,7 @@ export default function Application() {
       }, [])
 
     return (
+      <AlertState>
         <Router>
           <div>
             <CssBaseline />
@@ -89,14 +92,16 @@ export default function Application() {
                   {userId ? <Redirect to="/" /> : <Signup />}
                 </Route>
                 <Route path="/events/:id" render={(routeProps) => <EventInfo events={events} {...routeProps} addToCart={addToCart} />}>
-                  {/* <EventInfo events={events}/> */}
                 </Route>
                 <Route path="/cart">
                   {(routeProps) => <Cart cartItems={cartItems} {...routeProps}/>}
                 </Route>
+                <Elements>
+
                 <Route path="/checkout">
                   <Checkout/>
                 </Route>
+                </Elements>
                 <Route path="/order"> */}
                   <Order/>
                 </Route> 
@@ -104,6 +109,7 @@ export default function Application() {
             <Footer />
           </div>
         </Router>
+      </AlertState>
     );  
 }
 

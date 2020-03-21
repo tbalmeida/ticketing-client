@@ -10,13 +10,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import { AlertContext } from '../context/alert/alertContext';
+import { AlertContext } from './context/alert/alertContext';
 import  { Alert } from './Alert';
 import axios from 'axios';
 import { postData } from './Login';
 
-// INSERT INTO users (first_name, last_name, email, password) 
-//       VALUES ($1, $2, $3, $4) RETURNING *;
 
 const useStyles = makeStyles(theme => ({
   paper: {    
@@ -40,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp() {
-  // const {show, hide} = useContext(AlertContext);
+  const {show, hide} = useContext(AlertContext);
   const classes = useStyles();
     
   const [form, setForm] = useState({
@@ -90,7 +88,7 @@ export default function SignUp() {
       passwordConfirmationError: false
       })
       )
-    // hide();
+    hide();
   }    
 
   const clearData = () => { //clears form and also clears all errors (previous function)
@@ -111,7 +109,7 @@ export default function SignUp() {
     let dataValid = true
 
     if (form.checked === false){
-      // show('Please agree with the terms', 'success');
+      show('Please agree with the terms', 'success');
       dataValid = false;
     }
     
@@ -141,7 +139,7 @@ export default function SignUp() {
     }
 
     if (form.password !== form.passwordConfirmation){
-      // show("Please check that password and password confirmation are the same", 'danger')
+      show("Please check that password and password confirmation are the same", 'danger')
       setForm(previouseValues => ({ ...previouseValues, passwordError: true, passwordConfirmationError: true})); 
       dataValid = false;
     }

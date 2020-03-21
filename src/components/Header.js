@@ -67,7 +67,6 @@ HideOnScroll.propTypes = {
 };
 
 export default function ButtonAppBar({cartItems}) {
-    console.log("ButtonAppBar -> cartItems[0]", cartItems)
     const classes = useStyles();
     const cartTotalQuantity = cartItems.reduce((sum, cartItem) => {
         const quantity = cartItem.quantity;

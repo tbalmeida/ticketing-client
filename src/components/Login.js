@@ -62,7 +62,7 @@ export const Login = () => {
   }
   
   const classes = useStyles();
-  // const {show, hide} = useContext(AlertContext); //use context again
+  const {show, hide} = useContext(AlertContext); //use context again
   
   const loginValidation = e => {
     let dataValid = true;
@@ -99,15 +99,15 @@ export const Login = () => {
       window.location.reload();     
     })
     .catch(error => {        
-      // show(error.response.data.message, 'danger');  //use alert context with danger class     
-      console.log('the following error occurred', error)   
+      show(error.response.data.message, 'danger');  //use alert context with danger class     
+      // console.log('the following error occurred', error)   
     })
   } 
   }   
   
   const clearForm = () => { //we do that if we have errors while filling out form and then if you move on focus some input then it removes errors, warnings etc
     setForm(previouseValues =>({...previouseValues, emailHelperText: "",passwordHelperText:"", emailError: false, passwordError: false, loginDataValid: true}))  
-    // hide();
+    hide();
   }
 
   const clearData = () => {  // removes all fields 

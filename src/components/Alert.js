@@ -4,7 +4,7 @@ import {CSSTransition} from 'react-transition-group' // this is an animation was
 import {AlertContext} from './context/alert/alertContext'
 
 export const Alert = () => {
-//   const {alert, hide} = useContext(AlertContext) //alert is a state in fact
+  const {alert, hide} = useContext(AlertContext) //alert is a state in fact
 
   return (
     <CSSTransition //react part it's like a container
@@ -21,9 +21,8 @@ export const Alert = () => {
         <strong>Oops!</strong>
         &nbsp;{alert.text}
         <button 
-        // onClick={hide} 
+        onClick={hide} 
         type="button" className="close" aria-label="Close"> 
-        {/* //on Click is a default method */}
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

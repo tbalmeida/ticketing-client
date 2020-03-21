@@ -20,7 +20,7 @@ export const AlertState = ({children}) => {
       show, hide, //here we have show: show, hide: hide etch
       alert: state //we call it alert butt it's state
     }}>
-      { {children} } 
+       {children}  
        {/* formality you pass all thouse functions */}
     </AlertContext.Provider>
   )
