@@ -11,21 +11,22 @@ import {CardElement} from '@stripe/react-stripe-js';
 
 import Application from "components/Application";
 
-const stripePromise = loadStripe("pk_test_Ai6UIyP2tbBXxsisSjUcXCKm00UfGStLmk");
+const stripePromise = loadStripe('pk_test_JJ1eMdKN0Hp4UFJ6kWXWO4ix00jtXzq5XG');
 console.log("stripePromise", stripePromise)
-// 
+//
 const theme = createMuiTheme({  palette: {    primary: { main: '#ff5826', secondary: '#ff6795'  }}}) //default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 
-ReactDOM.render(
-  <Elements stripe={stripePromise}>
-    <BrowserRouter >
-      <MuiThemeProvider theme={theme}> {/* creating a new theme and using the theme from above */}
-        <CssBaseline /> {/* it's like a normalization.js file */}
-        < Application />
-      </MuiThemeProvider>
+const App = () => (
+    <BrowserRouter>
+        <MuiThemeProvider theme={theme}> {/* creating a new theme and using the theme from above */}
+            <CssBaseline /> {/* it's like a normalization.js file */}
+            <Elements stripe={stripePromise}>
+                <Application />
+            </Elements>
+        </MuiThemeProvider>
     </BrowserRouter>
-   </Elements>,
-  document.getElementById('root')
+)
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
 );
-
-

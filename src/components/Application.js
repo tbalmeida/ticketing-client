@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage, { getData } from "./MainPage";
 import Signup from "./Signup";
@@ -13,17 +14,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import axios from 'axios';
 import { AlertState } from './context/alert/AlertState'
-import { StripeProvider, Elements } from 'react-stripe-elements';
 
-
-
-export default function Application() { 
+export default function Application() {
 
   const userId = sessionStorage.getItem('userId')
   const [users, setUsers]=useState([]);
     const [events, setEvents]=useState([]);
-    const [venues, setVenues]=useState([]); 
-    const [cartItems, setCartItems] = useState([]); 
+    const [venues, setVenues]=useState([]);
+    const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (eventId) => {
     // check if eventId already exists in cartItems
@@ -45,7 +43,7 @@ export default function Application() {
 
     } else {
       // otherwise, create new cartItem and add it to cartItems
-      
+
       const event = getEventFromEventsByEventId(eventId, events);
 
       const cartItem = {
@@ -60,12 +58,12 @@ export default function Application() {
   }
     useEffect(() => {
         Promise.all([
-            
+
          getData('/events'),
          getData('/venues'),
         ])
           .then((all) => {
-          
+
             const [events, venues] = all;
             setEvents(events.data);
             setVenues(venues.data);
@@ -74,7 +72,9 @@ export default function Application() {
             console.error('ERRRROROROROR', err)
           })
       }, [])
-
+      const stripe = useStripe()
+      const elements = useElements()
+      console.log(stripe, elements)
     return (
       <AlertState>
         <Router>
@@ -87,7 +87,7 @@ export default function Application() {
                 </Route>
                 <Route path="/login">
                   {userId ? <Redirect to="/" /> : <Login />}
-                </Route>               
+                </Route>
                 <Route path="/signup">
                   {userId ? <Redirect to="/" /> : <Signup />}
                 </Route>
@@ -96,21 +96,17 @@ export default function Application() {
                 <Route path="/cart">
                   {(routeProps) => <Cart cartItems={cartItems} {...routeProps}/>}
                 </Route>
-                <Elements>
 
                 <Route path="/checkout">
                   <Checkout/>
                 </Route>
-                </Elements>
                 <Route path="/order"> */}
                   <Order/>
-                </Route> 
+                </Route>
               </Switch>
             <Footer />
           </div>
         </Router>
       </AlertState>
-    );  
+    );
 }
-
-    

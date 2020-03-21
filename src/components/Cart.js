@@ -31,7 +31,7 @@ export default function Cart ( { stripeToken }) {
             events: events.map(event=>({
                 quantity: event.quantity,
                 sku: event.sku
-            })), 
+            })),
             successUrl: 'https://your-website.com/success',
             cancelUrl: 'https://your-website.com/canceled'
         })
@@ -52,7 +52,7 @@ export default function Cart ( { stripeToken }) {
                         </thead>
 
                         <tbody>
-                            {events.map(event => 
+                            {events.map(event =>
                             <tr>
                                 <td>{event.title}</td>
                                 <td>{formatPrice(event.price)}</td>
