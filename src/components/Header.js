@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
-import logo from "./img/tickets-logo.png";
+import logo from "./img/ticket-logo-png-clip-art.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
@@ -80,7 +80,7 @@ export default function ButtonAppBar({cartItems}) {
                 <AppBar>
                     <Toolbar>
                         <Typography>
-                            <img src={logo} alt="site logo" height={40} />
+                            <img src={logo} alt="site logo" height={50} />
                         </Typography>
                         <Tooltip
                             title="Home"
@@ -103,9 +103,9 @@ export default function ButtonAppBar({cartItems}) {
                                     style={{ marginRight: "5px" }}
                                     className={classes.small}
                                 />
-                                {uName}
-                                <ShoppingCartIcon>add_shopping_cart</ShoppingCartIcon>
-                                {cartItems[0] ? `( ${cartTotalQuantity} )` : null}
+                                | {" "}{uName}{" "}
+                                | {" "}<ShoppingCartIcon>add_shopping_cart</ShoppingCartIcon>
+                                 {cartItems[0] ? `( ${cartTotalQuantity} )` : null} | {" "}
                                 <Tooltip
                                     title="Logout"
                                     aria-label="Logout button"

@@ -11,10 +11,8 @@ import { Login } from "./Login";
 import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
-import axios from 'axios';
 import { AlertState } from './context/alert/AlertState'
-import { StripeProvider, Elements } from 'react-stripe-elements';
-
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
 
 export default function Application() { 
@@ -75,6 +73,15 @@ export default function Application() {
           })
       }, [])
 
+    //   const stripe = useStripe()
+    //   console.log("Application -> stripe", stripe)
+    // const elements = useElements()
+    // console.log("Application -> elements", elements)
+
+    // React.useEffect(()=> {
+    //     console.log(stripe, elements)
+    // }, [stripe, elements])
+
     return (
       <AlertState>
         <Router>
@@ -96,12 +103,9 @@ export default function Application() {
                 <Route path="/cart">
                   {(routeProps) => <Cart cartItems={cartItems} {...routeProps}/>}
                 </Route>
-                <Elements>
-
                 <Route path="/checkout">
                   <Checkout/>
                 </Route>
-                </Elements>
                 <Route path="/order"> */}
                   <Order/>
                 </Route> 

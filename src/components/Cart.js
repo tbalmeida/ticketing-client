@@ -22,20 +22,28 @@ function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0)
 }
 export default function Cart ( { stripeToken }) {
-    const stripe = useStripe()
-    const elements = useElements()
-    console.log(stripe, elements)
+    const [stripe, setStripe] = useState(null)
+    // const stripe = useStripe()
+    // console.log("Cart -> stripe", stripe)
+    // const elements = useElements()
+    // console.log("Cart -> elements", elements)
 
-    function checkout () {
+    useEffect(()=> {
+        if(window.Stripe) {
+            setStripe(window.Stripe(stripeToken))
+        }
+    }, [stripeToken])
+
+    function checkout() {
         stripe.redirectToCheckout({
-            events: events.map(event=>({
-                quantity: event.quantity,
-                sku: event.sku
-            })), 
-            successUrl: 'https://your-website.com/success',
-            cancelUrl: 'https://your-website.com/canceled'
+          events: events.map(event => ({
+            quantity: event.quantity,
+            sku: event.sku
+          })),
+          successUrl: "https://your-website.com/success",
+          cancelUrl: "https://your-website.com/canceled"
         })
-    }
+      }
     return (
         <div>
             <h1>My Cart</h1>

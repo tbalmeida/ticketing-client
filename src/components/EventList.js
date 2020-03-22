@@ -10,42 +10,22 @@ import Typography from '@material-ui/core/Typography';
 import useStyles from './EventListStyles.js';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
-// import SimpleDialogDemo from '../../components/openDialog';
 import TypeSentence from './TypedSentence';
-// import  {Alert} from '../../components/Alert';
-// import {AlertContext} from '../../context/alert/alertContext';
-// import PropTypes from 'prop-types';
-// import UserBadge from '../../components/UserBadge';
+import  {Alert} from 'components/Alert';
+import {AlertContext} from 'components/context/alert/alertContext';
+import PropTypes from 'prop-types';
 import Theatre from "./img/theatre.png"
 import Golden from "./img/golden-ticket.png"
-// import MechanicCardRating from '../../components/MechanicCardRating';
-import classNames from 'classnames';
  
 export default function EventList({eventData}) {  
+  console.log("EventList -> eventData", eventData)
   const [modalOpen, setModalOpen] = useState(false)
   const [EventData, setEventData] = useState({})
   const [select, setSelect] = useState('')
   const [EventsList, setEventsList] = useState('')
   
-//   const {show, hide} = useContext(AlertContext);
+  const {show, hide} = useContext(AlertContext);
   const classes = useStyles(); 
-
-  const openModal = (id) => {    
-    const filteredEvents = eventData.filter(events=>{
-         return events.id === id
-    })    
-    setEventData(filteredEvents[0])
-    setModalOpen(true);
-  }
-
-  const closeModal = () => {    
-    setModalOpen(false);
-  };
-
-//   const mechanicRequest = (mechanic) => {    
-//     onRequest();  
-//     setMechanicInfo(mechanic)      
-//   }
 
   const selectEvent = (e) => setSelect(e.target.value);
   
@@ -59,8 +39,8 @@ export default function EventList({eventData}) {
               
       ); 
       filtered.length !== 0? setEventsList(filtered) : setEventsList(eventData)  
-    //   !select && hide()
-    //   select && mechanicList === mechanics && show(' No match found', 'success')                
+      !select && hide()
+      select && EventList === EventData && show(' No match found', 'success')                
     },[select, eventData]);    
     
     const userId = sessionStorage.getItem('userId')
@@ -89,9 +69,6 @@ export default function EventList({eventData}) {
                         <hr></hr>
                     </Link>
                 ))} */}
-        
-
-
     <div className={classes.heroContent}>
       <Container maxWidth="sm" >      
         <Typography component="h1"  variant="h2" align="center" color="textPrimary" gutterBottom  className={classes.gutterBottom}>
@@ -103,7 +80,7 @@ export default function EventList({eventData}) {
           alt="site logo" height={70} />
         </Typography>             
         <TypeSentence /> 
-        {/* <Alert />              */}
+        <Alert />             
         <form className="form-inline my-2 my-lg-0">
           <input id="searchEvents" value={select} className="form-control mr-2 mx-sm-auto" onChange={selectEvent} type="search" placeholder="Search for an Event" aria-label="Search" style={{minWidth:'125px', width:'85%'}}/>
           <button className="btn btn-outline-primary my-2 my-sm-0" type="button" onClick={clearSearch}>Clear</button>
@@ -122,47 +99,27 @@ export default function EventList({eventData}) {
                   pathname: `/events/${event.event_id}`,
                   state: event
                 }}>
-
-                {/* </Grid> */}
                 <Card className={classes.card} >           
                   <CardMedia
                     className={classes.cardMedia}
                     // image = {mechanic.avatar}
                     title="Image title"                    
                     />
-                  {/* < MechanicCardRating stars={mechanic.avg}/>                */}
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h5">
                       {event.title} 
-                      {/* {event.event_id} */}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
                       {event.event_description} 
-                      {/* {event.event_id} */}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">                    
                       Event Fee: {event.fee} 
                     </Typography>                    
                   </CardContent>
                   <div className={classes.buttonStyle}>
-                    {/* <CardActions>
-                      { userId && mechanic.active && 
-                        <Button size="small" color="primary" type="button" onClick={()=>mechanicRequest(mechanic)} style={{cursor:'pointer'}} >
-                        Request {mechanic.first_name}
-                        </Button> }                             
-                      </CardActions>         */}
-                    {/* {mechanic.active? <UserBadge /> : 
-                    <Typography gutterBottom variant="body1" className={classNames(classes.cardContent,classes.userUnavailableText)} >                    
-                    {mechanic.first_name} is currently unavailable 
-                  </Typography>}                        */}
                   </div>                                   
                 </Card> 
                 </Link>
-                {/* { modalOpen &&  */}
-            {/* //   <SimpleDialogDemo mechanic={mechanicData} modalOpen={modalOpen} closeModal={closeModal}  */}
-            {/* //   onRequest={onRequest}
-            //   setMechanicInfo={setMechanicInfo}                 */}
-            {/* //     /> }                */}
               </Grid>                                       
             ))}
           </Grid>          
@@ -171,8 +128,6 @@ export default function EventList({eventData}) {
   );
 }
 
-// LandingPage.propTypes = {
-//   mechanics: PropTypes.array.isRequired,
-//   onRequest: PropTypes.func.isRequired,
-//   setMechanicInfo: PropTypes.func.isRequired
-// }
+EventList.propTypes = {
+  eventData: PropTypes.array.isRequired,
+}
