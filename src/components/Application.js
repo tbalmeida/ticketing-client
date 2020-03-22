@@ -12,12 +12,10 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
-import { AlertContext } from "components/context/alert/alertContext";
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
 
 export default function Application() { 
-  // const { show, hide } = useContext(AlertContext);
 
   const userId = sessionStorage.getItem('userId');
   const [users, setUsers]=useState([]);

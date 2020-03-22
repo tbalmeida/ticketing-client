@@ -168,7 +168,7 @@ export default function SignUp() {
               window.location.reload();              
               })
               .catch(error => {                                       
-                // show(error.response.data.message, 'danger');   
+                show('Something went wrong', 'danger');   
                 console.log('the following error occurred', error)                 
               }) 
            }      

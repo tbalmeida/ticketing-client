@@ -10,6 +10,12 @@ import Container from "@material-ui/core/Container";
 import moment from "moment";
 import { AlertContext } from "components/context/alert/alertContext";
 import { Alert } from "components/Alert";
+import HomeIcon from "@material-ui/icons/Home";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from "@material-ui/core/Button";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(event => event.event_id === eventId);
@@ -49,6 +55,13 @@ export default function EventInfo({ addToCart, events, location, match }) {
             addToCart(eventID);
         }
     };
+    // const goToCard = () => {
+    //     if(!userId) {
+    //         show("Please login first", "danger");
+    //     } else {
+    //         <Link to="/cart"/>
+    //     }
+    // }
     const userId = sessionStorage.getItem("userId");
     const classes = useStyles();
 
@@ -66,13 +79,12 @@ export default function EventInfo({ addToCart, events, location, match }) {
             </Typography>
             <Container maxWidth="sm">
                 <Alert />
-                <Grid container>
+                <Grid container spacing={4}>
                     <Grid
                         item
                         key={event.event_id}
                         maxWidth="sm"
                         className={classes.cardGrid}
-                        spacing={4}
                     >
                         {/* {eventData.map(event => (
                     <Link to={`events/${event.event_id}`}>
@@ -153,19 +165,40 @@ export default function EventInfo({ addToCart, events, location, match }) {
                             title="Image title"
                         /> */}
                             <div>
-                                <button>
-                                    <Link to="/">Go Home</Link>
-                                </button>
-                                {/* <button>
-                                    {userId ? <Link to="/cart">Go to cart</Link> : show("You need to login first", "danger")}
-                                </button> */}
-                                <button
+                                <Button
+                                    className={classes.margin}
+                                    variant="outlined"
+                                    size="small"
+                                    variant="outlined"
+                                    color="primary"
+                                    component={Link}
+                                    to={"/"}
+                                    aria-label="delete"
+                                >
+                                    <HomeIcon />
+                                    Go home
+                                </Button>
+                                <Button
+                                    className={classes.margin}
+                                    variant="outlined"
+                                    size="small"
+                                    color="primary"
                                     onClick={() =>
                                         applyAddToCart(event.event_id)
                                     }
                                 >
-                                    Add to Cart
-                                </button>
+                                    <AddShoppingCartIcon /> Add to Cart
+                                </Button>
+                                <Button
+                                    className={classes.margin}
+                                    size="small"
+                                    variant="outlined"
+                                    color="primary"
+                                    component={Link}
+                                    to={"/cart"}
+                                >
+                                    <ShoppingCartIcon /> Go to cart
+                                </Button>
                             </div>
                         </Card>
                     </Grid>

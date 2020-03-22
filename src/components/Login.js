@@ -96,7 +96,8 @@ export const Login = () => {
       sessionStorage.setItem('uName', `${response.data[0].first_name} ${response.data[0].last_name}`); 
       sessionStorage.setItem('uEmail', `${response.data[0].email}`); 
       // sessionStorage.setItem('handle', `${response.data[0].handle}`); 
-      window.location.reload();     
+      window.location.reload();  
+      // show('the user was successfully logged in', 'success')   
     })
     .catch(error => {        
       show(error.response.data.message, 'danger');  //use alert context with danger class     

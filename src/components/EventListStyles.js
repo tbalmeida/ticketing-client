@@ -85,7 +85,13 @@ const useStyles = makeStyles(theme => ({
     opacity: '0.4', 
     margin:'auto', 
     marginBottom: '15px'
-  } 
+  } ,
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  }
 }));
 
 export default useStyles;

@@ -83,13 +83,14 @@ export default function EventList({ eventData }) {
                             aria-label="Search"
                             style={{ minWidth: "125px", width: "85%" }}
                         />
-                        <button
-                            className="btn btn-outline-primary my-2 my-sm-0"
-                            type="button"
+                        <Button
+                            size="medium"
+                                    variant="outlined"
+                                    color="primary"
                             onClick={clearSearch}
                         >
                             Clear
-                        </button>
+                        </Button>
                     </form>
                 </Container>
                 {!userId && (
