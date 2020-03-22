@@ -18,13 +18,13 @@ import Theatre from "./img/theatre.png";
 import Golden from "./img/golden-ticket.png";
 
 export default function EventList({ eventData }) {
-    console.log("EventList -> eventData", eventData);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [EventData, setEventData] = useState({});
+    console.log("eventData", eventData);
+    // const [eventData, setEventData] = useState({});
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
 
     const { show, hide } = useContext(AlertContext);
+    
     const classes = useStyles();
 
     const selectEvent = e => setSelect(e.target.value);
@@ -36,13 +36,15 @@ export default function EventList({ eventData }) {
     useEffect(() => {
         const filtered = eventData.filter(
             event =>
-                event.title.toLowerCase().search(select.toLowerCase()) !== -1
-        );
-        filtered.length !== 0
+            event.title.toLowerCase().search(select.toLowerCase()) !== -1
+            );
+            filtered.length !== 0
             ? setEventsList(filtered)
             : setEventsList(eventData);
         !select && hide();
-        select && EventList === EventData && show(" No match found", "success");
+        console.log("EventsList", EventsList);
+        
+        select && EventsList === eventData && show(" No match found", "success");
     }, [select, eventData]);
 
     const userId = sessionStorage.getItem("userId");
@@ -120,24 +122,24 @@ export default function EventList({ eventData }) {
                                         </Typography>
                                         <Typography
                                             gutterBottom
-                                            variant="body"
+                                            variant="body1"
                                             // component="body"
                                         >
                                             {event.event_description}
                                         </Typography>
                                         <Typography
                                             gutterBottom
-                                            variant="body"
+                                            variant="body1"
                                             // component="body"
                                         >
                                             Event Fee: {event.fee}
                                         </Typography>
                                     </CardContent>
-                                    <CardMedia
+                                    {/* <CardMedia
                                         className={classes.cardMedia}
                                         // image = {mechanic.avatar}
                                         title="Image title"
-                                    />
+                                    /> */}
                                 </Card>
                             </Link>
                         </Grid>
@@ -148,6 +150,6 @@ export default function EventList({ eventData }) {
     );
 }
 
-EventList.propTypes = {
-    eventData: PropTypes.array.isRequired
-};
+// EventList.propTypes = {
+//     eventData: PropTypes.array.isRequired
+// };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage, { getData } from "./MainPage";
 import Signup from "./Signup";
@@ -12,18 +12,21 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
+import { AlertContext } from "components/context/alert/alertContext";
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
 
 export default function Application() { 
+  // const { show, hide } = useContext(AlertContext);
 
-  const userId = sessionStorage.getItem('userId')
+  const userId = sessionStorage.getItem('userId');
   const [users, setUsers]=useState([]);
-    const [events, setEvents]=useState([]);
-    const [venues, setVenues]=useState([]); 
-    const [cartItems, setCartItems] = useState([]); 
-
-    const addToCart = (eventId) => {
+  const [events, setEvents]=useState([]);
+  const [venues, setVenues]=useState([]); 
+  const [cartItems, setCartItems] = useState([]); 
+  
+  const addToCart = (eventId) => {
+    
     // check if eventId already exists in cartItems
     const existingCartItem = getEventFromEventsByEventId(eventId, cartItems)
       if (existingCartItem) {

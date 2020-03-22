@@ -13,6 +13,7 @@ import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/ticket-logo-png-clip-art.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Grow, Fade, Collapse } from "@material-ui/core";
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
 const uName = sessionStorage.getItem("uName"); //we use uName because when we login or signup we use setItem and give it this specific 'uName'
@@ -139,7 +140,7 @@ export default function ButtonAppBar({cartItems}) {
                                 <Tooltip
                                     title="Sign up"
                                     aria-label="Sign up button"
-                                    TransitionComponent={Zoom}
+                                    TransitionComponent={Collapse}
                                     placement="bottom"
                                 >
                                     <Button
