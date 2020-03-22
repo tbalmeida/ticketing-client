@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
+import moment from 'moment'
 
 export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(event => event.event_id === eventId);
@@ -28,17 +29,13 @@ const convertDuration = function (string) {
 }
 
 const convertTime = function (time) {
-  // Check correct time format and split into components
-  // time = time.toString().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-  console.log("convertTime -> time before slice", time)
+  
   let splitTime = time.split(":").splice(0,2)
-  console.log("convertTime -> time after split", splitTime)
-  if (time.length > 1) { // If time format correct
-    // time = time.slice (1);  // Remove full string match value
-    splitTime[2] = +splitTime[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
-    splitTime[0] = +splitTime[0] % 12 || 12; // Adjust hours
+  if (time.length > 1) { 
+    splitTime[2] = +splitTime[0] < 12 ? 'AM' : 'PM'; 
+    splitTime[0] = +splitTime[0] % 12 || 12; 
   }
-  return `${splitTime [0]}:${splitTime[1]} ${splitTime[2]}`// return adjusted time or original string
+  return `${splitTime [0]}:${splitTime[1]} ${splitTime[2]}`
 }
 convertTime("19:00:00")
 export default function EventInfo({ addToCart, events, location, match }) {
@@ -108,8 +105,8 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                 gutterBottom
                                 variant="body"
                                 // component="body"
-                            >The event will be held on  
-                                {event.event_date} at {convertTime(event.event_time)} for {convertDuration(event.duration)}
+                            >The event will be held on {' '} 
+                                {moment().format('MMM Do YY',event.event_date)} at {convertTime(event.event_time)} for {convertDuration(event.duration)}
                             </Typography><br/>
                             <Typography
                                 gutterBottom
