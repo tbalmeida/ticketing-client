@@ -16,10 +16,10 @@ import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
 import Theatre from "./img/theatre.png";
 import Golden from "./img/golden-ticket.png";
+import BackspaceSharpIcon from '@material-ui/icons/BackspaceSharp';
 
 export default function EventList({ eventData }) {
     console.log("eventData", eventData);
-    // const [eventData, setEventData] = useState({});
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
 
@@ -42,8 +42,6 @@ export default function EventList({ eventData }) {
             ? setEventsList(filtered)
             : setEventsList(eventData);
         !select && hide();
-        console.log("EventsList", EventsList);
-        
         select && EventsList === eventData && show(" No match found", "success");
     }, [select, eventData]);
 
@@ -72,7 +70,7 @@ export default function EventList({ eventData }) {
                     </Typography>
                     <TypeSentence />
                     <Alert />
-                    <form className="form-inline my-2 my-lg-0">
+                    <form className="form-inline my-2 my-lg-0" style={{flexFlow: 'nowrap'}}>
                         <input
                             id="searchEvents"
                             value={select}
@@ -88,6 +86,7 @@ export default function EventList({ eventData }) {
                                     variant="outlined"
                                     color="primary"
                             onClick={clearSearch}
+                            endIcon={<BackspaceSharpIcon/>}
                         >
                             Clear
                         </Button>

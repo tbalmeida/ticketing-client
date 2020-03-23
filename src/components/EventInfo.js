@@ -174,9 +174,9 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                     component={Link}
                                     to={"/"}
                                     aria-label="delete"
+                                    endIcon={<HomeIcon />}
                                 >
-                                    <HomeIcon />
-                                    Go home
+                                   Go home
                                 </Button>
                                 <Button
                                     className={classes.margin}
@@ -186,8 +186,9 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                     onClick={() =>
                                         applyAddToCart(event.event_id)
                                     }
+                                    endIcon={<AddShoppingCartIcon/>}
                                 >
-                                    <AddShoppingCartIcon /> Add to Cart
+                                   Add to Cart
                                 </Button>
                                 <Button
                                     className={classes.margin}
@@ -196,8 +197,9 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                     color="primary"
                                     component={Link}
                                     to={"/cart"}
+                                    endIcon={<ShoppingCartIcon/>}
                                 >
-                                    <ShoppingCartIcon /> Go to cart
+                                    Go to cart
                                 </Button>
                             </div>
                         </Card>
