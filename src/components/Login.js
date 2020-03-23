@@ -7,14 +7,21 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import  {Alert} from './Alert';
 import {AlertContext} from './context/alert/alertContext';
+import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import clsx from 'clsx';
 
 export function postData(url, data) {
   return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data)
@@ -48,6 +55,10 @@ const useStyles = makeStyles(theme => ({ //we take in theme because we need to c
 }));
 
 export const Login = () => { 
+
+  const handleChange = prop => event => {
+    setForm({ ...form, [prop]: event.target.value });
+  };
   
   const [form, setForm] = useState({  //alternative to use useReducer or Redux
     email: '', 
@@ -61,6 +72,14 @@ export const Login = () => {
   const changeHandler = event => {  //will be used later as onChange method while rendering
     setForm({ ...form, [event.target.name]: event.target.value }) //form is our state and it changes everything, event.target.name = name, email etc
   }
+
+  const handleClickShowPassword = () => {
+    setForm({ ...form, showPassword: !form.showPassword });
+  };
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
   
   const classes = useStyles();
   const {show, hide} = useContext(AlertContext); //use context again
@@ -129,7 +148,7 @@ export const Login = () => {
           <Alert />
           <form className={classes.form} noValidate onSubmit={loginValidation}> 
             <TextField
-              variant="outlined"
+              variant="filled"
               margin="normal"
               value={form.email}
               required
@@ -145,23 +164,32 @@ export const Login = () => {
               helperText={form.emailHelperText}
               autoFocus
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              value={form.password}
-              required 
-              // { /* if we do required then we may not need validation function above */ }
-              fullWidth
-              name="password"
+              <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="filled"
+               margin="normal"
+               name="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={changeHandler}
-              onFocus={clearForm}              
-              error={form.passwordError}
-              helperText={form.passwordHelperText}              
-              />
+              autoComplete="current-password">
+          <InputLabel htmlFor="password">Password*</InputLabel>
+          <FilledInput
+            id="password"
+            type={form.showPassword ? 'text' : 'password'}
+            value={form.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {form.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"

@@ -165,10 +165,7 @@ export default function SignUp() {
     if (dataValid === true){ 
       postData('/signup', userData )
               .then(response => {                  
-              console.log("signUpData -> response", response.data)
-              // sessionStorage.setItem('userId', response.data[0].id);   //creating a new user with key userId and value responce.bla.bla
               sessionStorage.setItem('uName', `${userData.first_name} ${userData.last_name}`); 
-              // sessionStorage.setItem('uEmail', `${response.data[0].email}`);
               sessionStorage.setItem('uEmail', `${userData.email}`); 
               sessionStorage.setItem('userId', `${response.data[0].handle}`); 
               window.location.reload();              
@@ -197,7 +194,7 @@ export default function SignUp() {
                   autoComplete="fname"
                   name="firstName"
                   value={form.firstName}
-                  variant="outlined"
+                  variant="filled"
                   required
                   fullWidth
                   id="firstName"
@@ -211,7 +208,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   required
                   fullWidth
                   id="lastName"
@@ -226,7 +223,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   required
                   fullWidth
                   type="email"
@@ -243,7 +240,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   required
                   fullWidth
                   name="password"
@@ -258,7 +255,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   required
                   fullWidth
                   name="passwordConfirmation"
