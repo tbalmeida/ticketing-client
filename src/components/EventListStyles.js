@@ -91,6 +91,17 @@ const useStyles = makeStyles(theme => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
+  },
+  title1: {
+    fontWeight: 700,
+    fontSize: '1.2rem'
+  },
+  title2: {
+    fontWeight: 400,
+    fontSize: '1.1rem'
+  },
+  marginBottom: {
+    marginBottom: '0.4rem'
   }
 }));
 

@@ -21,7 +21,7 @@ export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(event => event.event_id === eventId);
 };
 
-const convertDuration = function(string) {
+export const convertDuration = function(string) {
     let finalResult = "";
     let stringArr = string.split(":");
     if (stringArr[0][0] === "0") {
@@ -36,7 +36,7 @@ const convertDuration = function(string) {
     return finalResult;
 };
 
-const convertTime = function(time) {
+export const convertTime = function(time) {
     let splitTime = time.split(":").splice(0, 2);
     if (time.length > 1) {
         splitTime[2] = +splitTime[0] < 12 ? "AM" : "PM";

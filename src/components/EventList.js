@@ -4,8 +4,10 @@ import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
@@ -17,6 +19,10 @@ import PropTypes from "prop-types";
 import Theatre from "./img/theatre.png";
 import Golden from "./img/golden-ticket.png";
 import BackspaceSharpIcon from '@material-ui/icons/BackspaceSharp';
+import moment from 'moment';
+import {convertDuration, convertTime} from "components/EventInfo";
+import AddShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { spacing } from '@material-ui/system';
 
 export default function EventList({ eventData }) {
     console.log("eventData", eventData);
@@ -24,6 +30,14 @@ export default function EventList({ eventData }) {
     const [EventsList, setEventsList] = useState("");
 
     const { show, hide } = useContext(AlertContext);
+    const applyAddToCart = eventID => {
+        if (!userId) {
+            show("Please login first", "danger");
+        } else {
+            show("Item was added to the card", "success");
+            eventData.addToCart(eventID);
+        }
+    };
     
     const classes = useStyles();
 
@@ -115,7 +129,32 @@ export default function EventList({ eventData }) {
                                     <CardContent
                                         className={classes.cardContent}
                                     >
-                                        <Typography
+                                        <Grid container border={1}>
+                                            <Grid item xs={6} ><Typography className={classes.title1}variant="body1">{event.title}</Typography></Grid>
+                                            <Grid item xs={6} align="right" marginBottom={2} mb={2}><Typography className={classes.title2} variant="body1">{moment().format(
+                                        "MMM Do YYYY",
+                                        event.event_date
+                                    )}{" "}
+                                    at {convertTime(event.event_time)}</Typography></Grid>
+                                            <Grid item xs={6} ></Grid>
+                                            <Grid item xs={6} align="right"><Typography className={classes.marginBottom} variant="body1">{event.venue_name}</Typography></Grid>
+                                            <Grid item xs={12} align="justify"><Typography variant="body1"> {event.event_description}</Typography></Grid>
+                                            <Grid item xs={10} ></Grid>
+                                            <Grid item xs={2} align="right"><Button
+                                    className={classes.margin}
+                                    // variant="outlined"
+                                    size="large"
+                                    color="primary"
+                                    onClick={() =>
+                                        applyAddToCart(event.event_id)
+                                    }
+                                    endIcon={<AddShoppingCartIcon/>}
+                                >
+                                   
+                                </Button></Grid>
+                                        </Grid>
+                                        
+                                        {/* <Typography
                                             gutterBottom
                                             variant="h5"
                                             // component="body"
@@ -135,7 +174,7 @@ export default function EventList({ eventData }) {
                                             // component="body"
                                         >
                                             Event Fee: {event.fee}
-                                        </Typography>
+                                        </Typography> */}
                                     </CardContent>
                                     {/* <CardMedia
                                         className={classes.cardMedia}
