@@ -51,7 +51,7 @@ export default function EventList({ eventData }) {
         <Fragment>
             
             <div className={classes.heroContent}>
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Typography
                         component="h1"
                         variant="h2"
@@ -69,7 +69,9 @@ export default function EventList({ eventData }) {
                         <img src={Theatre} alt="site logo" height={70} />
                     </Typography>
                     <TypeSentence />
+                    </Container>
                     <Alert />
+                    <Container maxWidth="sm">
                     <form className="form-inline my-2 my-lg-0" style={{flexFlow: 'nowrap'}}>
                         <input
                             id="searchEvents"

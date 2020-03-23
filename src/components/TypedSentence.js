@@ -22,8 +22,8 @@ export default function TypedSentence() {
     
     <Typography variant="h5" align="center" color="textSecondary" paragraph className={classes.root}>
         <Typed
-            strings={['We want you to check the best Calgary\'s events. ^1000 So we decided to create this site so that you could have an oportunity to visit all of them depending on your interests.']}
-            typeSpeed={80}
+            strings={['Here you can find tickets to our events. ^1000 Some events have free admission and others are paid. ^1000 All revenue is directed to our mission to help the community of Calgary. ^1000 Come with us to grow, support your fellows Calgarians and meet awesome people while doing it.']}
+            typeSpeed={90}
             backSpeed={70}
             backDelay={5000}
             smartBackspace={true}

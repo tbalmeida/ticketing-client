@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
     padding: '5px 20px ',
     margin: '20px auto 0',
     fontSize: '1.6rem',
-    color: '#0f44a6'
+    color: 'green'
   },
   userUnavailableText: {
     color:'red', 
