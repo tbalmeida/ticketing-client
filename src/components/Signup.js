@@ -14,6 +14,7 @@ import { AlertContext } from './context/alert/alertContext';
 import  { Alert } from './Alert';
 import axios from 'axios';
 import { postData } from './Login';
+import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
 
 
 const useStyles = makeStyles(theme => ({
@@ -178,7 +179,7 @@ export default function SignUp() {
       <Container component="main" maxWidth="xs" >        
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <VpnKeyRoundedIcon/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
@@ -186,7 +187,7 @@ export default function SignUp() {
           <form className={classes.form} noValidate onSubmit={signUpData}>
           <Alert />
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="fname"
                   name="firstName"
@@ -203,7 +204,7 @@ export default function SignUp() {
                   onFocus={clearForm}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   variant="outlined"
                   required
@@ -277,7 +278,7 @@ export default function SignUp() {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
+              variant="outlined"
               color="primary"
               className={classes.submit}               
             >
@@ -286,7 +287,7 @@ export default function SignUp() {
             <Button
               type="button"
               fullWidth
-              variant="contained"              
+              variant="outlined"              
               className={classes.submit}
               onClick= {clearData}
               style={{backgroundColor:'grey', outline: 'none'}}
