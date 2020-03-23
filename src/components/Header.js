@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2) 
     },
     title: {
-        flexGrow: 1
+        flexGrow: 1,
+        fontWeight: 700
     },
     buttonStyle: {
         margin: "5px",
@@ -94,9 +95,10 @@ export default function ButtonAppBar({cartItems}) {
                             </Button>
                         </Tooltip>
                         <Typography
-                            variant="h6"
+                        align="center"
+                            variant="h4"
                             className={classes.title}
-                        ></Typography>
+                        >Ticketing 4 Good</Typography>
                         {userId ? (
                             <>
                                 <Avatar
