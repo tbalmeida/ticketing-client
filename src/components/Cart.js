@@ -3,7 +3,7 @@ import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
 import { Link } from "react-router-dom";
 import {Elements} from '@stripe/react-stripe-js';
-// import {loadStripe} from '@stripe/stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 const events = [
     {sku: 'sku_GwjMoUH1KxmpRo', quantity: 1, price: 400, title: '2020 Town Hall'},
@@ -33,6 +33,7 @@ export default function Cart ( { stripeToken }) {
             setStripe(window.Stripe(stripeToken))
         }
     }, [stripeToken])
+    console.log("Cart -> Stripe", stripe)
 
     function checkout() {
         stripe.redirectToCheckout({

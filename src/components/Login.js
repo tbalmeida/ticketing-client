@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import  {Alert} from './Alert';
 import {AlertContext} from './context/alert/alertContext';
 import axios from 'axios';
+import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
 
 export function postData(url, data) {
   return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data)
@@ -120,7 +121,7 @@ export const Login = () => {
     <Box className={classes.paper}>
       <Container component="main" maxWidth="xs" >        
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <VpnKeyRoundedIcon/>
           </Avatar>
           <Typography component="h1" align='center' variant="h5">
             Sign in
@@ -168,7 +169,8 @@ export const Login = () => {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
+              // variant="contained"
+              variant="outlined"
               color="primary"
               className={classes.submit}              
             >
@@ -178,7 +180,8 @@ export const Login = () => {
             <Button
               type="button"
               fullWidth
-              variant="contained"              
+              // variant="contained"    
+              variant="outlined"          
               className={classes.clear}
               onClick= {clearData}              
               >
@@ -189,7 +192,7 @@ export const Login = () => {
               </Grid>
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
