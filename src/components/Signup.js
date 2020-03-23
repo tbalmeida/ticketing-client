@@ -133,6 +133,11 @@ export default function SignUp() {
       setForm(previouseValues => ({ ...previouseValues, passwordText: "Password required", passwordError: true})); 
       dataValid = false;     
     }
+     if (form.password.length <=2){
+      show('Password is too short', 'danger')
+      setForm(previouseValues => ({ ...previouseValues, passwordError: true})); 
+      dataValid = false;     
+    }
     
     if (!form.passwordConfirmation){
       setForm(previouseValues => ({ ...previouseValues, passwordConfirmationText: "Password confirmation required", passwordConfirmationError: true})); 

@@ -99,10 +99,10 @@ export default function EventList({ eventData }) {
                 )}
             </div>
             <Divider variant="middle" />
-            <Container className={classes.cardGrid} maxWidth="md">
+            <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={4}>
                     {[...EventsList].map(event => (
-                        <Grid item key={event.event_id} xs={12} sm={6} md={4}>
+                        <Grid item key={event.event_id} xs={12} sm={6} md={6}>
                             <Link
                                 to={{
                                     pathname: `/events/${event.event_id}`,
