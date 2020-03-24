@@ -155,7 +155,7 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                     variant="body1"
                                     // component="body"
                                 >
-                                    Event Fee: {event.fee}CAD
+                                    {/* Event Fee: {event.fee}CAD */}
                                 </Typography>
                                 <br />
                             </CardContent>

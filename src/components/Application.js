@@ -12,8 +12,6 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
-
 
 export default function Application() { 
 
@@ -22,7 +20,6 @@ export default function Application() {
   const [events, setEvents]=useState([]);
   const [venues, setVenues]=useState([]); 
   const [cartItems, setCartItems] = useState([]); 
-  
   const addToCart = (eventId) => {
     
     // check if eventId already exists in cartItems
@@ -82,7 +79,6 @@ export default function Application() {
     // React.useEffect(()=> {
     //     console.log(stripe, elements)
     // }, [stripe, elements])
-
     return (
       <AlertState>
         <Router>
@@ -102,10 +98,14 @@ export default function Application() {
                 <Route path="/events/:id" render={(routeProps) => <EventInfo events={events} {...routeProps} addToCart={addToCart} />}>
                 </Route>
                 <Route path="/cart">
-                  {(routeProps) => <Cart cartItems={cartItems} {...routeProps}/>}
+                  {(routeProps) => 
+                    <Cart cartItems={cartItems} {...routeProps}/>
+                  }
                 </Route>
                 <Route path="/checkout">
-                  <Checkout/>
+                {(routeProps) => 
+                    <Checkout cartItems={cartItems} {...routeProps}/>
+                  }
                 </Route>
                 <Route path="/order"> */}
                   <Order/>

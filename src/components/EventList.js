@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
@@ -22,7 +21,6 @@ import BackspaceSharpIcon from '@material-ui/icons/BackspaceSharp';
 import moment from 'moment';
 import {convertDuration, convertTime} from "components/EventInfo";
 import AddShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { spacing } from '@material-ui/system';
 
 export default function EventList({ eventData }) {
     console.log("eventData", eventData);
@@ -88,6 +86,8 @@ export default function EventList({ eventData }) {
                     <Container maxWidth="sm">
                     <form className="form-inline my-2 my-lg-0" style={{flexFlow: 'nowrap'}}>
                         <input
+                            variant="outlined"
+                            color="primary"
                             id="searchEvents"
                             value={select}
                             className="form-control mr-2 mx-sm-auto"
@@ -136,7 +136,9 @@ export default function EventList({ eventData }) {
                                         event.event_date
                                     )}{" "}
                                     at {convertTime(event.event_time)}</Typography></Grid>
-                                            <Grid item xs={6} ></Grid>
+                                            <Grid item xs={6} >
+                                                {/* <img src={event.event_img}/> */}
+                                                </Grid>
                                             <Grid item xs={6} align="right"><Typography className={classes.marginBottom} variant="body1">{event.venue_name}</Typography></Grid>
                                             <Grid item xs={12} align="justify"><Typography variant="body1"> {event.event_description}</Typography></Grid>
                                             <Grid item xs={10} ></Grid>

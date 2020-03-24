@@ -1,12 +1,11 @@
 import { useState } from "react";
-import React from 'react';
 import Router from "next/router";
 
-import Layout from "components/Layout";
-import Row from "components/prebuilt/Row";
-import DonutShop from "components/prebuilt/DonutShop";
-import CheckoutForm from "components/CheckoutForm";
-import getDonutPrice from "components/utils/get-donut-price";
+import Layout from "../components/Layout";
+import Row from "../components/prebuilt/Row";
+import DonutShop from "../components/prebuilt/DonutShop";
+import CheckoutForm from "../components/CheckoutForm";
+import getDonutPrice from "../utils/get-donut-price";
 
 const MainPage = props => {
   const [numDonuts, setNumDonuts] = useState(1);

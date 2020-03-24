@@ -234,8 +234,10 @@ export default function SignUp() {
                     window.location.reload();
                 })
                 .catch(error => {
-                    show("Something went wrong", "danger");
-                    console.log("the following error occurred", error);
+                    show(error.response.data.message, "danger");
+                    // console.log(error.response.data.message, "danger");
+                    // show('User already exists', 'danger')
+
                 });
         }
     };
