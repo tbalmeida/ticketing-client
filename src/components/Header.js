@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
-import logo from "./img/ticket-logo-png-clip-art.png";
+import logo from "./img/ticket-logo-png-clip-art2.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Grow, Fade, Collapse } from "@material-ui/core";
 

@@ -69,7 +69,13 @@ export default function Cart ( {cartItems}) {
         return response.json();
       }
 
-
+    //   const cartItem = {
+    //     event_id: event.event_id,
+    //     product: event.description,
+    //     quantity: 1,
+    //     unitPrice: event.price,
+    //     subTotal: event.price
+    //   }
     return (
         <div>
             <h1>My Cart</h1>

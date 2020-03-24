@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from 'react';
-import Router from "next/router";
+// import Router from "next/router";
+import { Redirect } from "react-router-dom";
 
 import Layout from "components/Layout";
 import Row from "components/prebuilt/Row";
@@ -10,10 +11,14 @@ import getDonutPrice from "components/utils/get-donut-price";
 
 const MainPage = props => {
   const [numDonuts, setNumDonuts] = useState(1);
+  const [redirect, setRedirect] = useState(false)
 
   const addDonut = () => setNumDonuts(num => Math.min(12, num + 1));
   const remDonut = () => setNumDonuts(num => Math.max(1, num - 1));
 
+  if(redirect) {
+    return <Redirect to="/order" />
+  }
   return (
     <>
     {/* <Layout title="Donut Shop"> */}
@@ -26,7 +31,7 @@ const MainPage = props => {
       </Row>
       <CheckoutForm
         price={getDonutPrice(numDonuts)}
-        onSuccessfulCheckout={() => Router.push("/success")}
+        onSuccessfulCheckout={() => setRedirect(true)}
       />
       </>
     // {/*  </Layout> */}

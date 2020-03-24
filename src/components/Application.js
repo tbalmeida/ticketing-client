@@ -98,16 +98,16 @@ export default function Application() {
                 <Route path="/events/:id" render={(routeProps) => <EventInfo events={events} {...routeProps} addToCart={addToCart} />}>
                 </Route>
                 <Route path="/cart">
-                  {(routeProps) => 
+                  {!userId ? <Redirect to="/"/> : (routeProps) => 
                     <Cart cartItems={cartItems} {...routeProps}/>
                   }
                 </Route>
                 <Route path="/checkout">
-                {(routeProps) => 
+                {!userId ? <Redirect to="/"/> : (routeProps) => 
                     <Checkout cartItems={cartItems} {...routeProps}/>
                   }
                 </Route>
-                <Route path="/order"> */}
+                <Route path="/order"> }
                   <Order/>
                 </Route> 
               </Switch>

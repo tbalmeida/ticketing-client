@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import styled from "@emotion/styled";
 import axios from "axios";
 import React from 'react'
-
+import { postData } from './Login'
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
@@ -27,7 +27,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
   const [checkoutError, setCheckoutError] = useState();
 
   const stripe = useStripe();
-  console.log("CheckoutForm -> stripe", stripe)
   const elements = useElements();
 
   // TIP
@@ -55,17 +54,25 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     setProcessingTo(true);
 
     const cardElement = elements.getElement("card");
-
+  //   export function postData(url, data) {
+  //     return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);
+  // }
     try {
-      const { data: clientSecret } = await axios.post("/api/payment_intents", {
-        amount: price * 100
+      const { data: clientSecret } = await postData("/payment_intents", {
+          amount: price * 100
+          // , props.cart
       });
-
+      console.log("CheckoutForm -> clientSecret", clientSecret)
+      // const { data: clientSecret } = await axios.post("/api/payment_intents", {
+      //   amount: price * 100
+      // })
+      
       const paymentMethodReq = await stripe.createPaymentMethod({
         type: "card",
         card: cardElement,
         billing_details: billingDetails
       });
+      console.log("CheckoutForm -> paymentMethodReq", paymentMethodReq)
 
       if (paymentMethodReq.error) {
         setCheckoutError(paymentMethodReq.error.message);
