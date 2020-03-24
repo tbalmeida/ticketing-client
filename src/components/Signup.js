@@ -43,7 +43,9 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(0.5, 0, 0.5)
     }
 }));
-
+function putData(url, data) {
+    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);
+}
 export default function SignUp() {
     const { show, hide } = useContext(AlertContext);
     const classes = useStyles();
@@ -220,7 +222,7 @@ export default function SignUp() {
         };
 
         if (dataValid === true) {
-            postData("/signup", userData)
+            putData("/signup", userData)
                 .then(response => {
                     sessionStorage.setItem(
                         "uName",
@@ -295,7 +297,6 @@ export default function SignUp() {
                                 id="email"
                                 value={form.email}
                                 label="Email Address"
-                                value={form.email}
                                 onChange={changeHandler}
                                 name="email"
                                 helperText={form.emailText}

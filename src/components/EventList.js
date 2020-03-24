@@ -54,7 +54,7 @@ export default function EventList({ eventData }) {
             ? setEventsList(filtered)
             : setEventsList(eventData);
         !select && hide();
-        select && EventsList === eventData && show(" No match found", "success");
+        select && EventsList === eventData && show(" No match found", "warning");
     }, [select, eventData]);
 
     const userId = sessionStorage.getItem("userId");
