@@ -82,8 +82,8 @@ export default function EventList({ eventData }) {
                     </Typography>
                     <TypeSentence />
                     </Container>
-                    <Alert />
                     <Container maxWidth="sm">
+                    <Alert />
                     <form className="form-inline my-2 my-lg-0" style={{flexFlow: 'nowrap'}}>
                         <input
                             variant="outlined"
