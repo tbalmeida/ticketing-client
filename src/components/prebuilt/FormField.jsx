@@ -6,7 +6,7 @@ const FormFieldContainer = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-left: 15px;
-  border-top: 1px solid #819efc;
+  // border-top: 1px solid #819efc;
 
   &:first-of-type {
     border-top: none;
@@ -17,12 +17,12 @@ const Label = styled.label`
   width: 20%;
   min-width: 70px;
   padding: 11px 0;
-  color: #c4f0ff;
+  color: #fff;
   overflow: hidden;
   font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border-right: 1px solid #819efc;
+  // border-right: 1px solid #819efc;
 `;
 
 const Input = styled.input`
@@ -34,7 +34,7 @@ const Input = styled.input`
   animation: 1ms void-animation-out;
 
   &::placeholder {
-    color: #87bbfd;
+    color: #fff;
   }
 `;
 

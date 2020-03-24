@@ -11,12 +11,13 @@ import GlobalStyles from "components/prebuilt/GlobalStyles";
 import Application from "components/Application";
 
 const stripePromise = loadStripe("pk_test_Ai6UIyP2tbBXxsisSjUcXCKm00UfGStLmk");
+// const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY);
 
 // 
 const theme = createMuiTheme({  palette: {    primary: { main: '#ff5826', secondary: '#ff6795'  }}}) //default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 const App = () => (
   <>
-  {/* <GlobalStyles /> */}
+  <GlobalStyles />
     <BrowserRouter >
       <MuiThemeProvider theme={theme}> {/* creating a new theme and using the theme from above */}
         <CssBaseline /> {/* it's like a normalization.js file */}

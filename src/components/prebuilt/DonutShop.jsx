@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from 'react'
 import Image from "./Image";
 import DonutQuantity from "./DonutQuantity";
+import donut from 'components/img/donut.png'
 
 const Shop = styled.div`
   padding: 10px 20px 40px 20px;
@@ -27,8 +28,8 @@ const Controls = styled.div`
 const DonutShop = ({ onAddDonut, onRemoveDonut, numDonuts }) => {
   return (
     <Shop>
-      <ShopName>/stripe/donut</ShopName>
-      <Image src="./donut.png" width="100px"></Image>
+      <ShopName>First Item</ShopName>
+      <Image src={donut} width="100px" alt='image'></Image>
       <Controls>
         <DonutQuantity
           onAdd={onAddDonut}

@@ -17,6 +17,8 @@ const CardElementContainer = styled.div`
   & .StripeElement {
     width: 100%;
     padding: 15px;
+    background-color: #4b2959;
+    color: #fff
   }
 `;
 
@@ -25,6 +27,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
   const [checkoutError, setCheckoutError] = useState();
 
   const stripe = useStripe();
+  console.log("CheckoutForm -> stripe", stripe)
   const elements = useElements();
 
   // TIP
@@ -102,14 +105,15 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     base: {
       color: "#fff",
       fontSize: "16px",
-      iconColor: "#fff",
+      iconColor: "rose",
+      height: "20px",
       "::placeholder": {
-        color: "#87bbfd"
+        color: "#fff"
       }
     },
     invalid: {
       iconColor: "#FFC7EE",
-      color: "#FFC7EE"
+      color: "rgba(255,50, 0, 0.5)"
     },
     complete: {
       iconColor: "#cbf4c9"
@@ -119,7 +123,8 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
   const cardElementOpts = {
     iconStyle: "solid",
     style: iframeStyles,
-    hidePostalCode: true
+    hidePostalCode: true,
+    height: '20px',
   };
 
   return (
@@ -129,7 +134,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       </Row>
       <Row>
         <CardElementContainer>
-          <CardElement
+          <CardElement 
             options={cardElementOpts}
             onChange={handleCardDetailsChange}
           />
