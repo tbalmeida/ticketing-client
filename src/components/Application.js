@@ -45,11 +45,11 @@ export default function Application() {
       const event = getEventFromEventsByEventId(eventId, events);
 
       const cartItem = {
-        event_id: event.event_id,
-        product: event.description,
+        id: event.event_id,
+        title: event.title,
         quantity: 1,
-        unitPrice: event.price,
-        subTotal: event.price
+        price: event.price,
+        limit: event.limit_per_user
       }
       setCartItems(cartItems.concat(cartItem))
     }
