@@ -16,66 +16,16 @@ const events = [
     {sku: 'sku_GwjLz1G30ryu9A', quantity: 1, price: 100, title: 'Feb 15 - Employment hunt workshop'}
 
 ]
-function formatPrice (price) {
+export function formatPrice (price) {
     return `$${(price/100).toFixed(2)}`
 }
 
-function totalPrice(events) {
+export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0)
 }
 export default function Cart ( {cartItems}) {
-    //Thomas
-    const stripe = useStripe();
-    const elements = useElements();
     const classes = useStyles();
-    const handleSubmit = async (event) => {
-      // We don't want to let default form submission happen here,
-      // which would refresh the page.
-      event.preventDefault();
-  
-      if (!stripe || !elements) {
-        // Stripe.js has not yet loaded.
-        // Make  sure to disable form submission until Stripe.js has loaded.
-        return;
-      }
-  
-      const card = elements.getElement(CardElement);
-      const result = await stripe.createToken(card);
-        if (result.error) {
-          // Show error to your customer.
-          console.log('token error', result.error.message);
-        } else {
-          // Send the token to your server.
-          // This function does not exist yet; we will define it in the next step.
-          console.log(result.token, "our token")
-          stripeTokenHandler(result.token);
-        }
-      };
 
-      async function stripeTokenHandler(token) {
-        const paymentData = {token: token.id};
-      
-        // Use fetch to send the token ID and any other payment data to your server.
-        // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-        const response = await fetch('/charge', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(paymentData),
-        });
-      
-        // Return and display the result of the charge.
-        return response.json();
-      }
-
-    //   const cartItem = {
-    //     event_id: event.event_id,
-    //     product: event.description,
-    //     quantity: 1,
-    //     unitPrice: event.price,
-    //     subTotal: event.price
-    //   }
     return (
         <div>
             <h1>My Cart</h1>
@@ -94,7 +44,7 @@ export default function Cart ( {cartItems}) {
 
                         <tbody>
                             {cartItems.map(event => 
-                            <tr>
+                            <tr key={event.id}>
                                 <td>{event.title}</td>
                                 <td>{formatPrice(event.price * 100) }</td>
                                 <td>{event.quantity}</td>
@@ -106,13 +56,6 @@ export default function Cart ( {cartItems}) {
                                 <td style={{textAlign: "right"}} colSpan={4}>Total Price</td>
                                 <td>{formatPrice(totalPrice(cartItems) * 100)}</td>
                             </tr>
-                            {/* <tr>
-                                <td colSpan={4}> */}
-                                    {/* <form onSubmit={handleSubmit}> */}
-                                        {/* <CardSection /> */}
-                                    {/* </form> */}
-                                {/* </td>
-                            </tr> */}
                         </tbody>
                     </table>
                 </div>

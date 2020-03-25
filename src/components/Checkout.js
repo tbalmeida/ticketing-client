@@ -8,8 +8,8 @@ import Row from "components/prebuilt/Row";
 import DonutShop from "components/prebuilt/DonutShop";
 import CheckoutForm from "components/CheckoutForm";
 import getDonutPrice from "components/utils/get-donut-price";
-
-const MainPage = props => {
+import {formatPrice, totalPrice } from "components/Cart"
+const MainPage = ({cartItems}) => {
   const [numDonuts, setNumDonuts] = useState(1);
   const [redirect, setRedirect] = useState(false)
 
@@ -21,20 +21,11 @@ const MainPage = props => {
   }
   return (
     <>
-    {/* <Layout title="Donut Shop"> */}
-      <Row>
-        <DonutShop
-          onAddDonut={addDonut}
-          onRemoveDonut={remDonut}
-          numDonuts={numDonuts}
-        />
-      </Row>
       <CheckoutForm
-        price={getDonutPrice(numDonuts)}
+        price={totalPrice(cartItems).toFixed(2)}
         onSuccessfulCheckout={() => setRedirect(true)}
       />
       </>
-    // {/*  </Layout> */}
   );
 };
 
