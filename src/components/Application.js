@@ -20,6 +20,26 @@ export default function Application() {
   const [events, setEvents]=useState([]);
   const [venues, setVenues]=useState([]); 
   const [cartItems, setCartItems] = useState([]); 
+//   const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
+//     const quantity = cartItem.quantity;
+//     sum += quantity;
+//     return sum;
+// }, 0));
+const decreaseQuantity = (eventId, step = -1) => {
+  return () => {
+    // decrease the event.quantity
+    // update cartItems state
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === eventId) {
+        //it stuff
+        item.quantity += step
+      }
+      return item
+    })
+    setCartItems(updatedCartItems)
+  }
+}
+
   const addToCart = (eventId) => {
     
     // check if eventId already exists in cartItems
@@ -91,7 +111,7 @@ export default function Application() {
                 </Route>
                 <Route path="/cart">
                   {!userId ? <Redirect to="/"/> : (routeProps) => 
-                    <Cart cartItems={cartItems} {...routeProps}/>
+                    <Cart cartItems={cartItems} decreaseQuantity={decreaseQuantity} {...routeProps}/>
                   }
                 </Route>
                 <Route path="/checkout">

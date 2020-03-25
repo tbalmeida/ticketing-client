@@ -22,16 +22,16 @@ export function formatPrice(price) {
 export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
 }
-export default function Cart({ cartItems }) {
+export default function Cart({ cartItems, decreaseQuantity }) {
     const [invisible, setInvisible] = React.useState(false);
     const [count, setCount] = React.useState(1);
-    const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
-        const quantity = cartItem.quantity;
-        sum += quantity;
-        return sum;
-    }, 0));
+    // const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
+    //     const quantity = cartItem.quantity;
+    //     sum += quantity;
+    //     return sum;
+    // }, 0));
     function totalPrice1(events) {
-        return events.reduce((acc, event) => acc + quantity * event.price, 0);
+        return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
     }
     const classes = useStyles();
 
@@ -57,10 +57,10 @@ export default function Cart({ cartItems }) {
                                     <td>{event.title}</td>
                                     <td>{formatPrice(event.price * 100)}</td>
                                     <td style={{ display: "flex" }}>
-                                        {quantity}
+                                        {event.quantity}
                                         <Badge max={5}
                                             color="secondary"
-                                            badgeContent={quantity}
+                                            badgeContent={event.quantity}
                                         >
                                             <ShoppingCartIcon />
                                         </Badge>
@@ -69,23 +69,14 @@ export default function Cart({ cartItems }) {
                                                 <Button
                                                     size="small"
                                                     aria-label="reduce"
-                                                    onClick={() => {
-                                                        setQuantity(
-                                                            Math.max(
-                                                                quantity - 1,
-                                                                0
-                                                            )
-                                                        );
-                                                    }}
+                                                    onClick={decreaseQuantity(event.id)}
                                                 >
                                                     <RemoveIcon fontSize="small" />
                                                 </Button>
                                                 <Button
                                                     size="small"
                                                     aria-label="increase"
-                                                    onClick={() => {
-                                                        setQuantity(Math.min(quantity + 1, event.limit));
-                                                    }}
+                                                    onClick={decreaseQuantity(event.id, 1)}
                                                 >
                                                     <AddIcon fontSize="small" />
                                                 </Button>
@@ -95,7 +86,7 @@ export default function Cart({ cartItems }) {
                                     <td>{event.limit}</td>
                                     <td>
                                         {formatPrice(
-                                           quantity * event.price * 100
+                                           event.quantity * event.price * 100
                                         )}
                                     </td>
                                 </tr>

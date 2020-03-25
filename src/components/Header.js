@@ -69,14 +69,18 @@ HideOnScroll.propTypes = {
     window: PropTypes.func
 };
 
-export default function ButtonAppBar({cartItems}) {
+export default function Header ({cartItems}) {
     const classes = useStyles();
     const cartTotalQuantity = cartItems.reduce((sum, cartItem) => {
         const quantity = cartItem.quantity;
         sum += quantity;
         return sum;
     }, 0);
-
+    // const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
+    //     const quantity = cartItem.quantity;
+    //     sum += quantity;
+    //     return sum;
+    // }, 0));
     return (
         <Box className={classes.root} maxWidth="xs" marginTop={10}>
             <HideOnScroll>
@@ -108,7 +112,7 @@ export default function ButtonAppBar({cartItems}) {
                                     className={classes.small}
                                 />
                                 | {" "}{uName}{" "}
-                                | {" "}<Badge color="secondary" size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
+                                | {" "}<Badge style={{color:'black'}} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
                                   | {" "}
                                 <Tooltip
                                     title="Logout"
