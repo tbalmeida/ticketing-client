@@ -13,6 +13,7 @@ import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/ticket-logo-png-clip-art2.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Badge from "@material-ui/core/Badge";
 import { Grow, Fade, Collapse } from "@material-ui/core";
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
@@ -107,8 +108,8 @@ export default function ButtonAppBar({cartItems}) {
                                     className={classes.small}
                                 />
                                 | {" "}{uName}{" "}
-                                | {" "}<ShoppingCartIcon>add_shopping_cart</ShoppingCartIcon>
-                                 {cartItems[0] ? `( ${cartTotalQuantity} )` : null} | {" "}
+                                | {" "}<Badge color="secondary" size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
+                                  | {" "}
                                 <Tooltip
                                     title="Logout"
                                     aria-label="Logout button"
