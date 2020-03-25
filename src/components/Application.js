@@ -46,10 +46,11 @@ export default function Application() {
 
       const cartItem = {
         event_id: event.event_id,
-        product: event.description,
+        title: event.title,
         quantity: 1,
-        unitPrice: event.price,
-        subTotal: event.price
+        maxQuantity: event.limit_per_user,
+        price: event.price.split('$')[1],
+        subTotal: event.price * event.quantity
       }
       setCartItems(cartItems.concat(cartItem))
     }

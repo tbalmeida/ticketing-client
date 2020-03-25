@@ -16,14 +16,15 @@ const events = [
     {sku: 'sku_GwjLz1G30ryu9A', quantity: 1, price: 100, title: 'Feb 15 - Employment hunt workshop'}
 
 ]
-function formatPrice (price) {
+export function formatPrice (price) {
     return `$${(price/100).toFixed(2)}`
 }
 
-function totalPrice(events) {
+export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0)
 }
 export default function Cart ( {cartItems}) {
+    console.log("Cart -> cartItems", cartItems.price)
     //Thomas
     const stripe = useStripe();
     const elements = useElements();
@@ -87,22 +88,30 @@ export default function Cart ( {cartItems}) {
                                 <th>Event</th>
                                 <th>Event Price </th>
                                 <th>Quantity</th>
+                                <th>Max Quantity</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
-
+                        {/* const cartItem = {
+        event_id: event.event_id,
+        title: event.title,
+        quantity: 1,
+        unitPrice: event.price,
+        subTotal: event.price * event.quantity
+      } */}
                         <tbody>
-                            {events.map(event => 
+                            {cartItems.map(event => 
                             <tr>
                                 <td>{event.title}</td>
-                                <td>{formatPrice(event.price)}</td>
+                                <td>{formatPrice(event.price * 100)}</td>
                                 <td>{event.quantity}</td>
-                                <td>{formatPrice(event.quantity * event.price)}</td>
+                                <td>{event.maxQuantity}</td>
+                                <td>{formatPrice(event.quantity * event.price * 100)}</td>
                             </tr>
                             )}
                             <tr>
-                                <td style={{textAlign: "right"}} colSpan={3}>Total Price</td>
-                                <td>{formatPrice(totalPrice(events))}</td>
+                                <td style={{textAlign: "right"}} colSpan={4}>Total Price</td>
+                                <td>{formatPrice(totalPrice(cartItems) * 100)}</td>
                             </tr>
                             {/* <tr>
                                 <td colSpan={4}> */}

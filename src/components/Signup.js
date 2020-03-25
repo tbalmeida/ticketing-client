@@ -83,7 +83,10 @@ export default function SignUp() {
         setForm({ ...form, showPassword: !form.showPassword });
     };
     const handleClickShowPasswordConfirmation = () => {
-        setForm({ ...form, showPasswordConfirmation: !form.showPasswordConfirmation });
+        setForm({
+            ...form,
+            showPasswordConfirmation: !form.showPasswordConfirmation
+        });
     };
 
     const handleMouseDownPassword = event => {
@@ -239,7 +242,6 @@ export default function SignUp() {
                     show(error.response.data.message, "danger");
                     // console.log(error.response.data.message, "danger");
                     // show('User already exists', 'danger')
-
                 });
         }
     };
@@ -377,10 +379,14 @@ export default function SignUp() {
                                 <FilledInput
                                     id="passwordConfirmation"
                                     type={
-                                        form.showPasswordConfirmation ? "text" : "password"
+                                        form.showPasswordConfirmation
+                                            ? "text"
+                                            : "password"
                                     }
                                     value={form.passwordConfirmation}
-                                    onChange={handleChange("passwordConfirmation")}
+                                    onChange={handleChange(
+                                        "passwordConfirmation"
+                                    )}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton

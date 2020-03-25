@@ -131,7 +131,7 @@ export default function EventList({ eventData }) {
                                     >
                                         <Grid container border={1}>
                                             <Grid item xs={6} ><Typography className={classes.title1}variant="body1">{event.title}</Typography></Grid>
-                                            <Grid item xs={6} align="right" marginBottom={2} mb={2}><Typography className={classes.title2} variant="body1">{moment().format(
+                                            <Grid item xs={6} align="right" ><Typography className={classes.title2} variant="body1">{moment().format(
                                         "MMM Do YYYY",
                                         event.event_date
                                     )}{" "}
