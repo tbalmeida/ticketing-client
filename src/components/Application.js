@@ -25,13 +25,13 @@ export default function Application() {
 //     sum += quantity;
 //     return sum;
 // }, 0));
-const decreaseQuantity = (eventId, step = -1) => {
+const updateQuantity = (eventId, step = -1) => {
   return () => {
     // decrease the event.quantity
     // update cartItems state
     const updatedCartItems = cartItems.map(item => {
       if (item.id === eventId) {
-        //it stuff
+        //if stuff
         item.quantity += step
       }
       return item
@@ -111,7 +111,7 @@ const decreaseQuantity = (eventId, step = -1) => {
                 </Route>
                 <Route path="/cart">
                   {!userId ? <Redirect to="/"/> : (routeProps) => 
-                    <Cart cartItems={cartItems} decreaseQuantity={decreaseQuantity} {...routeProps}/>
+                    <Cart cartItems={cartItems} updateQuantity={updateQuantity} {...routeProps}/>
                   }
                 </Route>
                 <Route path="/checkout">

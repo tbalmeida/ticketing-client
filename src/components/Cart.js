@@ -22,7 +22,7 @@ export function formatPrice(price) {
 export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
 }
-export default function Cart({ cartItems, decreaseQuantity }) {
+export default function Cart({ cartItems, updateQuantity }) {
     const [invisible, setInvisible] = React.useState(false);
     const [count, setCount] = React.useState(1);
     // const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
@@ -69,14 +69,14 @@ export default function Cart({ cartItems, decreaseQuantity }) {
                                                 <Button
                                                     size="small"
                                                     aria-label="reduce"
-                                                    onClick={decreaseQuantity(event.id)}
+                                                    onClick={updateQuantity(event.id)}
                                                 >
                                                     <RemoveIcon fontSize="small" />
                                                 </Button>
                                                 <Button
                                                     size="small"
                                                     aria-label="increase"
-                                                    onClick={decreaseQuantity(event.id, 1)}
+                                                    onClick={updateQuantity(event.id, 1)}
                                                 >
                                                     <AddIcon fontSize="small" />
                                                 </Button>
