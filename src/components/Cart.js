@@ -58,7 +58,7 @@ export default function Cart({ cartItems }) {
                                     <td>{formatPrice(event.price * 100)}</td>
                                     <td style={{ display: "flex" }}>
                                         {quantity}
-                                        <Badge
+                                        <Badge max={5}
                                             color="secondary"
                                             badgeContent={quantity}
                                         >
@@ -84,7 +84,7 @@ export default function Cart({ cartItems }) {
                                                     size="small"
                                                     aria-label="increase"
                                                     onClick={() => {
-                                                        setQuantity(quantity + 1);
+                                                        setQuantity(Math.min(quantity + 1, event.limit));
                                                     }}
                                                 >
                                                     <AddIcon fontSize="small" />
