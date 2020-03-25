@@ -55,13 +55,7 @@ export default function EventInfo({ addToCart, events, location, match }) {
             addToCart(eventID);
         }
     };
-    // const goToCard = () => {
-    //     if(!userId) {
-    //         show("Please login first", "danger");
-    //     } else {
-    //         <Link to="/cart"/>
-    //     }
-    // }
+
     const userId = sessionStorage.getItem("userId");
     const classes = useStyles();
 
@@ -86,28 +80,6 @@ export default function EventInfo({ addToCart, events, location, match }) {
                         maxWidth="sm"
                         className={classes.cardGrid}
                     >
-                        {/* {eventData.map(event => (
-                    <Link to={`events/${event.event_id}`}>
-                        <h2>Event {event.event_id}</h2>
-                        <p>{event.event_id}</p>   
-                        <p>{event.title}</p>   
-                        <p>{event.event_description}</p>   
-                        <p>{event.event_date}</p>   
-                        <p>{event.event_time}</p>   
-                        <p>{event.duration}</p>   
-                        <p>{event.total_issued}</p>   
-                        <p>{event.limit_per_user}</p>   
-                        <p>{event.price}</p>   
-                        <p>{event.venue_id}</p>   
-                        <p>{event.venue_name}</p>   
-                        <p>{event.venue_description}</p>   
-                        <p>{event.capacity}</p>   
-                        <p>{event.fee}</p>   
-                        <p>{event.percent_capacity}</p>   
-                        <p>{event.max_revenue}</p>   
-                        <hr></hr>
-                    </Link>
-                ))} */}
                         <Card className={classes.card}>
                             <CardContent className={classes.cardContent}>
                                 <Typography

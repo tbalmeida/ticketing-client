@@ -21,7 +21,8 @@ const MainPage = ({cartItems}) => {
   }
   return (
     <>
-      <CheckoutForm
+      <CheckoutForm 
+        cartItems={cartItems}
         price={totalPrice(cartItems).toFixed(2)}
         onSuccessfulCheckout={() => setRedirect(true)}
       />

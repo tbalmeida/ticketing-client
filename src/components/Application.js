@@ -23,11 +23,11 @@ export default function Application() {
   const addToCart = (eventId) => {
     
     // check if eventId already exists in cartItems
-    const existingCartItem = getEventFromEventsByEventId(eventId, cartItems)
+    const existingCartItem = getEventFromEventsByEventId(eventId, cartItems) 
       if (existingCartItem) {
       // if true, just increase the quantity
       existingCartItem.quantity++;
-      existingCartItem.subTotal += existingCartItem.unitPrice;
+      // existingCartItem.subTotal += existingCartItem.unitPrice;
 
       // const cartItemsCopy = cartItems.map(item => {
       //   if (item.event_id === existingCartItem.event_id) {
@@ -71,14 +71,6 @@ export default function Application() {
           })
       }, [])
 
-    //   const stripe = useStripe()
-    //   console.log("Application -> stripe", stripe)
-    // const elements = useElements()
-    // console.log("Application -> elements", elements)
-
-    // React.useEffect(()=> {
-    //     console.log(stripe, elements)
-    // }, [stripe, elements])
     return (
       <AlertState>
         <Router>

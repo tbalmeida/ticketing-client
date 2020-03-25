@@ -102,7 +102,17 @@ const useStyles = makeStyles(theme => ({
   },
   marginBottom: {
     marginBottom: '0.4rem'
-  }
+  },
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    '& > *': {
+      marginBottom: theme.spacing(2),
+    },
+    '& .MuiBadge-root': {
+      marginRight: theme.spacing(4),
+    },
+  },
 }));
 
 export default useStyles;

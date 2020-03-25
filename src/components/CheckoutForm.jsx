@@ -22,7 +22,8 @@ const CardElementContainer = styled.div`
   }
 `;
 
-const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
+const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
+  console.log("CheckoutForm -> cartItems", cartItems)
   const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState();
 
@@ -59,13 +60,9 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
   // }
     try {
       const { data: clientSecret } = await postData("/payment_intents", {
-          amount: price * 100
+          amount: price * 100, cartItems: cartItems
           // , props.cart
       });
-      console.log("CheckoutForm -> clientSecret", clientSecret)
-      // const { data: clientSecret } = await axios.post("/api/payment_intents", {
-      //   amount: price * 100
-      // })
       
       const paymentMethodReq = await stripe.createPaymentMethod({
         type: "card",

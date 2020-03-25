@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import CardSection from './CardSection';
 import HomeIcon from "@material-ui/icons/Home";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
 import { Link } from "react-router-dom";
 import useStyles from "./EventListStyles.js";
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 // import {Elements} from '@stripe/react-stripe-js';
 // import {loadStripe} from '@stripe/stripe-js';
 
-const events = [
-    {sku: 'sku_GwjMoUH1KxmpRo', quantity: 1, price: 400, title: '2020 Town Hall'},
-    {sku: 'sku_GwjM1c7VqVQt1G', quantity: 1, price: 300, title: '2020 Employment hunt workshop'},
-    {sku: 'sku_GwjLIMpO76pI0n', quantity: 1, price: 200, title: 'Feb 1st - Employment hunt workshop'},
-    {sku: 'sku_GwjLz1G30ryu9A', quantity: 1, price: 100, title: 'Feb 15 - Employment hunt workshop'}
+ 
+  
 
-]
+
+
+
 export function formatPrice (price) {
     return `$${(price/100).toFixed(2)}`
 }
@@ -24,6 +26,8 @@ export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0)
 }
 export default function Cart ( {cartItems}) {
+    const [invisible, setInvisible] = React.useState(false);
+    const [count, setCount] = React.useState(1);
     const classes = useStyles();
 
     return (
@@ -47,7 +51,26 @@ export default function Cart ( {cartItems}) {
                             <tr key={event.id}>
                                 <td>{event.title}</td>
                                 <td>{formatPrice(event.price * 100) }</td>
-                                <td>{event.quantity}</td>
+                                <td>{event.quantity}<div class><ButtonGroup>
+          <Button
+          size="small"
+            aria-label="reduce"
+            onClick={() => {
+              setCount(Math.max(count - 1, 0));
+            }}
+          >
+            <RemoveIcon fontSize="small" />
+          </Button>
+          <Button
+          size="small"
+            aria-label="increase"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+          >
+            <AddIcon fontSize="small" />
+          </Button>
+        </ButtonGroup></div></td>
                                 <td>{event.limit}</td>
                                 <td>{formatPrice(event.quantity * event.price * 100)}</td>
                             </tr>
