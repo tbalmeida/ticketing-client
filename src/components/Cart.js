@@ -87,22 +87,24 @@ export default function Cart ( {cartItems}) {
                                 <th>Event</th>
                                 <th>Event Price </th>
                                 <th>Quantity</th>
+                                <th>Limit per user</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            {events.map(event => 
+                            {cartItems.map(event => 
                             <tr>
                                 <td>{event.title}</td>
-                                <td>{formatPrice(event.price)}</td>
+                                <td>{formatPrice(event.price * 100) }</td>
                                 <td>{event.quantity}</td>
-                                <td>{formatPrice(event.quantity * event.price)}</td>
+                                <td>{event.limit}</td>
+                                <td>{formatPrice(event.quantity * event.price * 100)}</td>
                             </tr>
                             )}
                             <tr>
-                                <td style={{textAlign: "right"}} colSpan={3}>Total Price</td>
-                                <td>{formatPrice(totalPrice(events))}</td>
+                                <td style={{textAlign: "right"}} colSpan={4}>Total Price</td>
+                                <td>{formatPrice(totalPrice(cartItems) * 100)}</td>
                             </tr>
                             {/* <tr>
                                 <td colSpan={4}> */}

@@ -48,7 +48,7 @@ export default function Application() {
         id: event.event_id,
         title: event.title,
         quantity: 1,
-        price: event.price,
+        price: event.price.split("$")[1],
         limit: event.limit_per_user
       }
       setCartItems(cartItems.concat(cartItem))
