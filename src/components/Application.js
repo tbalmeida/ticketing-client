@@ -20,25 +20,39 @@ export default function Application() {
   const [events, setEvents]=useState([]);
   const [venues, setVenues]=useState([]); 
   const [cartItems, setCartItems] = useState([]); 
-//   const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
-//     const quantity = cartItem.quantity;
-//     sum += quantity;
-//     return sum;
-// }, 0));
+
 const updateQuantity = (eventId, step = -1) => {
   return () => {
-    // decrease the event.quantity
+    // update the event.quantity
     // update cartItems state
     const updatedCartItems = cartItems.map(item => {
       if (item.id === eventId) {
-        //if stuff
-        item.quantity += step
+        if(step > 0) {
+          item.quantity = Math.min(item.quantity + step, item.limit)
+        } else {
+          item.quantity = Math.max(0, item.quantity + step)
+        }
+        // item.quantity += step
       }
       return item
     })
     setCartItems(updatedCartItems)
   }
 }
+// const updateQuantity = (eventId, step = -1) => {
+//   return () => {
+//     // decrease the event.quantity
+//     // update cartItems state
+//     const updatedCartItems = cartItems.map(item => {
+//       if (item.id === eventId) {
+//         //if stuff
+//         item.quantity += step
+//       }
+//       return item
+//     })
+//     setCartItems(updatedCartItems)
+//   }
+// }
 
   const addToCart = (eventId) => {
     
@@ -96,10 +110,10 @@ const updateQuantity = (eventId, step = -1) => {
         <Router>
           <div>
             <CssBaseline />
-            <Header cartItems={cartItems}/>
+            <Header cartItems={cartItems} />
               <Switch>
                 <Route exact path="/">
-                  <MainPage events={events}/>
+                  <MainPage events={events} cartItems={cartItems}/>
                 </Route>
                 <Route path="/login">
                   {userId ? <Redirect to="/" /> : <Login />}

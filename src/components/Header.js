@@ -14,6 +14,7 @@ import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/ticket-logo-png-clip-art2.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from "@material-ui/core/Badge";
+import { Link } from "react-router-dom";
 import { Grow, Fade, Collapse } from "@material-ui/core";
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
@@ -95,7 +96,7 @@ export default function Header ({cartItems}) {
                             TransitionComponent={Zoom}
                             placement="bottom"
                         >
-                            <Button className={classes.buttonStyle} href="/">
+                            <Button className={classes.buttonStyle} component={Link} to={"/"}>
                                 Home
                             </Button>
                         </Tooltip>

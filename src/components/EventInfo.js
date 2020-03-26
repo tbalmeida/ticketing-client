@@ -51,6 +51,7 @@ export default function EventInfo({ addToCart, events, location, match }) {
         if (!userId) {
             show("Please login first", "danger");
         } else {
+            //if item in the cart don't do anything and show the
             show("Item was added to the card", "success");
             addToCart(eventID);
         }
