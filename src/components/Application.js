@@ -39,20 +39,7 @@ const updateQuantity = (eventId, step = -1) => {
     setCartItems(updatedCartItems)
   }
 }
-// const updateQuantity = (eventId, step = -1) => {
-//   return () => {
-//     // decrease the event.quantity
-//     // update cartItems state
-//     const updatedCartItems = cartItems.map(item => {
-//       if (item.id === eventId) {
-//         //if stuff
-//         item.quantity += step
-//       }
-//       return item
-//     })
-//     setCartItems(updatedCartItems)
-//   }
-// }
+const removeCartItems = () => setCartItems([]);
 
   const addToCart = (eventId) => {
     
@@ -113,7 +100,7 @@ const updateQuantity = (eventId, step = -1) => {
             <Header cartItems={cartItems} />
               <Switch>
                 <Route exact path="/">
-                  <MainPage events={events} cartItems={cartItems}/>
+                  <MainPage events={events} cartItems={cartItems} addToCart={addToCart}/>
                 </Route>
                 <Route path="/login">
                   {userId ? <Redirect to="/" /> : <Login />}
@@ -121,11 +108,11 @@ const updateQuantity = (eventId, step = -1) => {
                 <Route path="/signup">
                   {userId ? <Redirect to="/" /> : <Signup />}
                 </Route>
-                <Route path="/events/:id" render={(routeProps) => <EventInfo events={events} {...routeProps} addToCart={addToCart} />}>
+                <Route path="/events/:id" render={(routeProps) => <EventInfo cartItems={cartItems} events={events} {...routeProps} addToCart={addToCart} />}>
                 </Route>
                 <Route path="/cart">
                   {!userId ? <Redirect to="/"/> : (routeProps) => 
-                    <Cart cartItems={cartItems} updateQuantity={updateQuantity} {...routeProps}/>
+                    <Cart cartItems={cartItems} updateQuantity={updateQuantity} removeCartItems={removeCartItems} {...routeProps}/>
                   }
                 </Route>
                 <Route path="/checkout">

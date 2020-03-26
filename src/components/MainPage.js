@@ -8,7 +8,7 @@ export function getData(url) {
 }
 
 
-function MainPage({events}) {
+function MainPage({events, addToCart}) {
   
 //     const [users, setUsers]=useState([]);
 //     const [events, setEvents]=useState([]);
@@ -38,7 +38,7 @@ function MainPage({events}) {
         <div>
             {/* <h2>List of Events</h2> */}
             <ul>
-                <li ><EventList eventData={events}/></li>
+                <li ><EventList addToCart={addToCart} eventData={events}/></li>
             </ul>
         </div>
         {/* <input type="Search" placeholder="type in events you want to find"></input> */}

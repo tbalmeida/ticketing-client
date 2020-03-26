@@ -45,7 +45,7 @@ export const convertTime = function(time) {
     return `${splitTime[0]}:${splitTime[1]} ${splitTime[2]}`;
 };
 
-export default function EventInfo({ addToCart, events, location, match }) {
+export default function EventInfo({ addToCart, events, location, match, cartItems }) {
     const { show, hide } = useContext(AlertContext);
     const applyAddToCart = eventID => {
         if (!userId) {
@@ -59,7 +59,7 @@ export default function EventInfo({ addToCart, events, location, match }) {
 
     const userId = sessionStorage.getItem("userId");
     const classes = useStyles();
-
+    const routeCart = cartItems && cartItems[0] ? '/cart' : '/'
     // if the component is loaded as a result of user clicking on an event from the home page
     // props.location.state should exist
     // otherwise event is looked up from the events array with props.match.params.id
@@ -172,6 +172,7 @@ export default function EventInfo({ addToCart, events, location, match }) {
                                     to={"/cart"}
                                     endIcon={<ShoppingCartIcon/>}
                                 >
+                                    {/* Link to={routeCart}>Go to cart</Link> */}
                                     Go to cart
                                 </Button>
                             </div>

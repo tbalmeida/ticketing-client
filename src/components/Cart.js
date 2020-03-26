@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -12,6 +12,8 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import Badge from "@material-ui/core/Badge";
 import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { SHOW_ALERT } from "./context/types";
+import { AlertContext } from "components/context/alert/alertContext";
 // import {Elements} from '@stripe/react-stripe-js';
 // import {loadStripe} from '@stripe/stripe-js';
 
@@ -22,14 +24,12 @@ export function formatPrice(price) {
 export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
 }
-export default function Cart({ cartItems, updateQuantity }) {
-    const [invisible, setInvisible] = React.useState(false);
-    const [count, setCount] = React.useState(1);
-    // const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
-    //     const quantity = cartItem.quantity;
-    //     sum += quantity;
-    //     return sum;
-    // }, 0));
+export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
+    const { show, hide } = useContext(AlertContext);
+    
+    // if(cartItems.length === 0) {
+    //     show('The cart is empty!', 'danger')
+    // } 
     function totalPrice1(events) {
         return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
     }
@@ -40,6 +40,7 @@ export default function Cart({ cartItems, updateQuantity }) {
             <h1>My Cart</h1>
             <section>
                 <div>
+
                     <table>
                         <thead>
                             <tr>
@@ -128,6 +129,20 @@ export default function Cart({ cartItems, updateQuantity }) {
                 endIcon={<CreditCardIcon />}
             >
                 Checkout
+            </Button>
+            <Button
+                className={classes.margin}
+                variant="outlined"
+                size="small"
+                onClick={removeCartItems}
+                variant="outlined"
+                color="primary"
+                component={Link}
+                to={"/"}
+                aria-label="delete"
+                endIcon={<CreditCardIcon />}
+            >
+                Clear cart
             </Button>
         </div>
     );

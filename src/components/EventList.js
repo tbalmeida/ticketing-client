@@ -22,7 +22,9 @@ import moment from 'moment';
 import {convertDuration, convertTime} from "components/EventInfo";
 import AddShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-export default function EventList({ eventData }) {
+export default function EventList({ eventData, addToCart }) {
+    console.log("EventList -> eventData", eventData)
+    console.log("EventList -> addToCart", addToCart)
     console.log("eventData", eventData);
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
@@ -33,7 +35,7 @@ export default function EventList({ eventData }) {
             show("Please login first", "danger");
         } else {
             show("Item was added to the card", "success");
-            eventData.addToCart(eventID);
+            addToCart(eventID);
         }
     };
     
