@@ -36,6 +36,7 @@ export default function EventList({ eventData, addToCart }) {
         } else {
             show("Item was added to the card", "success");
             addToCart(eventID);
+            hide()
         }
     };
 
@@ -59,6 +60,7 @@ export default function EventList({ eventData, addToCart }) {
         select &&
             EventsList === eventData &&
             show(" No match found", "warning");
+            
     }, [select, eventData]);
 
     const userId = sessionStorage.getItem("userId");

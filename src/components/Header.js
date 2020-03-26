@@ -71,6 +71,7 @@ HideOnScroll.propTypes = {
 };
 
 export default function Header ({cartItems}) {
+    console.log("Header -> cartItems", cartItems)
     const classes = useStyles();
     const cartTotalQuantity = cartItems.reduce((sum, cartItem) => {
         const quantity = cartItem.quantity;

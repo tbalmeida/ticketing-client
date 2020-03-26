@@ -48,23 +48,22 @@ const removeCartItems = () => setCartItems([]);
     const existingCartItem = getEventFromEventsByEventId(eventId, cartItems) 
       if (existingCartItem) {
       // if true, just increase the quantity
-      existingCartItem.quantity++;
-      setCartItems([...cartItems, ...cartItems.existingCartItem])
-      // existingCartItem.subTotal += existingCartItem.unitPrice;
+      existingCartItem.quantity = Math.min(existingCartItem.quantity + 1, existingCartItem.limit)
 
-      // const cartItemsCopy = cartItems.map(item => {
-      //   if (item.event_id === existingCartItem.event_id) {
-      //     return {
-      //       ...item,
-      //       ...existingCartItem
-      //     }
-      //   }
-      //   return item;
-      // })
+      const cartItemsCopy = cartItems.map(item => {
+        if (item.id === existingCartItem.id) {
+          return {
+            ...item,
+            ...existingCartItem
+          }
+        }
+        return item;
+      })
+
+      setCartItems(cartItemsCopy)
 
     } else {
       // otherwise, create new cartItem and add it to cartItems
-      
       const event = getEventFromEventsByEventId(eventId, events);
 
       const cartItem = {

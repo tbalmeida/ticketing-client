@@ -94,11 +94,15 @@ const useStyles = makeStyles(theme => ({
   },
   title1: {
     fontWeight: 700,
-    fontSize: '1.2rem'
+    fontSize: '1.3rem'
   },
   title2: {
     fontWeight: 400,
     fontSize: '1.1rem'
+  },
+  font80: {
+    fontWeight: 400,
+    fontSize: '0.8rem'
   },
   marginBottom: {
     marginBottom: '0.4rem'

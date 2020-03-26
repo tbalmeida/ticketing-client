@@ -125,7 +125,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 className={classes.margin}
                 variant="outlined"
                 size="small"
-                variant="outlined"
                 color="primary"
                 component={Link}
                 to={"/checkout"}
@@ -139,7 +138,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 variant="outlined"
                 size="small"
                 onClick={removeCartItems}
-                variant="outlined"
                 color="primary"
                 component={Link}
                 to={"/"}

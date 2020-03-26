@@ -19,7 +19,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export const getEventFromEventsByEventId = (eventId, events) => {
-    return events.find(event => event.event_id === eventId);
+    return events.find(event => event.event_id === eventId || event.id === eventId);
 };
 
 export const convertDuration = function(string) {
@@ -54,6 +54,11 @@ export default function EventInfo({
     cartItems
 }) {
     const { show, hide } = useContext(AlertContext);
+
+    useEffect(() => {
+        return hide;
+    }, [])
+
     const applyAddToCart = eventID => {
         if (!userId) {
             show("Please login first", "danger");
@@ -85,27 +90,28 @@ export default function EventInfo({
                     <CardContent className={classes.cardContent}>
                         <Grid container maxWidth="md" spacing={4}>
                             <Grid item xs={4}>
-                                <img src={event.event_img} />
+                                <img align="center" src={event.event_img} />
                             </Grid>
                             <Grid item container xs={8}>
-                                <Grid item container ontainer
-  direction="column"
-  justify="space-between"
-//   alignItems="stretch"
->
-                                    <Grid  item>
+                                <Grid
+                                    item
+                                    container
+                                    ontainer
+                                    direction="column"
+                                    justify="space-between"
+                                >
+                                    {/* <Grid item> */}
                                         <Typography
-                                            align="center"
+                                            align="left"
                                             className={classes.title1}
                                             variant="body1"
-                                            
                                         >
                                             {event.title}
                                         </Typography>
-                                    </Grid>
-                                    <Grid  item>
+                                    {/* </Grid> */}
+                                    {/* <Grid item> */}
                                         <Typography
-                                            align="right"
+                                            align="left"
                                             className={classes.title2}
                                             variant="body1"
                                         >
@@ -115,10 +121,10 @@ export default function EventInfo({
                                             )}{" "}
                                             at {convertTime(event.event_time)}
                                         </Typography>
-                                    </Grid>
+                                    {/* </Grid> */}
                                     <Grid item>
                                         <Typography
-                                            align="center"
+                                            align="left"
                                             className={classes.title2}
                                             variant="body1"
                                         >
@@ -127,20 +133,22 @@ export default function EventInfo({
                                     </Grid>
                                     <Grid item>
                                         <Typography
-                                            align="center"
-                                            className={classes.title2}
+                                            align="left"
+                                            // className={classes.title2}
                                             variant="body1"
                                         >
-                                            {event.total_issued} available - {event.price}
+                                            {event.total_issued} available -{" "}
+                                            {event.price}
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Typography
-                                            align="center"
-                                            className={classes.title2}
+                                            align="left"
+                                            className={classes.font80}
                                             variant="body1"
                                         >
-                                           maximum {event.limit_per_user} per person
+                                            maximum {event.limit_per_user} per
+                                            person
                                         </Typography>
                                     </Grid>
                                 </Grid>
