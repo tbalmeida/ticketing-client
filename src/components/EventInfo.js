@@ -14,7 +14,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
@@ -80,7 +80,7 @@ export default function EventInfo({
                 Event Info page
             </Typography>
             <Container maxWidth="md">
-                <Alert /> 
+                <Alert />
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
                         <Grid container maxWidth="md" spacing={4}>
@@ -88,22 +88,66 @@ export default function EventInfo({
                                 <img src={event.event_img} />
                             </Grid>
                             <Grid item container xs={8}>
-                                <Grid item container direction="column" >
-                                    <Grid item xs={2}><Typography
+                                <Grid item container ontainer
+  direction="column"
+  justify="space-between"
+//   alignItems="stretch"
+>
+                                    <Grid  item>
+                                        <Typography
                                             align="center"
                                             className={classes.title1}
                                             variant="body1"
+                                            
                                         >
                                             {event.title}
-                                        </Typography></Grid>
-                                    <Grid item xs={2}><Box >Box2</Box></Grid>
-                                    <Grid item xs={2}><Box >Box2</Box></Grid>
-                                    <Grid item xs={2}><Box >Box2</Box></Grid>
-                                    <Grid item xs={1}><Box >Box2</Box></Grid>
+                                        </Typography>
+                                    </Grid>
+                                    <Grid  item>
+                                        <Typography
+                                            align="right"
+                                            className={classes.title2}
+                                            variant="body1"
+                                        >
+                                            {moment().format(
+                                                "MMM Do YYYY",
+                                                event.event_date
+                                            )}{" "}
+                                            at {convertTime(event.event_time)}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography
+                                            align="center"
+                                            className={classes.title2}
+                                            variant="body1"
+                                        >
+                                            {event.venue_name}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography
+                                            align="center"
+                                            className={classes.title2}
+                                            variant="body1"
+                                        >
+                                            {event.total_issued} available - {event.price}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography
+                                            align="center"
+                                            className={classes.title2}
+                                            variant="body1"
+                                        >
+                                           maximum {event.limit_per_user} per person
+                                        </Typography>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12}>Box3</Grid>
-                            
+                            <Grid item xs={12}>
+                                {event.event_description}
+                            </Grid>
                         </Grid>
                         {/* <Grid
                             container
