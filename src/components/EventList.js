@@ -143,18 +143,18 @@ export default function EventList({ eventData, addToCart }) {
                                                 </Grid>
                                             <Grid item xs={6} align="right"><Typography className={classes.marginBottom} variant="body1">{event.venue_name}</Typography></Grid>
                                             <Grid item xs={12} align="justify"><Typography variant="body1"> {event.event_description}</Typography></Grid>
-                                            <Grid item xs={10} ></Grid>
-                                            <Grid item xs={2} align="right"><Button
+                                            <Grid item xs={8} ></Grid>
+                                            <Grid item xs={4} align="right"><Button
                                     className={classes.margin}
-                                    // variant="outlined"
-                                    size="large"
+                                    variant="outlined"
+                                    size="small"
                                     color="primary"
                                     onClick={() =>
                                         applyAddToCart(event.event_id)
                                     }
                                     endIcon={<AddShoppingCartIcon/>}
                                 >
-                                   
+                                   Add to Cart
                                 </Button></Grid>
                                         </Grid>
                                         
