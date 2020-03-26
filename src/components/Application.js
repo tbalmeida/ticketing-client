@@ -20,6 +20,7 @@ export default function Application() {
   const [events, setEvents]=useState([]);
   const [venues, setVenues]=useState([]); 
   const [cartItems, setCartItems] = useState([]); 
+  const [existingCartItemsId, setExistingCartItemsId] = useState([]); 
 
 const updateQuantity = (eventId, step = -1) => {
   return () => {
@@ -42,12 +43,13 @@ const updateQuantity = (eventId, step = -1) => {
 const removeCartItems = () => setCartItems([]);
 
   const addToCart = (eventId) => {
-    
+  //     
     // check if eventId already exists in cartItems
     const existingCartItem = getEventFromEventsByEventId(eventId, cartItems) 
       if (existingCartItem) {
       // if true, just increase the quantity
       existingCartItem.quantity++;
+      setCartItems([...cartItems, ...cartItems.existingCartItem])
       // existingCartItem.subTotal += existingCartItem.unitPrice;
 
       // const cartItemsCopy = cartItems.map(item => {
@@ -117,7 +119,7 @@ const removeCartItems = () => setCartItems([]);
                 </Route>
                 <Route path="/checkout">
                 {!userId ? <Redirect to="/"/> : (routeProps) => 
-                    <Checkout cartItems={cartItems} {...routeProps}/>
+                    <Checkout cartItems={cartItems} removeCartItems={removeCartItems} {...routeProps}/>
                   }
                 </Route>
                 <Route path="/order"> }

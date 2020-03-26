@@ -17,14 +17,14 @@ import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
 import Theatre from "./img/theatre.png";
 import Golden from "./img/golden-ticket.png";
-import BackspaceSharpIcon from '@material-ui/icons/BackspaceSharp';
-import moment from 'moment';
-import {convertDuration, convertTime} from "components/EventInfo";
+import BackspaceSharpIcon from "@material-ui/icons/BackspaceSharp";
+import moment from "moment";
+import { convertDuration, convertTime } from "components/EventInfo";
 import AddShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export default function EventList({ eventData, addToCart }) {
-    console.log("EventList -> eventData", eventData)
-    console.log("EventList -> addToCart", addToCart)
+    console.log("EventList -> eventData", eventData);
+    console.log("EventList -> addToCart", addToCart);
     console.log("eventData", eventData);
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
@@ -38,7 +38,7 @@ export default function EventList({ eventData, addToCart }) {
             addToCart(eventID);
         }
     };
-    
+
     const classes = useStyles();
 
     const selectEvent = e => setSelect(e.target.value);
@@ -50,20 +50,21 @@ export default function EventList({ eventData, addToCart }) {
     useEffect(() => {
         const filtered = eventData.filter(
             event =>
-            event.title.toLowerCase().search(select.toLowerCase()) !== -1
-            );
-            filtered.length !== 0
+                event.title.toLowerCase().search(select.toLowerCase()) !== -1
+        );
+        filtered.length !== 0
             ? setEventsList(filtered)
             : setEventsList(eventData);
         !select && hide();
-        select && EventsList === eventData && show(" No match found", "warning");
+        select &&
+            EventsList === eventData &&
+            show(" No match found", "warning");
     }, [select, eventData]);
 
     const userId = sessionStorage.getItem("userId");
 
     return (
         <Fragment>
-            
             <div className={classes.heroContent}>
                 <Container maxWidth="md">
                     <Typography
@@ -83,10 +84,13 @@ export default function EventList({ eventData, addToCart }) {
                         <img src={Theatre} alt="site logo" height={70} />
                     </Typography>
                     <TypeSentence />
-                    </Container>
-                    <Container maxWidth="sm">
+                </Container>
+                <Container maxWidth="sm">
                     <Alert />
-                    <form className="form-inline my-2 my-lg-0" style={{flexFlow: 'nowrap'}}>
+                    <form
+                        className="form-inline my-2 my-lg-0"
+                        style={{ flexFlow: "nowrap" }}
+                    >
                         <input
                             variant="outlined"
                             color="primary"
@@ -101,10 +105,10 @@ export default function EventList({ eventData, addToCart }) {
                         />
                         <Button
                             size="medium"
-                                    variant="outlined"
-                                    color="primary"
+                            variant="outlined"
+                            color="primary"
                             onClick={clearSearch}
-                            endIcon={<BackspaceSharpIcon/>}
+                            endIcon={<BackspaceSharpIcon />}
                         >
                             Clear
                         </Button>
@@ -132,53 +136,74 @@ export default function EventList({ eventData, addToCart }) {
                                         className={classes.cardContent}
                                     >
                                         <Grid container border={1}>
-                                            <Grid item xs={6} ><Typography className={classes.title1}variant="body1">{event.title}</Typography></Grid>
-                                            <Grid item xs={6} align="right" marginBottom={2} mb={2}><Typography className={classes.title2} variant="body1">{moment().format(
-                                        "MMM Do YYYY",
-                                        event.event_date
-                                    )}{" "}
-                                    at {convertTime(event.event_time)}</Typography></Grid>
-                                            <Grid item xs={6} >
+                                            <Grid item xs={6}>
+                                                <Typography
+                                                    className={classes.title1}
+                                                    variant="body1"
+                                                >
+                                                    {event.title}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid
+                                                item
+                                                xs={6}
+                                                align="right"
+                                                marginBottom={2}
+                                                mb={2}
+                                            >
+                                                <Typography
+                                                    className={classes.title2}
+                                                    variant="body1"
+                                                >
+                                                    {moment().format(
+                                                        "MMM Do YYYY",
+                                                        event.event_date
+                                                    )}{" "}
+                                                    at{" "}
+                                                    {convertTime(
+                                                        event.event_time
+                                                    )}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={6}>
                                                 {/* <img src={event.event_img}/> */}
-                                                </Grid>
-                                            <Grid item xs={6} align="right"><Typography className={classes.marginBottom} variant="body1">{event.venue_name}</Typography></Grid>
-                                            <Grid item xs={12} align="justify"><Typography variant="body1"> {event.event_description}</Typography></Grid>
-                                            <Grid item xs={8} ></Grid>
-                                            <Grid item xs={4} align="right"><Button
-                                    className={classes.margin}
-                                    variant="outlined"
-                                    size="small"
-                                    color="primary"
-                                    onClick={() =>
-                                        applyAddToCart(event.event_id)
-                                    }
-                                    endIcon={<AddShoppingCartIcon/>}
-                                >
-                                   Add to Cart
-                                </Button></Grid>
+                                            </Grid>
+                                            <Grid item xs={6} align="right">
+                                                <Typography
+                                                    className={
+                                                        classes.marginBottom
+                                                    }
+                                                    variant="body1"
+                                                >
+                                                    {event.venue_name}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={12} align="justify">
+                                                <Typography variant="body1">
+                                                    {" "}
+                                                    {event.event_description}
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={8}></Grid>
+                                            <Grid item xs={4} align="right">
+                                                <Button
+                                                    className={classes.margin}
+                                                    variant="outlined"
+                                                    size="small"
+                                                    color="primary"
+                                                    onClick={() =>
+                                                        applyAddToCart(
+                                                            event.event_id
+                                                        )
+                                                    }
+                                                    endIcon={
+                                                        <AddShoppingCartIcon />
+                                                    }
+                                                >
+                                                    Add to Cart
+                                                </Button>
+                                            </Grid>
                                         </Grid>
-                                        
-                                        {/* <Typography
-                                            gutterBottom
-                                            variant="h5"
-                                            // component="body"
-                                        >
-                                            {event.title}
-                                        </Typography>
-                                        <Typography
-                                            gutterBottom
-                                            variant="body1"
-                                            // component="body"
-                                        >
-                                            {event.event_description}
-                                        </Typography>
-                                        <Typography
-                                            gutterBottom
-                                            variant="body1"
-                                            // component="body"
-                                        >
-                                            Event Fee: {event.fee}
-                                        </Typography> */}
                                     </CardContent>
                                     {/* <CardMedia
                                         className={classes.cardMedia}

@@ -14,6 +14,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { SHOW_ALERT } from "./context/types";
 import { AlertContext } from "components/context/alert/alertContext";
+import { Alert } from "components/Alert";
 // import {Elements} from '@stripe/react-stripe-js';
 // import {loadStripe} from '@stripe/stripe-js';
 
@@ -25,11 +26,15 @@ export function totalPrice(events) {
     return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
 }
 export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
+    console.log("Cart -> cartItems", cartItems)
     const { show, hide } = useContext(AlertContext);
-    
-    // if(cartItems.length === 0) {
-    //     show('The cart is empty!', 'danger')
-    // } 
+
+    useEffect(() => {
+    if(cartItems.length === 0) {
+        show('The cart is empty!', 'danger')
+    } 
+  }, []);
+   
     function totalPrice1(events) {
         return events.reduce((acc, event) => acc + event.quantity * event.price, 0);
     }
@@ -41,6 +46,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             <section>
                 <div>
 
+            {cartItems.length===0 ? <Alert/> :
                     <table>
                         <thead>
                             <tr>
@@ -101,14 +107,13 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>}
                 </div>
             </section>
             <Button
                 className={classes.margin}
                 variant="outlined"
                 size="small"
-                variant="outlined"
                 color="primary"
                 component={Link}
                 to={"/"}

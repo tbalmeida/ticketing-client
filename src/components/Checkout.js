@@ -9,7 +9,8 @@ import DonutShop from "components/prebuilt/DonutShop";
 import CheckoutForm from "components/CheckoutForm";
 import getDonutPrice from "components/utils/get-donut-price";
 import {formatPrice, totalPrice } from "components/Cart"
-const MainPage = ({cartItems}) => {
+
+const MainPage = ({cartItems, removeCartItems}) => {
   const [numDonuts, setNumDonuts] = useState(1);
   const [redirect, setRedirect] = useState(false)
 
@@ -24,7 +25,9 @@ const MainPage = ({cartItems}) => {
       <CheckoutForm 
         cartItems={cartItems}
         price={totalPrice(cartItems).toFixed(2)}
-        onSuccessfulCheckout={() => setRedirect(true)}
+        onSuccessfulCheckout={() => {setRedirect(true);
+          removeCartItems();
+        }}
       />
       </>
   );
