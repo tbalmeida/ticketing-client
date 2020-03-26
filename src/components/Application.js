@@ -72,7 +72,8 @@ const removeCartItems = () => setCartItems([]);
         title: event.title,
         quantity: 1,
         price: event.price.split("$")[1],
-        limit: event.limit_per_user
+        limit: event.limit_per_user,
+        handle: userId
       }
       setCartItems(cartItems.concat(cartItem))
     }

@@ -15,8 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { SHOW_ALERT } from "./context/types";
 import { AlertContext } from "components/context/alert/alertContext";
 import { Alert } from "components/Alert";
-// import {Elements} from '@stripe/react-stripe-js';
-// import {loadStripe} from '@stripe/stripe-js';
+import Container from '@material-ui/core/Container';
 
 export function formatPrice(price) {
     return `$${(price / 100).toFixed(2)}`;
@@ -46,7 +45,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             <section>
                 <div>
 
-            {cartItems.length===0 ? <Alert/> :
+            {cartItems.length===0 ? <Container  maxWidth="sm"><Alert/></Container> :
                     <table>
                         <thead>
                             <tr>
@@ -71,7 +70,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                                         >
                                             <ShoppingCartIcon />
                                         </Badge>
-                                        <div class>
+                                        <div>
                                             <ButtonGroup>
                                                 <Button
                                                     size="small"

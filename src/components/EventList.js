@@ -122,7 +122,7 @@ export default function EventList({ eventData, addToCart }) {
             </div>
             <Divider variant="middle" />
             <Container className={classes.cardGrid} maxWidth="lg">
-                <Grid container spacing={4}>
+                <Grid container spacing={6}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={6}>
                             <Link
@@ -148,8 +148,8 @@ export default function EventList({ eventData, addToCart }) {
                                                 item
                                                 xs={6}
                                                 align="right"
-                                                marginBottom={2}
-                                                mb={2}
+                                                // marginBottom={2}
+                                                // mb={2}
                                             >
                                                 <Typography
                                                     className={classes.title2}

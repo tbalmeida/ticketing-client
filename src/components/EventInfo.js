@@ -14,6 +14,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
+import Box from '@material-ui/core/Box';
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
@@ -45,7 +46,13 @@ export const convertTime = function(time) {
     return `${splitTime[0]}:${splitTime[1]} ${splitTime[2]}`;
 };
 
-export default function EventInfo({ addToCart, events, location, match, cartItems }) {
+export default function EventInfo({
+    addToCart,
+    events,
+    location,
+    match,
+    cartItems
+}) {
     const { show, hide } = useContext(AlertContext);
     const applyAddToCart = eventID => {
         if (!userId) {
@@ -59,7 +66,7 @@ export default function EventInfo({ addToCart, events, location, match, cartItem
 
     const userId = sessionStorage.getItem("userId");
     const classes = useStyles();
-    const routeCart = cartItems && cartItems[0] ? '/cart' : '/'
+    const routeCart = cartItems && cartItems[0] ? "/cart" : "/";
     // if the component is loaded as a result of user clicking on an event from the home page
     // props.location.state should exist
     // otherwise event is looked up from the events array with props.match.params.id
@@ -72,18 +79,78 @@ export default function EventInfo({ addToCart, events, location, match, cartItem
             <Typography gutterBottom align="center" variant="h4">
                 Event Info page
             </Typography>
-            <Container maxWidth="sm">
-                <Alert />
-                <Grid container spacing={4}>
-                    <Grid
-                        item
-                        key={event.event_id}
-                        maxWidth="sm"
-                        className={classes.cardGrid}
-                    >
-                        <Card className={classes.card}>
-                            <CardContent className={classes.cardContent}>
-                                <Typography
+            <Container maxWidth="md">
+                <Alert /> 
+                <Card className={classes.card}>
+                    <CardContent className={classes.cardContent}>
+                        <Grid container maxWidth="md" spacing={4}>
+                            <Grid item xs={4}>
+                                <img src={event.event_img} />
+                            </Grid>
+                            <Grid item container xs={8}>
+                                <Grid item container direction="column" >
+                                    <Grid item xs={2}><Typography
+                                            align="center"
+                                            className={classes.title1}
+                                            variant="body1"
+                                        >
+                                            {event.title}
+                                        </Typography></Grid>
+                                    <Grid item xs={2}><Box >Box2</Box></Grid>
+                                    <Grid item xs={2}><Box >Box2</Box></Grid>
+                                    <Grid item xs={2}><Box >Box2</Box></Grid>
+                                    <Grid item xs={1}><Box >Box2</Box></Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={12}>Box3</Grid>
+                            
+                        </Grid>
+                        {/* <Grid
+                            container
+                            maxWidth="md"
+                            align="center"
+                            spacing={4}
+                        >
+                            <Grid item xs={4}>
+                                <img src={event.event_img} />
+                            </Grid>
+                            <Grid item border={2} container xs={8}>
+                                <Grid
+                                    item
+                                    container
+                                    direction="column"
+                                    spacing={2}
+                                >
+                                    <Grid item xs={12}>
+                                        <Typography
+                                            align="center"
+                                            className={classes.title1}
+                                            variant="body1"
+                                        >
+                                            {event.title}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography
+                                            className={classes.title2}
+                                            variant="body1"
+                                        >
+                                            {moment().format(
+                                                "MMM Do YYYY",
+                                                event.event_date
+                                            )}{" "}
+                                            at {convertTime(event.event_time)}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid container>
+                                <Typography gutterBottom variant="body1">
+                                    {event.event_description}
+                                </Typography>
+                            </Grid>
+                        </Grid> */}
+                        {/* <Typography
                                     align="center"
                                     gutterBottom
                                     variant="h5"
@@ -129,56 +196,52 @@ export default function EventInfo({ addToCart, events, location, match, cartItem
                                     // component="body"
                                 >
                                     {/* Event Fee: {event.fee}CAD */}
-                                </Typography>
-                                <br />
-                            </CardContent>
-                            {/* <CardMedia
+                        {/* </Typography>
+                                <br /> */}
+                    </CardContent>
+                    {/* <CardMedia
                             className={classes.cardMedia}
                             // image = {mechanic.avatar}
                             title="Image title"
                         /> */}
-                            <div>
-                                <Button
-                                    className={classes.margin}
-                                    variant="outlined"
-                                    size="small"
-                                    variant="outlined"
-                                    color="primary"
-                                    component={Link}
-                                    to={"/"}
-                                    aria-label="delete"
-                                    endIcon={<HomeIcon />}
-                                >
-                                   Go home
-                                </Button>
-                                <Button
-                                    className={classes.margin}
-                                    variant="outlined"
-                                    size="small"
-                                    color="primary"
-                                    onClick={() =>
-                                        applyAddToCart(event.event_id)
-                                    }
-                                    endIcon={<AddShoppingCartIcon/>}
-                                >
-                                   Add to Cart
-                                </Button>
-                                <Button
-                                    className={classes.margin}
-                                    size="small"
-                                    variant="outlined"
-                                    color="primary"
-                                    component={Link}
-                                    to={"/cart"}
-                                    endIcon={<ShoppingCartIcon/>}
-                                >
-                                    {/* Link to={routeCart}>Go to cart</Link> */}
-                                    Go to cart
-                                </Button>
-                            </div>
-                        </Card>
-                    </Grid>
-                </Grid>
+                    <div>
+                        <Button
+                            className={classes.margin}
+                            variant="outlined"
+                            size="small"
+                            variant="outlined"
+                            color="primary"
+                            component={Link}
+                            to={"/"}
+                            aria-label="delete"
+                            endIcon={<HomeIcon />}
+                        >
+                            Go home
+                        </Button>
+                        <Button
+                            className={classes.margin}
+                            variant="outlined"
+                            size="small"
+                            color="primary"
+                            onClick={() => applyAddToCart(event.event_id)}
+                            endIcon={<AddShoppingCartIcon />}
+                        >
+                            Add to Cart
+                        </Button>
+                        <Button
+                            className={classes.margin}
+                            size="small"
+                            variant="outlined"
+                            color="primary"
+                            component={Link}
+                            to={"/cart"}
+                            endIcon={<ShoppingCartIcon />}
+                        >
+                            {/* Link to={routeCart}>Go to cart</Link> */}
+                            Go to cart
+                        </Button>
+                    </div>
+                </Card>
             </Container>
         </>
     );
