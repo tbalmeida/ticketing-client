@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -66,7 +66,10 @@ export const Login = () => {
     emailHelperText: "",
     passwordHelperText: ""
   });
-  
+  const { show, hide } = useContext(AlertContext); 
+  useEffect(() => {
+    return hide;
+}, [])
   const changeHandler = event => {
     //will be used later as onChange method while rendering
     setForm({ ...form, [event.target.name]: event.target.value }); //form is our state and it changes everything, event.target.name = name, email etc
@@ -84,7 +87,7 @@ export const Login = () => {
     };
 
     const classes = useStyles();
-    const { show, hide } = useContext(AlertContext); //use context again
+    //use context again
 
     const loginValidation = e => {
         let dataValid = true;

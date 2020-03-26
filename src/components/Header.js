@@ -114,7 +114,8 @@ export default function Header ({cartItems}) {
                                     className={classes.small}
                                 />
                                 | {" "}{uName}{" "}
-                                | {" "}<Badge style={{color:'black'}} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
+                                | {" "}<Badge style={{color:'black'}} component={Link}
+                to={"/cart"} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
                                   | {" "}
                                 <Tooltip
                                     title="Logout"
