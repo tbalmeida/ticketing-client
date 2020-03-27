@@ -9,6 +9,7 @@ import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
 
+const userId = sessionStorage.getItem('userId');
 const CardElementContainer = styled.div`
   height: 40px;
   display: flex;
@@ -60,7 +61,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
   // }
     try {
       const { data: clientSecret } = await postData("/payment_intents", {
-          amount: price * 100, cartItems: cartItems
+          amount: price * 100, cartItems: cartItems, handle: userId
       });
       
       const paymentMethodReq = await stripe.createPaymentMethod({

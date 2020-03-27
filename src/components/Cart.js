@@ -16,7 +16,7 @@ import { SHOW_ALERT } from "./context/types";
 import { AlertContext } from "components/context/alert/alertContext";
 import { Alert } from "components/Alert";
 import Container from '@material-ui/core/Container';
-
+import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -152,7 +152,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
               <Container style={{margin: "2rem"}} maxWidth="md" align="center">
 
             <div>
-            <Button
+            {/* <Button
                 className={classes.marginR}
                 variant="outlined"
                 size="small"
@@ -163,7 +163,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 endIcon={<HomeIcon />}
             >
                 Go home
-            </Button>
+            </Button> */}
             <Button
                 className={classes.marginR}
                 variant="outlined"
@@ -185,7 +185,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 component={Link}
                 to={"/"}
                 aria-label="delete"
-                endIcon={<CreditCardIcon />}
+                endIcon={<DeleteIcon />}
             >
                 Clear cart
             </Button>

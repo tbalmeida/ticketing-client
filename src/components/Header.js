@@ -113,16 +113,14 @@ export default function Header ({cartItems}) {
                                     style={{ marginRight: "5px" }}
                                     className={classes.small}
                                 />
-                                | {" "}{uName}{" "}
-                                | {" "}<Badge style={{color:'black'}} component={Link}
-                to={"/cart"} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
-                                  | {" "}
+                               {uName}
                                 <Tooltip
                                     title="Logout"
                                     aria-label="Logout button"
                                     TransitionComponent={Zoom}
                                     placement="bottom"
                                 >
+                                    {/* logout */}
                                     <Button
                                         className={classes.buttonStyle}
                                         onClick={logoutFunction}
@@ -131,6 +129,9 @@ export default function Header ({cartItems}) {
                                         Logout
                                     </Button>
                                 </Tooltip>
+                                <Badge style={{color:'black'}} component={Link}
+                to={"/cart"} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
+                                  
                             </>
                         ) : (
                             <>
