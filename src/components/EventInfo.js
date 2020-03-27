@@ -88,9 +88,9 @@ export default function EventInfo({
                 <Alert />
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
-                        <Grid container maxWidth="md" spacing={4}>
+                        <Grid container maxWidth="md" spacing={2}>
                             <Grid item xs={4}>
-                                <img align="center" src={event.event_img} />
+                                <Box align="center"><img height={200} src={event.event_img} /></Box>
                             </Grid>
                             <Grid item container xs={8}>
                                 <Grid
@@ -100,7 +100,6 @@ export default function EventInfo({
                                     direction="column"
                                     justify="space-between"
                                 >
-                                    {/* <Grid item> */}
                                         <Typography
                                             align="left"
                                             className={classes.title1}
@@ -108,8 +107,6 @@ export default function EventInfo({
                                         >
                                             {event.title}
                                         </Typography>
-                                    {/* </Grid> */}
-                                    {/* <Grid item> */}
                                         <Typography
                                             align="left"
                                             className={classes.title2}
@@ -121,8 +118,6 @@ export default function EventInfo({
                                             )}{" "}
                                             at {convertTime(event.event_time)}
                                         </Typography>
-                                    {/* </Grid> */}
-                                    <Grid item>
                                         <Typography
                                             align="left"
                                             className={classes.title2}
@@ -130,133 +125,48 @@ export default function EventInfo({
                                         >
                                             {event.venue_name}
                                         </Typography>
-                                    </Grid>
-                                    <Grid item>
                                         <Typography
                                             align="left"
-                                            // className={classes.title2}
                                             variant="body1"
                                         >
                                             {event.total_issued} available -{" "}
                                             {event.price}
                                         </Typography>
-                                    </Grid>
-                                    <Grid item>
                                         <Typography
                                             align="left"
                                             className={classes.font80}
                                             variant="body1"
                                         >
-                                            maximum {event.limit_per_user} per
+                                            Maximum {event.limit_per_user} per
                                             person
                                         </Typography>
-                                    </Grid>
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
+                            <Typography
+                                            align="center"
+                                            variant="body1"
+                                        >
                                 {event.event_description}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={8}></Grid>
+                            <Grid item xs={4}><Box align="center"><Button
+                            className={classes.margin}
+                            variant="outlined"
+                            size="small"
+                            color="primary"
+                            onClick={() => applyAddToCart(event.event_id)}
+                            endIcon={<AddShoppingCartIcon />}
+                        >
+                            Add to Cart
+                        </Button></Box>
+                            
                             </Grid>
                         </Grid>
-                        {/* <Grid
-                            container
-                            maxWidth="md"
-                            align="center"
-                            spacing={4}
-                        >
-                            <Grid item xs={4}>
-                                <img src={event.event_img} />
-                            </Grid>
-                            <Grid item border={2} container xs={8}>
-                                <Grid
-                                    item
-                                    container
-                                    direction="column"
-                                    spacing={2}
-                                >
-                                    <Grid item xs={12}>
-                                        <Typography
-                                            align="center"
-                                            className={classes.title1}
-                                            variant="body1"
-                                        >
-                                            {event.title}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography
-                                            className={classes.title2}
-                                            variant="body1"
-                                        >
-                                            {moment().format(
-                                                "MMM Do YYYY",
-                                                event.event_date
-                                            )}{" "}
-                                            at {convertTime(event.event_time)}
-                                        </Typography>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid container>
-                                <Typography gutterBottom variant="body1">
-                                    {event.event_description}
-                                </Typography>
-                            </Grid>
-                        </Grid> */}
-                        {/* <Typography
-                                    align="center"
-                                    gutterBottom
-                                    variant="h5"
-                                    // component="body"
-                                >
-                                    {event.title}
-                                </Typography>
-                                <br />
-                                <Typography
-                                    gutterBottom
-                                    variant="body1"
-                                    // component="body"
-                                >
-                                    {event.event_description}
-                                </Typography>
-                                <br />
-
-                                <Typography
-                                    gutterBottom
-                                    variant="body1"
-                                    // component="body"
-                                >
-                                    The event will be held on{" "}
-                                    {moment().format(
-                                        "MMM Do YYYY",
-                                        event.event_date
-                                    )}{" "}
-                                    at {convertTime(event.event_time)} for{" "}
-                                    {convertDuration(event.duration)} at{" "}
-                                    {event.venue_name}.<br />${event.venue_name}{" "}
-                                    is equipped with ${event.venue_description}
-                                    <br />
-                                    Max event capacity: {
-                                        event.capacity
-                                    } people. <br />
-                                    Max tickets per user: {event.limit_per_user}
-                                    .
-                                </Typography>
-                                <br />
-                                <Typography
-                                    gutterBottom
-                                    variant="body1"
-                                    // component="body"
-                                >
-                                    {/* Event Fee: {event.fee}CAD */}
-                        {/* </Typography>
-                                <br /> */}
                     </CardContent>
-                    {/* <CardMedia
-                            className={classes.cardMedia}
-                            // image = {mechanic.avatar}
-                            title="Image title"
-                        /> */}
-                    <div>
+                   
+                    {/* <div>
                         <Button
                             className={classes.margin}
                             variant="outlined"
@@ -290,9 +200,9 @@ export default function EventInfo({
                             endIcon={<ShoppingCartIcon />}
                         >
                             {/* Link to={routeCart}>Go to cart</Link> */}
-                            Go to cart
+                            {/* Go to cart
                         </Button>
-                    </div>
+                    </div> */} 
                 </Card>
             </Container>
         </>

@@ -12,6 +12,8 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
+import { ToastProvider, useToasts } from 'react-toast-notifications'
+// import { FormWithToasts as Toast} from 'components/Toast';
 
 export default function Application() { 
 
@@ -95,6 +97,7 @@ const removeCartItems = () => setCartItems([]);
       }, [])
 
     return (
+      <ToastProvider>
       <AlertState>
         <Router>
           <div>
@@ -130,6 +133,7 @@ const removeCartItems = () => setCartItems([]);
           </div>
         </Router>
       </AlertState>
+      </ToastProvider>
     );  
 }
 

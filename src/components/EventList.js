@@ -123,7 +123,7 @@ export default function EventList({ eventData, addToCart }) {
             </div>
             <Divider variant="middle" />
             <Container className={classes.cardGrid} maxWidth="lg">
-                <Grid container spacing={6}>
+                <Grid container spacing={2}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={6}>
                             <Link
@@ -149,8 +149,6 @@ export default function EventList({ eventData, addToCart }) {
                                                 item
                                                 xs={6}
                                                 align="right"
-                                                // marginBottom={2}
-                                                // mb={2}
                                             >
                                                 <Typography
                                                     className={classes.title2}
@@ -167,7 +165,6 @@ export default function EventList({ eventData, addToCart }) {
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={6}>
-                                                {/* <img src={event.event_img}/> */}
                                             </Grid>
                                             <Grid item xs={6} align="right">
                                                 <Typography
@@ -206,11 +203,6 @@ export default function EventList({ eventData, addToCart }) {
                                             </Grid>
                                         </Grid>
                                     </CardContent>
-                                    {/* <CardMedia
-                                        className={classes.cardMedia}
-                                        // image = {mechanic.avatar}
-                                        title="Image title"
-                                    /> */}
                                 </Card>
                             </Link>
                         </Grid>
@@ -221,6 +213,6 @@ export default function EventList({ eventData, addToCart }) {
     );
 }
 
-// EventList.propTypes = {
-//     eventData: PropTypes.array.isRequired
-// };
+EventList.propTypes = {
+    eventData: PropTypes.array.isRequired
+};

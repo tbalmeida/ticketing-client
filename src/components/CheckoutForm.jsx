@@ -61,7 +61,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
     try {
       const { data: clientSecret } = await postData("/payment_intents", {
           amount: price * 100, cartItems: cartItems
-          // , props.cart
       });
       
       const paymentMethodReq = await stripe.createPaymentMethod({

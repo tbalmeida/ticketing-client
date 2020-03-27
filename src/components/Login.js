@@ -22,6 +22,7 @@ import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import clsx from "clsx";
+import { useToasts } from 'react-toast-notifications'
 
 export function postData(url, data) {
     return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);
@@ -56,6 +57,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const Login = () => {
+    const { addToast } = useToasts()
   
   const [form, setForm] = useState({
     //alternative to use useReducer or Redux
@@ -144,6 +146,10 @@ export const Login = () => {
                     // show('the user was successfully logged in', 'success')
                 })
                 .catch(error => {
+                    addToast('Hello world!', {
+                        appearance: 'error',
+                        autoDismiss: true,
+                      })
                     show(error.response.data.message, "danger"); //use alert context with danger class
                     // console.log('the following error occurred', error)
                 });
@@ -182,6 +188,7 @@ export const Login = () => {
                 <Typography component="h1" align="center" variant="h5">
                     Sign in
                 </Typography>
+                {/* <Toast/> */}
                 <Alert />
                 <form
                     className={classes.form}

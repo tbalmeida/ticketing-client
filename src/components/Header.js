@@ -109,7 +109,7 @@ export default function Header ({cartItems}) {
                         {userId ? (
                             <>
                                 <Avatar
-                                    src="/human.png"
+                                    // src=""
                                     style={{ marginRight: "5px" }}
                                     className={classes.small}
                                 />
