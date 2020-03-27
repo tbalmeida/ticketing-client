@@ -15,7 +15,7 @@ import logo from "./img/ticket-logo-png-clip-art2.png";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from "@material-ui/core/Badge";
 import { Link } from "react-router-dom";
-import { Grow, Fade, Collapse } from "@material-ui/core";
+import { Collapse } from "@material-ui/core";
 
 const userId = sessionStorage.getItem("userId"); //native sessionStorage
 const uName = sessionStorage.getItem("uName"); //we use uName because when we login or signup we use setItem and give it this specific 'uName'
@@ -49,9 +49,6 @@ const logoutFunction = () => sessionStorage.clear(); //removing all data from se
 
 function HideOnScroll(props) { //hide the upper panel with login, signup etc when approaching the bottom of the page
     const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
     const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
     return (
@@ -78,11 +75,7 @@ export default function Header ({cartItems}) {
         sum += quantity;
         return sum;
     }, 0);
-    // const [quantity, setQuantity] = React.useState(cartItems.reduce((sum, cartItem) => {
-    //     const quantity = cartItem.quantity;
-    //     sum += quantity;
-    //     return sum;
-    // }, 0));
+    
     return (
         <Box className={classes.root} maxWidth="xs" marginTop={10}>
             <HideOnScroll>
@@ -109,7 +102,6 @@ export default function Header ({cartItems}) {
                         {userId ? (
                             <>
                                 <Avatar
-                                    // src=""
                                     style={{ marginRight: "5px" }}
                                     className={classes.small}
                                 />
@@ -120,7 +112,6 @@ export default function Header ({cartItems}) {
                                     TransitionComponent={Zoom}
                                     placement="bottom"
                                 >
-                                    {/* logout */}
                                     <Button
                                         className={classes.buttonStyle}
                                         onClick={logoutFunction}
