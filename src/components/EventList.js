@@ -16,7 +16,7 @@ import { Alert } from "components/Alert";
 import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
 import Theatre from "./img/theatre.png";
-import Golden from "./img/golden-ticket.png";
+import Golden from "./img/golden-ticket.jpg";
 import BackspaceSharpIcon from "@material-ui/icons/BackspaceSharp";
 import moment from "moment";
 import { convertDuration, convertTime } from "components/EventInfo";
