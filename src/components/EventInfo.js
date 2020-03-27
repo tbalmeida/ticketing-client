@@ -3,20 +3,15 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
 import moment from "moment";
 import { AlertContext } from "components/context/alert/alertContext";
 import { Alert } from "components/Alert";
-import HomeIcon from "@material-ui/icons/Home";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(
@@ -169,44 +164,6 @@ export default function EventInfo({
                             </Grid>
                         </Grid>
                     </CardContent>
-
-                    {/* <div>
-                        <Button
-                            className={classes.margin}
-                            variant="outlined"
-                            size="small"
-                            variant="outlined"
-                            color="primary"
-                            component={Link}
-                            to={"/"}
-                            aria-label="delete"
-                            endIcon={<HomeIcon />}
-                        >
-                            Go home
-                        </Button>
-                        <Button
-                            className={classes.margin}
-                            variant="outlined"
-                            size="small"
-                            color="primary"
-                            onClick={() => applyAddToCart(event.event_id)}
-                            endIcon={<AddShoppingCartIcon />}
-                        >
-                            Add to Cart
-                        </Button>
-                        <Button
-                            className={classes.margin}
-                            size="small"
-                            variant="outlined"
-                            color="primary"
-                            component={Link}
-                            to={"/cart"}
-                            endIcon={<ShoppingCartIcon />}
-                        >
-                            {/* Link to={routeCart}>Go to cart</Link> */}
-                    {/* Go to cart
-                        </Button>
-                    </div> */}
                 </Card>
             </Container>
         </>
