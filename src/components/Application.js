@@ -10,7 +10,6 @@ import Header from "./Header";
 import { Login } from "./Login";
 import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 
