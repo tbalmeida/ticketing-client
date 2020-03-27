@@ -12,7 +12,6 @@ import Container from "@material-ui/core/Container";
 import { AlertContext } from "./context/alert/alertContext";
 import { Alert } from "./Alert";
 import axios from "axios";
-import { postData } from "./Login";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import FormControl from "@material-ui/core/FormControl";
 import FilledInput from "@material-ui/core/FilledInput";
@@ -83,7 +82,10 @@ export default function SignUp() {
         setForm({ ...form, showPassword: !form.showPassword });
     };
     const handleClickShowPasswordConfirmation = () => {
-        setForm({ ...form, showPasswordConfirmation: !form.showPasswordConfirmation });
+        setForm({
+            ...form,
+            showPasswordConfirmation: !form.showPasswordConfirmation
+        });
     };
 
     const handleMouseDownPassword = event => {
@@ -136,7 +138,9 @@ export default function SignUp() {
 
         if (form.checked === false) {
             show("Please agree with the terms", "success");
-            setTimeout(() => { hide()}, 3000); 
+            setTimeout(() => {
+                hide();
+            }, 3000);
             dataValid = false;
         }
 
@@ -238,10 +242,9 @@ export default function SignUp() {
                 })
                 .catch(error => {
                     show(error.response.data.message, "danger");
-                    setTimeout(() => { hide()}, 3000); 
-                    // console.log(error.response.data.message, "danger");
-                    // show('User already exists', 'danger')
-
+                    setTimeout(() => {
+                        hide();
+                    }, 3000);
                 });
         }
     };
@@ -379,10 +382,14 @@ export default function SignUp() {
                                 <FilledInput
                                     id="passwordConfirmation"
                                     type={
-                                        form.showPasswordConfirmation ? "text" : "password"
+                                        form.showPasswordConfirmation
+                                            ? "text"
+                                            : "password"
                                     }
                                     value={form.passwordConfirmation}
-                                    onChange={handleChange("passwordConfirmation")}
+                                    onChange={handleChange(
+                                        "passwordConfirmation"
+                                    )}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
