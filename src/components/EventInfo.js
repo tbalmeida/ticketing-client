@@ -113,7 +113,7 @@ export default function EventInfo({
                                         className={classes.title2}
                                         variant="body1"
                                     >
-                                        {moment().format(
+                                        {moment(event.event_date).format(
                                             "MMM Do YYYY",
                                             event.event_date
                                         )}{" "}
