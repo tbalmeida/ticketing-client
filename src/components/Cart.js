@@ -7,10 +7,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import { Link } from "react-router-dom";
-// import useStyles from "./EventListStyles.js";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import Badge from "@material-ui/core/Badge";
-import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { SHOW_ALERT } from "./context/types";
 import { AlertContext } from "components/context/alert/alertContext";
@@ -18,9 +16,10 @@ import { Alert } from "components/Alert";
 import Container from '@material-ui/core/Container';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import Table from '@material-ui/core/Table';
+import Box from '@material-ui/core/Box';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
@@ -53,9 +52,6 @@ const useStyles = makeStyles({
       marginRight: 10
   }
 });
-
-
-
 
 
 export function formatPrice(price) {
@@ -119,12 +115,11 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                                             >
                                                 <RemoveIcon fontSize="small" />
                                             </Button>
-                                            {event.quantity}
                                             <Button
                                                 size="small"
                                                 aria-label="increase"
                                                 onClick={updateQuantity(event.id, 1)}
-                                            >
+                                                >
                                                 <AddIcon fontSize="small" />
                                             </Button>
                                         </ButtonGroup>
@@ -151,19 +146,8 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 </TableContainer>}
             </Container>
               <Container maxWidth="sm" align="center">
+                  <Box style={{margin: "1rem"}}>
 
-            {/* <Button
-                className={classes.marginR}
-                variant="outlined"
-                size="small"
-                color="primary"
-                component={Link}
-                to={"/"}
-                aria-label="delete"
-                endIcon={<HomeIcon />}
-            >
-                Go home
-            </Button> */}
             <Button
                 className={classes.marginR}
                 variant="outlined"
@@ -189,8 +173,8 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             >
                 Clear cart
             </Button>
+                  </Box>
               </Container>  
               </>
-            
     )
 }
