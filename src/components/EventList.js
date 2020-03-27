@@ -102,9 +102,9 @@ export default function EventList({ eventData, addToCart }) {
                             type="search"
                             placeholder="Search for an Event"
                             aria-label="Search"
-                            style={{ minWidth: "125px", width: "85%" }}
+                            style={{ minWidth: "125px", width: "100%" }}
                         />
-                        <Button
+                        {/* <Button
                             size="medium"
                             variant="outlined"
                             color="primary"
@@ -112,7 +112,7 @@ export default function EventList({ eventData, addToCart }) {
                             endIcon={<BackspaceSharpIcon />}
                         >
                             Clear
-                        </Button>
+                        </Button> */}
                     </form>
                 </Container>
                 {!userId && (
