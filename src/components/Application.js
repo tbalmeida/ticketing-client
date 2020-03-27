@@ -18,11 +18,9 @@ import { ToastProvider, useToasts } from 'react-toast-notifications'
 export default function Application() { 
 
   const userId = sessionStorage.getItem('userId');
-  const [users, setUsers]=useState([]);
   const [events, setEvents]=useState([]);
   const [venues, setVenues]=useState([]); 
   const [cartItems, setCartItems] = useState([]); 
-  const [existingCartItemsId, setExistingCartItemsId] = useState([]); 
 
 const updateQuantity = (eventId, step = -1) => {
   return () => {
