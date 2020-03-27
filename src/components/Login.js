@@ -89,7 +89,6 @@ export const Login = () => {
     };
 
     const classes = useStyles();
-    //use context again
 
     const loginValidation = e => {
         let dataValid = true;
@@ -189,7 +188,6 @@ export const Login = () => {
                 <Typography component="h1" align="center" variant="h5">
                     Sign in
                 </Typography>
-                {/* <Toast/> */}
                 <Alert />
                 <form
                     className={classes.form}
@@ -254,7 +252,6 @@ export const Login = () => {
                     <Button
                         type="submit"
                         fullWidth
-                        // variant="contained"
                         variant="outlined"
                         color="primary"
                         className={classes.submit}
@@ -265,7 +262,6 @@ export const Login = () => {
                     <Button
                         type="button"
                         fullWidth
-                        // variant="contained"
                         variant="outlined"
                         className={classes.clear}
                         onClick={clearData}
