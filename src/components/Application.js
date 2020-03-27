@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import MainPage, { getData } from "./MainPage";
 import Signup from "./Signup";
@@ -13,7 +13,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import "components/Application.scss";
 import { AlertState } from './context/alert/AlertState'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
-// import { FormWithToasts as Toast} from 'components/Toast';
 
 export default function Application() { 
 
