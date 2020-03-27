@@ -3,9 +3,6 @@ import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import React from 'react';
 
-import Layout from "components/Layout.jsx";
-import Row from "../components/prebuilt/Row";
-
 const Container = styled.div`
   width: 575px;
   margin: 30px auto 0 auto;
