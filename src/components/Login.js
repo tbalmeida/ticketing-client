@@ -150,7 +150,8 @@ export const Login = () => {
                         appearance: 'error',
                         autoDismiss: true,
                       })
-                    show(error.response.data.message, "danger"); //use alert context with danger class
+                    show(error.response.data.message, "danger");
+                    setTimeout(() => { hide()}, 3000); //use alert context with danger class
                     // console.log('the following error occurred', error)
                 });
         }

@@ -72,6 +72,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
     useEffect(() => {
     if(cartItems.length === 0) {
         show('The cart is empty!', 'danger')
+        setTimeout(() => { hide()}, 5000); 
     } 
   }, []);
    

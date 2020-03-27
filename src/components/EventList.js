@@ -33,9 +33,11 @@ export default function EventList({ eventData, addToCart }) {
     const applyAddToCart = eventID => {
         if (!userId) {
             show("Please login first", "danger");
+            setTimeout(() => { hide()}, 5000); 
         } else {
             show("Item was added to the card", "success");
             addToCart(eventID);
+            setTimeout(() => { hide()}, 3000); 
         }
     };
 
@@ -59,6 +61,7 @@ export default function EventList({ eventData, addToCart }) {
         select &&
             EventsList === eventData &&
             show(" No match found", "warning");
+            setTimeout(() => { hide()}, 5000); 
 
     }, [select, eventData]);
 

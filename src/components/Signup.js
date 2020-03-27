@@ -136,6 +136,7 @@ export default function SignUp() {
 
         if (form.checked === false) {
             show("Please agree with the terms", "success");
+            setTimeout(() => { hide()}, 3000); 
             dataValid = false;
         }
 
@@ -237,6 +238,7 @@ export default function SignUp() {
                 })
                 .catch(error => {
                     show(error.response.data.message, "danger");
+                    setTimeout(() => { hide()}, 3000); 
                     // console.log(error.response.data.message, "danger");
                     // show('User already exists', 'danger')
 

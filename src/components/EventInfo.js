@@ -64,10 +64,12 @@ export default function EventInfo({
     const applyAddToCart = eventID => {
         if (!userId) {
             show("Please login first", "danger");
+            setTimeout(() => { hide()}, 5000); 
         } else {
             //if item in the cart don't do anything and show the
             show("Item was added to the card", "success");
             addToCart(eventID);
+            setTimeout(() => { hide()}, 5000);
         }
     };
 

@@ -124,7 +124,7 @@ const removeCartItems = () => setCartItems([]);
                     <Checkout cartItems={cartItems} removeCartItems={removeCartItems} {...routeProps}/>
                   }
                 </Route>
-                <Route path="/order"> }
+                <Route path="/order"> 
                   <Order/>
                 </Route> 
               </Switch>
