@@ -150,9 +150,8 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                   </Table>
                 </TableContainer>}
             </Container>
-              <Container style={{margin: "2rem"}} maxWidth="md" align="center">
+              <Container maxWidth="sm" align="center">
 
-            <div>
             {/* <Button
                 className={classes.marginR}
                 variant="outlined"
@@ -190,7 +189,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             >
                 Clear cart
             </Button>
-        </div>
               </Container>  
               </>
             
