@@ -129,7 +129,8 @@ export const Login = () => {
         };
 
         if (dataValid) {
-            postData("/login", userData)
+            // postData("/login", userData)
+            axios.post("https://radiant-escarpment-02459.herokuapp.com/api/1.0/events/login", userData)
                 .then(response => {
                     console.log("Login -> response.data[0]", response.data[0]);
                     sessionStorage.setItem("userId", response.data[0].handle); //creating a new user with key userId and value responce.bla.bla
