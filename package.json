@@ -2,7 +2,7 @@
   "name": "scheduler",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8001",
+  "proxy": "https://radiant-escarpment-02459.herokuapp.com",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
