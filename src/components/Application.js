@@ -80,7 +80,8 @@ const removeCartItems = () => setCartItems([]);
             
         //  getData('/events'),
          axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/events`),
-         getData('/venues'),
+         axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/venues`)
+        //  getData('/venues'),
         ])
           .then((all) => {
           
