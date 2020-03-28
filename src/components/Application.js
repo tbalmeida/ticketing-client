@@ -79,8 +79,8 @@ const removeCartItems = () => setCartItems([]);
         Promise.all([
             
         //  getData('/events'),
-         axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/events`),
-         axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/venues`)
+         axios.get(`/api/1.0/events`),
+         axios.get(`/api/1.0/venues`)
         //  getData('/venues'),
         ])
           .then((all) => {
