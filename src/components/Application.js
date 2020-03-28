@@ -95,7 +95,6 @@ const removeCartItems = () => setCartItems([]);
       <ToastProvider>
       <AlertState>
         <Router>
-          <div>
             <CssBaseline />
             <Header cartItems={cartItems} />
               <Switch>
@@ -125,7 +124,6 @@ const removeCartItems = () => setCartItems([]);
                 </Route> 
               </Switch>
             <Footer />
-          </div>
         </Router>
       </AlertState>
       </ToastProvider>
