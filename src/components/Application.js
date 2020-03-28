@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { AlertState } from './context/alert/AlertState'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
+import axios from 'axios';
 
 export default function Application() { 
 
@@ -77,7 +78,8 @@ const removeCartItems = () => setCartItems([]);
     useEffect(() => {
         Promise.all([
             
-         getData('/events'),
+        //  getData('/events'),
+         axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/events`),
          getData('/venues'),
         ])
           .then((all) => {
