@@ -13,4 +13,3 @@
 
 [build.environment]
   REACT_APP_API_BASE_URL = "https://radiant-escarpment-02459.herokuapp.com/"
-  REACT_APP_WEBSOCKET_URL = "wss://radiant-escarpment-02459.herokuapp.com/" 

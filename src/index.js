@@ -16,7 +16,7 @@ const stripePromise = loadStripe("pk_test_Ai6UIyP2tbBXxsisSjUcXCKm00UfGStLmk");
 
 
 if (process.env.REACT_APP_API_BASE_URL) {
-  axios.defaults.baseURL = 'https://radiant-escarpment-02459.herokuapp.com/';
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 }
 
 const theme = createMuiTheme({  palette: {    primary: { main: '#ff5826', secondary: '#ff6795'  }}}) //default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
