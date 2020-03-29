@@ -12,10 +12,22 @@
   box-sizing: border-box;
 }
 
-// body {
-//   font-family: $font-family;
-// }
 
+body {
+  
+  font-family: $font-family;
+}
+.makeStyles-heroContent-156 {
+  background-image: url(components/img/networking1.jpg);
+  padding: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.MuiBox-root-7 .MuiBox-root {
+  margin: 0!important
+  
+}
 // .layout {
 //   display: flex;
 //   min-height: 100vh;

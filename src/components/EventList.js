@@ -76,15 +76,15 @@ export default function EventList({ eventData, addToCart }) {
                         gutterBottom
                         className={classes.gutterBottom}
                     >
-                        <img
+                        {/* <img
                             src={Golden}
                             alt="site logo"
                             height={100}
                             margin="1em"
                         />
-                        <img src={Theatre} alt="site logo" height={70} />
+                        <img src={Theatre} alt="site logo" height={70} /> */}
                     </Typography>
-                    <TypeSentence />
+                    {/* <TypeSentence /> */}
                 </Container>
                 <Container maxWidth="sm">
                     <Alert />
