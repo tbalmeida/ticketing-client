@@ -10,23 +10,33 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 
 body {
-  
+  padding-top: 0;
   font-family: $font-family;
 }
-.makeStyles-heroContent-156 {
-  background-image: url(components/img/networking1.jpg);
-  padding: 200px;
-  background-size: cover;
-  background-repeat: no-repeat;
+
+#search {
+  margin-bottom: 1rem;
+  padding-top: 400px;
 }
 
-.MuiBox-root-7 .MuiBox-root {
-  margin: 0!important
-  
+#backgroundImage {
+  background-image: url(components/img/networking1.jpg);
+  margin-bottom: 1rem;
+  height: 450px;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  // width: 100%;
+}
+
+#root > div.MuiBox-root.MuiBox-root-7.makeStyles-root-1 {
+  margin-top: -15px;
 }
 // .layout {
 //   display: flex;

@@ -66,16 +66,17 @@ export default function EventList({ eventData, addToCart }) {
 
     return (
         <Fragment>
-            <div className={classes.heroContent}>
-                <Container maxWidth="md">
-                    <Typography
+            
+            <div id="backgroundImage" className={classes.heroContent}>
+                {/* <Container maxWidth="md"> */}
+                    {/* <Typography
                         component="h1"
                         variant="h2"
                         align="center"
                         color="textPrimary"
                         gutterBottom
                         className={classes.gutterBottom}
-                    >
+                    > */}
                         {/* <img
                             src={Golden}
                             alt="site logo"
@@ -83,11 +84,30 @@ export default function EventList({ eventData, addToCart }) {
                             margin="1em"
                         />
                         <img src={Theatre} alt="site logo" height={70} /> */}
-                    </Typography>
+                    {/* </Typography> */}
                     {/* <TypeSentence /> */}
-                </Container>
-                <Container maxWidth="sm">
-                    <Alert />
+                {/* </Container>
+                <Container maxWidth="sm"> */}
+                    
+                        {/* <Button
+                            size="medium"
+                            variant="outlined"
+                            color="primary"
+                            onClick={clearSearch}
+                            endIcon={<BackspaceSharpIcon />}
+                        >
+                            Clear
+                        </Button> */}
+                    
+                {/* </Container> */}
+                
+                {/* {!userId && (
+                    <div className={classes.loginRequest}>
+                        Please login or signup to buy an event ticket
+                    </div>
+                )} */}
+                <Container id="search" maxWidth="md">
+                <Alert />
                     <form
                         className="form-inline my-2 my-lg-0"
                         style={{ flexFlow: "nowrap" }}
@@ -104,23 +124,10 @@ export default function EventList({ eventData, addToCart }) {
                             aria-label="Search"
                             style={{ minWidth: "125px", width: "100%" }}
                         />
-                        {/* <Button
-                            size="medium"
-                            variant="outlined"
-                            color="primary"
-                            onClick={clearSearch}
-                            endIcon={<BackspaceSharpIcon />}
-                        >
-                            Clear
-                        </Button> */}
-                    </form>
+                        </form>
                 </Container>
-                {!userId && (
-                    <div className={classes.loginRequest}>
-                        Please login or signup to buy an event ticket
-                    </div>
-                )}
             </div>
+            
             <Divider variant="middle" />
             <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={2}>
