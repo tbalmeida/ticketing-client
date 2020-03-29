@@ -26,7 +26,7 @@ import { useToasts } from 'react-toast-notifications'
 
 export function postData(url, data) {
     // return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//for local
-    return axios.post(`${process.env.REACT_APP_API_BASE_URL_HEROKU}/api/1.0${url}`, data);//for heroku
+    return axios.post(`/api/1.0${url}`, data);//for heroku
 }
 
 const useStyles = makeStyles(theme => ({
@@ -130,6 +130,7 @@ export const Login = () => {
 
         if (dataValid) {
             postData("/login", userData)
+            // axios.post("api/1.0/events/login", userData)
                 .then(response => {
                     console.log("Login -> response.data[0]", response.data[0]);
                     sessionStorage.setItem("userId", response.data[0].handle); //creating a new user with key userId and value responce.bla.bla

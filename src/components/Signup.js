@@ -23,6 +23,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles(theme => ({
+    
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -43,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 function putData(url, data) {
-    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);
+    return axios.put(`/api/1.0${url}`, data);
 }
 export default function SignUp() {
     const { show, hide } = useContext(AlertContext);
