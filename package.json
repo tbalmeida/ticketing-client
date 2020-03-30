@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
+    "jquery": "^3.4.1",
     "material-ui-search-bar": "^0.4.2",
     "next": "^9.3.1",
     "normalize.css": "^8.0.1",

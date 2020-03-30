@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -18,11 +19,13 @@ import BackspaceSharpIcon from "@material-ui/icons/BackspaceSharp";
 import moment from "moment";
 import { convertTime } from "components/EventInfo";
 import AddShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Fab from "@material-ui/core/Fab";
+import Zoom from "@material-ui/core/Zoom";
+import Tooltip from "@material-ui/core/Tooltip";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { ScrollTop } from "components/Helper Functions/ScrollToTop";
 
 export default function EventList({ eventData, addToCart }) {
-    console.log("EventList -> eventData", eventData);
-    console.log("EventList -> addToCart", addToCart);
-    console.log("eventData", eventData);
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
 
@@ -30,11 +33,15 @@ export default function EventList({ eventData, addToCart }) {
     const applyAddToCart = eventID => {
         if (!userId) {
             show("Please login first", "danger");
-            setTimeout(() => { hide()}, 5000); 
+            setTimeout(() => {
+                hide();
+            }, 5000);
         } else {
             show("Item was added to the card", "success");
             addToCart(eventID);
-            setTimeout(() => { hide()}, 3000); 
+            setTimeout(() => {
+                hide();
+            }, 3000);
         }
     };
 
@@ -58,18 +65,18 @@ export default function EventList({ eventData, addToCart }) {
         select &&
             EventsList === eventData &&
             show(" No match found", "warning");
-            setTimeout(() => { hide()}, 5000); 
-
+        setTimeout(() => {
+            hide();
+        }, 5000);
     }, [select, eventData]);
 
     const userId = sessionStorage.getItem("userId");
 
     return (
         <Fragment>
-            
             <div id="backgroundImage" className={classes.heroContent}>
                 {/* <Container maxWidth="md"> */}
-                    {/* <Typography
+                {/* <Typography
                         component="h1"
                         variant="h2"
                         align="center"
@@ -77,19 +84,19 @@ export default function EventList({ eventData, addToCart }) {
                         gutterBottom
                         className={classes.gutterBottom}
                     > */}
-                        {/* <img
+                {/* <img
                             src={Golden}
                             alt="site logo"
                             height={100}
                             margin="1em"
                         />
                         <img src={Theatre} alt="site logo" height={70} /> */}
-                    {/* </Typography> */}
-                    {/* <TypeSentence /> */}
+                {/* </Typography> */}
+                {/* <TypeSentence /> */}
                 {/* </Container>
                 <Container maxWidth="sm"> */}
-                    
-                        {/* <Button
+
+                {/* <Button
                             size="medium"
                             variant="outlined"
                             color="primary"
@@ -98,20 +105,17 @@ export default function EventList({ eventData, addToCart }) {
                         >
                             Clear
                         </Button> */}
-                    
+
                 {/* </Container> */}
-                
+
                 {/* {!userId && (
                     <div className={classes.loginRequest}>
                         Please login or signup to buy an event ticket
                     </div>
                 )} */}
+
                 <Container id="search" maxWidth="md">
-                <Alert />
-                    <form
-                        className="form-inline my-2 my-lg-0"
-                        style={{ flexFlow: "nowrap" }}
-                    >
+                    <form>
                         <input
                             variant="outlined"
                             color="primary"
@@ -124,10 +128,11 @@ export default function EventList({ eventData, addToCart }) {
                             aria-label="Search"
                             style={{ minWidth: "125px", width: "100%" }}
                         />
-                        </form>
+                    </form>
+                    <Alert />
                 </Container>
             </div>
-            
+
             <Divider variant="middle" />
             <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={2}>
@@ -152,16 +157,14 @@ export default function EventList({ eventData, addToCart }) {
                                                     {event.title}
                                                 </Typography>
                                             </Grid>
-                                            <Grid
-                                                item
-                                                xs={6}
-                                                align="right"
-                                            >
+                                            <Grid item xs={6} align="right">
                                                 <Typography
                                                     className={classes.title2}
                                                     variant="body1"
                                                 >
-                                                    {moment(event.event_date).format(
+                                                    {moment(
+                                                        event.event_date
+                                                    ).format(
                                                         "MMM Do YYYY",
                                                         event.event_date
                                                     )}{" "}
@@ -171,8 +174,7 @@ export default function EventList({ eventData, addToCart }) {
                                                     )}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item xs={6}>
-                                            </Grid>
+                                            <Grid item xs={6}></Grid>
                                             <Grid item xs={6} align="right">
                                                 <Typography
                                                     className={
@@ -215,6 +217,22 @@ export default function EventList({ eventData, addToCart }) {
                         </Grid>
                     ))}
                 </Grid>
+            <ScrollTop>
+                <Tooltip
+                    title="Go to Top"
+                    aria-label="Go to Top button"
+                    TransitionComponent={Zoom}
+                >
+                    <Fab
+                        color="primary"
+                        size="medium"
+                        aria-label="scroll back to top"
+                        style={{ outline: "none" }}
+                    >
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </Tooltip>
+            </ScrollTop>
             </Container>
         </Fragment>
     );

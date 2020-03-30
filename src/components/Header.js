@@ -80,7 +80,8 @@ export default function Header ({cartItems}) {
         <Box className={classes.root} maxWidth="xs" marginTop={10} >
             <HideOnScroll>
                 <AppBar>
-                    <Toolbar>
+                    
+                    <Toolbar id="back-to-top" >
                         <Typography>
                             <img src={logo} alt="site logo" height={50} />
                         </Typography>
