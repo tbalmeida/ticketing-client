@@ -422,7 +422,7 @@ export default function SignUp() {
                                         onChange={handleCheckBox}
                                         required
                                         value="allowExtraEmails"
-                                        color="primary"
+                                        color="black"
                                     />
                                 }
                                 label="I agree with the terms of service"
@@ -433,7 +433,7 @@ export default function SignUp() {
                         type="submit"
                         fullWidth
                         variant="outlined"
-                        color="primary"
+                        color="black"
                         className={classes.submit}
                     >
                         Sign Up

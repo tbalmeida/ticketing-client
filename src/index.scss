@@ -65,6 +65,10 @@ footer {
   clear: both;
 }
 
+#email-label, #root > div.MuiBox-root.MuiBox-root-129.makeStyles-paper-124 > main > form > div:nth-child(2) > label, #firstName-label, #lastName-label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(4) > div > label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(5) > div > label {
+  color: black;
+}
+
 // .alert .alert-primary {
 //   padding: 2rem;
 //   margin: 2rem;

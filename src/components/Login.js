@@ -187,7 +187,7 @@ export const Login = () => {
                 <Avatar className={classes.avatar}>
                     <VpnKeyRoundedIcon />
                 </Avatar>
-                <Typography component="h1" align="center" variant="h5">
+                <Typography component="h1" align="center" variant="h5" color="primary">
                     Sign in
                 </Typography>
                 <Alert />
@@ -219,6 +219,7 @@ export const Login = () => {
                         variant="filled"
                         margin="normal"
                         name="password"
+                        color="black"
                         label="Password"
                         type="password"
                         autoComplete="current-password"
@@ -255,7 +256,7 @@ export const Login = () => {
                         type="submit"
                         fullWidth
                         variant="outlined"
-                        color="primary"
+                        color="black"
                         className={classes.submit}
                     >
                         Sign In
