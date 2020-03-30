@@ -95,6 +95,7 @@ export default function Application() {
             getData("/venues")
         ])
             .then(all => {
+            console.log("Application -> all", all)
                 const [events, venues] = all;
                 setEvents(events.data);
                 setVenues(venues.data);

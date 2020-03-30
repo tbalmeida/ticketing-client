@@ -24,10 +24,16 @@ import Zoom from "@material-ui/core/Zoom";
 import Tooltip from "@material-ui/core/Tooltip";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { ScrollTop } from "components/Helper Functions/ScrollToTop";
+import Pagination from '@material-ui/lab/Pagination';
 
 export default function EventList({ eventData, addToCart }) {
+    console.log("EventList -> eventData", eventData)
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
+    const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
     const { show, hide } = useContext(AlertContext);
     const applyAddToCart = eventID => {
@@ -74,6 +80,9 @@ export default function EventList({ eventData, addToCart }) {
 
     return (
         <Fragment>
+            <div className={classes.root}>
+            {/* <Typography>Page: {page}</Typography>
+      <Pagination count={10} page={page} onChange={handleChange} /> */}
             <div id="backgroundImage" className={classes.heroContent}>
                 {/* <Container maxWidth="md"> */}
                 {/* <Typography
@@ -181,7 +190,7 @@ export default function EventList({ eventData, addToCart }) {
                                                         classes.marginBottom
                                                     }
                                                     variant="body1"
-                                                >
+                                                    >
                                                     {event.venue_name}
                                                 </Typography>
                                             </Grid>
@@ -199,6 +208,7 @@ export default function EventList({ eventData, addToCart }) {
                                                     size="small"
                                                     color="primary"
                                                     onClick={() =>
+                                                    
                                                         applyAddToCart(
                                                             event.event_id
                                                         )
@@ -216,6 +226,7 @@ export default function EventList({ eventData, addToCart }) {
                             </Link>
                         </Grid>
                     ))}
+                    {console.log("EventList -> EventsList", EventsList)}
                 </Grid>
             <ScrollTop>
                 <Tooltip
@@ -234,6 +245,7 @@ export default function EventList({ eventData, addToCart }) {
                 </Tooltip>
             </ScrollTop>
             </Container>
+            </div>
         </Fragment>
     );
 }

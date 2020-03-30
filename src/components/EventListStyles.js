@@ -117,6 +117,11 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(4),
     },
   },
+  pagination: {
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
+  }
 }));
 
 export default useStyles;
