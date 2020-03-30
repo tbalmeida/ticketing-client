@@ -80,7 +80,7 @@ export default function EventInfo({
             : getEventFromEventsByEventId(match.params.id, events);
     return (
         <>
-            <Typography gutterBottom align="center" variant="h4">
+            <Typography gutterBottom align="center" variant="h4" style={{margin: "1rem"}}>
                 Event Info page
             </Typography>
             <Container maxWidth="md">
@@ -101,7 +101,7 @@ export default function EventInfo({
                                     direction="column"
                                     justify="space-between"
                                 >
-                                    <Typography
+                                    <Typography id="card_title"
                                         align="left"
                                         className={classes.title1}
                                         variant="body1"

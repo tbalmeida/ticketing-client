@@ -1,12 +1,11 @@
 @import "~normalize.css/normalize.css";
 @import "~bootstrap/scss/bootstrap";
 
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
+// @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
 
-@import "styles/variables.scss";
-@import "styles/reset.scss";
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin");
 
-@import "styles/typography.scss";
+
 
 * {
   box-sizing: border-box;
@@ -16,11 +15,12 @@
 
 body {
   padding-top: 0;
-  font-family: $font-family;
+  font-family: 'Libre Franklin', sans-serif;
 }
 #root {
   background-color: #f7faf1;
   color: black;
+  font-family: 'Libre Franklin', sans-serif;
 }
 #search {
   // margin-bottom: 1rem;
@@ -52,9 +52,17 @@ body {
   color: #fff;
 }
 
+
+#search-clear {
+  color: white
+}
+
 footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  // bottom: 0;
+  height: 100px;
+  margin-bottom: -100px;
+  clear: both;
 }
 
 // .alert .alert-primary {

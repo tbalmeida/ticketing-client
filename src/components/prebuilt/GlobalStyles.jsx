@@ -30,7 +30,7 @@ const GlobalStyles = () => (
         html {
           // background-color: rgba(255, 50, 0, 0.025);
           font-size: 16px;
-          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          font-family: 'Libre Franklin', sans-serif;
           padding-top: 40px;
         }
       `}
