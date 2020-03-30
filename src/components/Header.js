@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
         margin: "5px",
         color: "inherit",
         "&:hover": {
-            color: "white",
+            // color: "white",
             border: "#8b8e94 solid 1px"
         }
     },

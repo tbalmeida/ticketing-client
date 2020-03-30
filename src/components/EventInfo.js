@@ -152,7 +152,7 @@ export default function EventInfo({
                                         className={classes.margin}
                                         variant="outlined"
                                         size="small"
-                                        color="primary"
+                                        color="black"
                                         onClick={() =>
                                             applyAddToCart(event.event_id)
                                         }

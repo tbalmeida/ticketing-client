@@ -205,7 +205,7 @@ export default function EventList({ eventData, addToCart }) {
                                                     className={classes.margin}
                                                     variant="outlined"
                                                     size="small"
-                                                    color="primary"
+                                                    color="black"
                                                     onClick={() =>
                                                     
                                                         applyAddToCart(

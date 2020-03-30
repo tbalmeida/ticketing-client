@@ -20,6 +20,7 @@ body {
 }
 #root {
   background-color: #f7faf1;
+  color: black;
 }
 #search {
   // margin-bottom: 1rem;
@@ -51,6 +52,10 @@ body {
   color: #fff;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+}
 
 // .alert .alert-primary {
 //   padding: 2rem;

@@ -109,6 +109,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                                     <div>
                                         <ButtonGroup>
                                             <Button
+                                               
                                                 size="small"
                                                 aria-label="reduce"
                                                 onClick={updateQuantity(event.id)}
@@ -152,7 +153,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 className={classes.marginR}
                 variant="outlined"
                 size="small"
-                color="primary"
+                color="black"
                 component={Link}
                 to={"/checkout"}
                 aria-label="delete"
@@ -165,7 +166,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 variant="outlined"
                 size="small"
                 onClick={removeCartItems}
-                color="primary"
+                color="black"
                 component={Link}
                 to={"/"}
                 aria-label="delete"
