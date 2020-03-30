@@ -74,7 +74,7 @@ export default function EventList({ eventData, addToCart }) {
 
     return (
         <Fragment>
-            <div id="backgroundImage" className={classes.heroContent}>
+            <div id="backgroundImage" className={classes.fontFamily}>
                 {/* <Container maxWidth="md"> */}
                 {/* <Typography
                         component="h1"
@@ -114,9 +114,10 @@ export default function EventList({ eventData, addToCart }) {
                     </div>
                 )} */}
 
-                <Container id="search" maxWidth="md">
+                <Container id="search" maxWidth="md" className={classes.fontFamily}>
                     <form>
                         <input
+                        className={classes.fontFamily}
                             variant="outlined"
                             color="primary"
                             id="searchEvents"
@@ -134,7 +135,7 @@ export default function EventList({ eventData, addToCart }) {
             </div>
 
             <Divider variant="middle" />
-            <Container className={classes.cardGrid} maxWidth="lg">
+            <Container className={classes.cardGrid} maxWidth="lg" >
                 <Grid container spacing={2}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={4}>
@@ -186,7 +187,7 @@ export default function EventList({ eventData, addToCart }) {
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={12} align="justify">
-                                                <Typography variant="body1">
+                                                <Typography variant="body1" >
                                                     {" "}
                                                     {event.event_description}
                                                 </Typography>

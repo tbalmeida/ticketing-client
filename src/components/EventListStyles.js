@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   buttonStyle: {
     display: 'flex',
     justifyContent: "space-between",
-    alignItems: 'center'  
+    alignItems: 'center'
   },
 
   gutterBottom: {
@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '15px'
   } ,
   margin: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -96,14 +96,17 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     fontSize: '1.1rem',
     textTransform: 'uppercase'
+
   },
   title2: {
     fontWeight: 400,
     fontSize: '1.1rem'
+
   },
   font80: {
     fontWeight: 400,
     fontSize: '0.8rem'
+
   },
   marginBottom: {
     marginBottom: '0.4rem'
@@ -123,6 +126,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: theme.spacing(2),
     },
   }
+  
 }));
 
 export default useStyles;

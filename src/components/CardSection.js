@@ -6,7 +6,6 @@ const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
       color: "#32325d",
-      fontFamily: '"Libre Franklin", sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "16px",
       "::placeholder": {

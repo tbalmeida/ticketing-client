@@ -21,7 +21,9 @@ if (process.env.REACT_APP_API_BASE_URL) {
   axios.defaults.baseURL = 'https://radiant-escarpment-02459.herokuapp.com/'
 }
 
-const theme = createMuiTheme({  palette: {    primary: { main: '#f7faf1', secondary: 'black'  }}}, {typography: { fontFamily: '"Libre Franklin", sans-serif'}}) //default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
+const theme = createMuiTheme({  
+  palette: { primary: { main: '#f7faf1', secondary: 'black'  }}, 
+  typography: { "fontFamily": "\"Libre Franklin\", sans-serif" }})//default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 const App = () => (
   <>
   <GlobalStyles />
