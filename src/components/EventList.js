@@ -133,8 +133,7 @@ export default function EventList({ eventData, addToCart }) {
                             className="form-control mr-2 mx-sm-auto"
                             onChange={selectEvent}
                             type="search"
-                            placeholder="Search for an Event"
-                            aria-label="Search"
+                            placeholder="SEARCH FOR AN EVENT"
                             style={{ minWidth: "125px", width: "100%" }}
                         />
                     </form>
@@ -146,7 +145,7 @@ export default function EventList({ eventData, addToCart }) {
             <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={2}>
                     {[...EventsList].map(event => (
-                        <Grid item key={event.event_id} xs={12} sm={6} md={6}>
+                        <Grid item key={event.event_id} xs={12} sm={6} md={4}>
                             <Link
                                 to={{
                                     pathname: `/events/${event.event_id}`,

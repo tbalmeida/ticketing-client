@@ -38,6 +38,20 @@ body {
   margin-top: -15px;
 }
 
+#searchEvents {
+  background: rgba(17, 17, 17, 0.72);
+  font-weight: 700;
+  font-size: 1.5rem;
+  border: none;
+  color: #fff;
+}
+#searchEvents::placeholder {
+  color: #fff;
+}
+
+#root > div:nth-child(2) > ul > li > div {
+  background-color: #f7faf1;
+}
 // .alert .alert-primary {
 //   padding: 2rem;
 //   margin: 2rem;
