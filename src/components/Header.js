@@ -82,9 +82,9 @@ export default function Header ({cartItems}) {
                 <AppBar>
                     
                     <Toolbar id="back-to-top" >
-                        <Typography>
+                        {/* <Typography>
                             <img src={logo} alt="site logo" height={50} />
-                        </Typography>
+                        </Typography> */}
                         <Tooltip
                             title="Home"
                             aria-label="Home button"

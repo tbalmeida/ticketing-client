@@ -18,7 +18,9 @@ body {
   padding-top: 0;
   font-family: $font-family;
 }
-
+#root {
+  background-color: #f7faf1;
+}
 #search {
   // margin-bottom: 1rem;
   padding-top: 360px;
@@ -49,9 +51,7 @@ body {
   color: #fff;
 }
 
-#root > div:nth-child(2) > ul > li > div {
-  background-color: #f7faf1;
-}
+
 // .alert .alert-primary {
 //   padding: 2rem;
 //   margin: 2rem;
