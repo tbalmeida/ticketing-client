@@ -78,9 +78,9 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
     const classes = useStyles();
 
     return (
-        <>
+        <div id="cartWrapper">
         <Container maxWidth="md">
-            <Typography align="center" variant="h4" style={{margin: "1rem"}}>My Cart</Typography>
+            <Typography align="center" variant="h4" style={{padding: "1rem"}}>My Cart</Typography>
             {cartItems.length===0 ? 
             <Container  maxWidth="sm"><Alert/></Container> :
                 <TableContainer component={Paper}>
@@ -176,6 +176,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             </Button>
                   </Box>
               </Container>  
-              </>
+              </div>
     )
 }

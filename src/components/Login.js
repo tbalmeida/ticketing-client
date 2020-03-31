@@ -25,8 +25,8 @@ import clsx from "clsx";
 import { useToasts } from 'react-toast-notifications'
 
 export function postData(url, data) {
-    // return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//for local
-    return axios.post(`/api/1.0${url}`, data);//for heroku
+    return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//for local
+    // return axios.post(`/api/1.0${url}`, data);//for heroku
 }
 
 const useStyles = makeStyles(theme => ({
@@ -187,7 +187,7 @@ export const Login = () => {
                 <Avatar className={classes.avatar}>
                     <VpnKeyRoundedIcon />
                 </Avatar>
-                <Typography component="h1" align="center" variant="h5" color="primary">
+                <Typography component="h1" align="center" variant="h5" color="black">
                     Sign in
                 </Typography>
                 <Alert />
@@ -249,7 +249,7 @@ export const Login = () => {
                         />
                     </FormControl>
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="black" />}
                         label="Remember me"
                     />
                     <Button
