@@ -56,9 +56,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
     setProcessingTo(true);
 
     const cardElement = elements.getElement("card");
-  //   export function postData(url, data) {
-  //     return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);
-  // }
+  
     try {
       const { data: clientSecret } = await postData("/orders/new", {
           amount: price * 100, cartItems: cartItems, handle: userId
