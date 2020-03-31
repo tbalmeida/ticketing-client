@@ -187,7 +187,7 @@ export const Login = () => {
                 <Avatar className={classes.avatar}>
                     <VpnKeyRoundedIcon />
                 </Avatar>
-                <Typography component="h1" align="center" variant="h5" color="primary">
+                <Typography component="h1" align="center" variant="h5" color="black">
                     Sign in
                 </Typography>
                 <Alert />
@@ -249,7 +249,7 @@ export const Login = () => {
                         />
                     </FormControl>
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="black" />}
                         label="Remember me"
                     />
                     <Button
