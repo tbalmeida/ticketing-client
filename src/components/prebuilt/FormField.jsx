@@ -30,7 +30,7 @@ const Input = styled.input`
   width: 100%;
   padding: 11px 15px 11px 8px;
   color: #fff;
-  background-color: transparent;
+  background-color: grey;
   animation: 1ms void-animation-out;
 
   &::placeholder {
