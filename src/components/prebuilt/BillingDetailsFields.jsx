@@ -5,6 +5,7 @@ const BillingDetailsFields = () => {
     <>
       <FormField
         name="name"
+        align="center"
         label="Name"
         type="text"
         placeholder="Jane Doe"

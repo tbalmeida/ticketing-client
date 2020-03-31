@@ -18,7 +18,7 @@ const CardElementContainer = styled.div`
   & .StripeElement {
     width: 100%;
     padding: 15px;
-    background-color: #4b2959;
+    background-color: grey;
     color: #fff
   }
 `;

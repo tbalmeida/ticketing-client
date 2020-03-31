@@ -29,6 +29,7 @@ const GlobalStyles = () => (
         body,
         html {
           // background-color: rgba(255, 50, 0, 0.025);
+          background-color: grey;
           font-size: 16px;
           padding-top: 40px;
         }
