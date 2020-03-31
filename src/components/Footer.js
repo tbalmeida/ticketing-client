@@ -15,7 +15,7 @@ const useStyles = makeStyles({  //creating function that's using styles
 
 function Copyright() { //will be rendered
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="black" align="center">
       {'Copyright © '} Anton and Thiago's <strong>ticketing</strong> incorporation! 
       {new Date().getFullYear()}
       {'.'}

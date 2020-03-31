@@ -4,6 +4,7 @@ import purple from '@material-ui/core/colors/purple';
 const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
+    
   },
   heroContent: {
     backgroundColor: '#f8f9fa',
@@ -114,6 +115,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
+    bottom: '0px',
     '& > *': {
       marginBottom: theme.spacing(2),
     },
@@ -125,6 +128,13 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       marginTop: theme.spacing(2),
     },
+  },
+  height: {
+    minHeight: '90vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
   }
   
 }));

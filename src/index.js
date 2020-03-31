@@ -22,7 +22,7 @@ if (process.env.REACT_APP_API_BASE_URL) {
 }
 
 const theme = createMuiTheme({  
-  palette: { primary: { main: '#f7faf1', secondary: 'black'  }}, 
+  palette: { primary: { main: '#f7faf1', secondary: 'black', background: {default: '#f7faf1'}  }}, 
   typography: { "fontFamily": "\"Libre Franklin\", sans-serif" }})//default primary and secondary color of font The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 const App = () => (
   <>

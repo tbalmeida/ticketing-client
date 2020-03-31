@@ -79,8 +79,8 @@ export default function EventInfo({
             ? location.state
             : getEventFromEventsByEventId(match.params.id, events);
     return (
-        <>
-            <Typography gutterBottom align="center" variant="h4" style={{margin: "1rem"}}>
+        <div className={classes.height}>
+            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem"}}>
                 Event Info page
             </Typography>
             <Container maxWidth="md">
@@ -166,6 +166,6 @@ export default function EventInfo({
                     </CardContent>
                 </Card>
             </Container>
-        </>
+        </div>
     );
 }

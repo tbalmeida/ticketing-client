@@ -20,6 +20,15 @@ body {
   background-color: #f7faf1;
   color: black;
  }
+ #cartWrapper,  #root > form, #root > div.css-t51xri {
+   display: flex;
+   flex-direction: column;
+   min-height: 90vh;
+   align-items: center;
+ }
+ #back-to-top > h4 {
+   padding-left: 10rem;
+ }
 #search {
   // margin-bottom: 1rem;
   padding-top: 360px;
@@ -58,18 +67,27 @@ body {
   color: white
 }
 
-footer {
-  // position: relative;
-  // bottom: 0;
-  height: 100px;
-  margin-bottom: -100px;
+#root > footer {
+//   position:absolute;
+// left:0;
+// bottom:0;
+// right:0;
+  height: 2rem;
+  padding-bottom: 1rem;
   clear: both;
+}
+
+#root > div:nth-child(2) > ul > li > div.MuiContainer-root.makeStyles-cardGrid-368.MuiContainer-maxWidthLg > div.makeStyles-backToTopButton-395 > button {
+  margin-bottom: 3rem;
 }
 
 #email-label, #root > div.MuiBox-root.MuiBox-root-129.makeStyles-paper-124 > main > form > div:nth-child(2) > label, #firstName-label, #lastName-label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(4) > div > label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(5) > div > label {
   color: black;
 }
 
+#123 {
+  height: 500px;
+}
 
 // .alert .alert-primary {
 //   padding: 2rem;

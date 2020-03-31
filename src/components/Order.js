@@ -5,7 +5,8 @@ import React from 'react';
 
 const Container = styled.div`
   width: 575px;
-  margin: 30px auto 0 auto;
+  margin: 0 auto;
+  padding: 1rem;
   text-align: center;
   color: red;
 `;
