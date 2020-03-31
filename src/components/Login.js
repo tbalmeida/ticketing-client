@@ -205,6 +205,7 @@ export const Login = () => {
                         type="email"
                         id="email"
                         label="Email Address"
+                        color="black"
                         name="email"
                         autoComplete="email"
                         onChange={changeHandler}
