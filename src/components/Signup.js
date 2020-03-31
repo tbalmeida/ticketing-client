@@ -328,7 +328,7 @@ export default function SignUp() {
                                 onFocus={clearForm}
                             >
                                 <InputLabel htmlFor="password">
-                                    Password
+                                    Password min 3 characters
                                 </InputLabel>
                                 <FilledInput
                                     id="password"
