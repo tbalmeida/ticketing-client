@@ -29,7 +29,7 @@ import { Typography } from "@material-ui/core";
 const StyledTableCell = withStyles(theme => ({
   head: {
     // backgroundColor: theme.palette.common.grey,
-    backgroundColor: 'grey',
+    backgroundColor: '#e8e8e8',
     color: theme.palette.common.black,
     fontSize: '1.2rem'
   },
