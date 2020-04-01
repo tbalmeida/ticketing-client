@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
-        fontWeight: 700
+        fontWeight: 700,
+        textTransform: "uppercase"
     },
     buttonStyle: {
         margin: "5px",

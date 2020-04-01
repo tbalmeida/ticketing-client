@@ -31,7 +31,10 @@ body {
    align-items: center;
  }
  #back-to-top > h4 {
-   padding-left: 10rem;
+   padding-left: 7rem;
+ }
+ #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd > h4 {
+   padding-right: 6rem;
  }
 #search {
   // margin-bottom: 1rem;
