@@ -42,11 +42,19 @@ body {
 #search {
   padding-top: 360px;
 }
-#loginWrapper, #signupWrapper {
+#loginWrapper, #signupWrapper{
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 500px;
+}
+
+#checkoutWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 90vh;
+  width: 600px;
 }
 #backgroundImage {
   background-image: url(components/img/networking2.jpg);
