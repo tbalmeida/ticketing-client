@@ -95,19 +95,19 @@ const useStyles = makeStyles(theme => ({
   },
   title1: {
     fontWeight: 700,
-    fontSize: '1.1rem',
+    fontSize: '1.2rem',
     textTransform: 'uppercase',
     textAlign: 'center',
 
   },
   title2: {
     fontWeight: 400,
-    fontSize: '1.1rem'
+    fontSize: '1.2rem'
 
   },
   title3: {
     fontWeight: 700,
-    fontSize: '1.1rem',
+    fontSize: '1.2rem',
     textTransform: 'uppercase',
     textAlign: 'left',
   },

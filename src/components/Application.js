@@ -37,7 +37,7 @@ export default function Application() {
                             item.limit
                         );
                     } else {
-                        item.quantity = Math.max(0, item.quantity + step);
+                        item.quantity = Math.max(1, item.quantity + step);
                     }
                     // item.quantity += step
                 }

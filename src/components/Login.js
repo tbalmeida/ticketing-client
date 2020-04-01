@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     },
     clear: {
         margin: theme.spacing(0.5, 0, 0.5),
-        backgroundColor: "grey",
+        backgroundColor: "#e8e8e8",
         outline: "none"
     }
 }));

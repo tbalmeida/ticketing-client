@@ -18,8 +18,8 @@ const CardElementContainer = styled.div`
   & .StripeElement {
     width: 100%;
     padding: 15px;
-    background-color: grey;
-    color: #fff
+    background-color: #e8e8e8;
+    color: black
   }
 `;
 
@@ -105,20 +105,20 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
 
   const iframeStyles = {
     base: {
-      color: "#fff",
+      color: "black",
       fontSize: "16px",
       iconColor: "rose",
       height: "20px",
       "::placeholder": {
-        color: "#fff"
+        color: "#black"
       }
     },
     invalid: {
-      iconColor: "#FFC7EE",
+      iconColor: "red",
       color: "rgba(255,50, 0, 0.5)"
     },
     complete: {
-      iconColor: "#cbf4c9"
+      iconColor: "#22a21c"
     }
   };
 

@@ -34,20 +34,27 @@ body {
    align-items: center;
  }
  #back-to-top > h4 {
-   padding-left: 7rem;
+   padding-left: 8rem;
  }
  #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd > h4 {
    padding-right: 6rem;
  }
 #search {
-  // margin-bottom: 1rem;
   padding-top: 360px;
 }
-#loginWrapper, #signupWrapper {
+#loginWrapper, #signupWrapper{
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 500px;
+}
+
+#checkoutWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 90vh;
+  width: 600px;
 }
 #backgroundImage {
   background-image: url(components/img/networking2.jpg);

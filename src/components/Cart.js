@@ -28,18 +28,20 @@ import { Typography } from "@material-ui/core";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    // backgroundColor: theme.palette.common.grey,
+    backgroundColor: '#e8e8e8',
+    color: theme.palette.common.black,
+    fontSize: '1.2rem'
   },
   body: {
-    fontSize: 14,
+    fontSize: '1.2rem',
   },
 }))(TableCell);
 
 const StyledTableRow = withStyles(theme => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: theme.palette.background.grey,
     },
   },
 }))(TableRow);
@@ -47,6 +49,7 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
+    fontSize: '1.2rem',
   },
   marginR: {
       marginRight: 10
@@ -155,7 +158,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             <Button
                 className={classes.marginR}
                 variant="outlined"
-                size="small"
+                size="medium"
                 color="black"
                 component={Link}
                 to={"/checkout"}
@@ -167,7 +170,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
             <Button
                 className={classes.margin}
                 variant="outlined"
-                size="small"
+                size="medium"
                 onClick={removeCartItems}
                 color="black"
                 component={Link}
