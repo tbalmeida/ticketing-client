@@ -186,14 +186,14 @@ export default function EventList({ eventData, addToCart }) {
                                                     {event.venue_name}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item xs={12} align="justify">
+                                            <Grid item xs={12} align="justify" style={{minHeight: '5rem'}}>
                                                 <Typography variant="body1" >
                                                     {" "}
                                                     {event.event_description}
                                                 </Typography>
                                             </Grid>
                                             {/* <Grid item xs={8}></Grid> */}
-                                            <Grid item xs={12} align="center" style={{padding: '1rem 0 0 0', borderTop: '2px solid black'}}>
+                                            <Grid item xs={12} align="center" style={{padding: '1rem 0 0 0', fontWeight: "bold"}}>
                                                 <Button
                                                     // className={classes.margin}
                                                     variant="outlined"

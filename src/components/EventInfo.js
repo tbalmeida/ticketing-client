@@ -80,7 +80,7 @@ export default function EventInfo({
             : getEventFromEventsByEventId(match.params.id, events);
     return (
         <div className={classes.height}>
-            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem"}}>
+            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
                 Event Info page
             </Typography>
             <Container maxWidth="md">
