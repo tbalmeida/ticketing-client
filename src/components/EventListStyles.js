@@ -105,6 +105,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.1rem'
 
   },
+  title3: {
+    fontWeight: 700,
+    fontSize: '1.1rem',
+    textTransform: 'uppercase',
+    textAlign: 'left',
+  },
   font80: {
     fontWeight: 400,
     fontSize: '0.8rem'
