@@ -83,7 +83,7 @@ export default function EventInfo({
             {/* <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
                 Event Info page
             </Typography> */}
-            <Container maxWidth="md" style={{marginTop: '2rem'}}>
+            <Container maxWidth="lg" style={{marginTop: '2rem'}}>
                 <Alert />
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
@@ -125,13 +125,13 @@ export default function EventInfo({
                                     >
                                         {event.venue_name}
                                     </Typography>
-                                    <Typography align="left" variant="body1">
+                                    <Typography align="left" className={classes.title2} variant="body1">
                                         {event.total_issued} available -{" "}
                                         {event.price}
                                     </Typography>
                                     <Typography
                                         align="left"
-                                        className={classes.font80}
+                                        className={classes.title2}
                                         variant="body1"
                                     >
                                         Maximum {event.limit_per_user} per
@@ -140,7 +140,7 @@ export default function EventInfo({
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography align="center" variant="body1">
+                                <Typography align="center" className={classes.title2} variant="body1">
                                     {event.event_description}
                                 </Typography>
                             </Grid>
@@ -148,10 +148,10 @@ export default function EventInfo({
                             <Grid item xs={12}>
                                 <Box align="center">
                                     <Button
-                                    
+
                                         className={classes.margin}
                                         variant="outlined"
-                                        size="small"
+                                        size="medium"
                                         color="black"
                                         onClick={() =>
                                             applyAddToCart(event.event_id)
@@ -163,7 +163,7 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
-                        <Container style={{display: 'flex'}}><iframe src={map} width={"800"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
+                        <Container style={{display: 'flex'}}><iframe src={map} width={"1110"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
                     </CardContent>
                 </Card>
             </Container>
