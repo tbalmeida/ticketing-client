@@ -84,7 +84,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
         <div id="cartWrapper">
         <Container maxWidth="md">
             <Typography align="center" variant="h4" style={{padding: "1rem"}}>
-                {/* My Cart */}
                 Checkout details
                 </Typography>
             {cartItems.length===0 ? 
@@ -152,7 +151,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                   </Table>
                 </TableContainer>}
             </Container>
-              <Container maxWidth="sm" align="center">
+                  {cartItems.length === 0 ? null : <Container maxWidth="sm" align="center">
                   <Box style={{margin: "1rem"}}>
 
             <Button
@@ -177,11 +176,12 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 to={"/"}
                 aria-label="delete"
                 endIcon={<DeleteIcon />}
-            >
+                >
                 Clear cart
             </Button>
                   </Box>
               </Container>  
+            }
               </div>
     )
 }
