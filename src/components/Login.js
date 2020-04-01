@@ -270,6 +270,7 @@ export const Login = () => {
                         variant="outlined"
                         className={classes.clear}
                         onClick={clearData}
+                        style={{marginTop: '0.75rem'}}
                     >
                         Clear
                     </Button>

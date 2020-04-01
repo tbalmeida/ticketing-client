@@ -446,7 +446,7 @@ export default function SignUp() {
                         variant="outlined"
                         className={classes.submit}
                         onClick={clearData}
-                        style={{ backgroundColor: "#e8e8e8", outline: "none" }}
+                        style={{ backgroundColor: "#e8e8e8", outline: "none", marginTop: '0.75rem' }}
                     >
                         Clear
                     </Button>
