@@ -80,7 +80,10 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
     return (
         <div id="cartWrapper">
         <Container maxWidth="md">
-            <Typography align="center" variant="h4" style={{padding: "1rem"}}>My Cart</Typography>
+            <Typography align="center" variant="h4" style={{padding: "1rem"}}>
+                {/* My Cart */}
+                Checkout details
+                </Typography>
             {cartItems.length===0 ? 
             <Container  maxWidth="sm"><Alert/></Container> :
                 <TableContainer component={Paper}>

@@ -18,7 +18,7 @@ export const getEventFromEventsByEventId = (eventId, events) => {
         event => event.event_id === eventId || event.id === eventId
     );
 };
-
+const map = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d160599.78948270393!2d-114.22825994752141!3d51.02775509633721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170039f843fd5%3A0x266d3bb1b652b63a!2sCalgary%2C%20AB!5e0!3m2!1sen!2sca!4v1585719190554!5m2!1sen!2sca";
 export const convertDuration = function(string) {
     let finalResult = "";
     let stringArr = string.split(":");
@@ -80,7 +80,7 @@ export default function EventInfo({
             : getEventFromEventsByEventId(match.params.id, events);
     return (
         <div className={classes.height}>
-            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem"}}>
+            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
                 Event Info page
             </Typography>
             <Container maxWidth="md">
@@ -93,7 +93,7 @@ export default function EventInfo({
                                     <img height={200} src={event.event_img} />
                                 </Box>
                             </Grid>
-                            <Grid item container xs={8}>
+                            <Grid item container xs={8} align="left">
                                 <Grid
                                     item
                                     container
@@ -102,8 +102,7 @@ export default function EventInfo({
                                     justify="space-between"
                                 >
                                     <Typography id="card_title"
-                                        align="left"
-                                        className={classes.title1}
+                                        className={classes.title3}
                                         variant="body1"
                                     >
                                         {event.title}
@@ -145,8 +144,8 @@ export default function EventInfo({
                                     {event.event_description}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={8}></Grid>
-                            <Grid item xs={4}>
+                            {/* <Grid item xs={8}></Grid> */}
+                            <Grid item xs={12}>
                                 <Box align="center">
                                     <Button
                                         className={classes.margin}
@@ -163,6 +162,7 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
+                        <Container style={{display: 'flex'}}><iframe src={map} width={"480"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
                     </CardContent>
                 </Card>
             </Container>

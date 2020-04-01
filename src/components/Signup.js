@@ -44,8 +44,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 function putData(url, data) {
-    // return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//localhost
-    return axios.put(`/api/1.0${url}`, data);
+    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//localhost
+    // return axios.put(`/api/1.0${url}`, data);
 }
 export default function SignUp() {
     const { show, hide } = useContext(AlertContext);
@@ -252,6 +252,7 @@ export default function SignUp() {
     };
 
     return (
+        <Container id="signupWrapper">
         <Container component="main" maxWidth="xs">
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -458,6 +459,7 @@ export default function SignUp() {
                     </Grid>
                 </form>
             </div>
+        </Container>
         </Container>
     );
 }
