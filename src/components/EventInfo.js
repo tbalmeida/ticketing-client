@@ -80,10 +80,10 @@ export default function EventInfo({
             : getEventFromEventsByEventId(match.params.id, events);
     return (
         <div className={classes.height}>
-            <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
+            {/* <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
                 Event Info page
-            </Typography>
-            <Container maxWidth="md">
+            </Typography> */}
+            <Container maxWidth="md" style={{marginTop: '2rem'}}>
                 <Alert />
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
@@ -148,6 +148,7 @@ export default function EventInfo({
                             <Grid item xs={12}>
                                 <Box align="center">
                                     <Button
+                                    
                                         className={classes.margin}
                                         variant="outlined"
                                         size="small"
@@ -162,7 +163,7 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
-                        <Container style={{display: 'flex'}}><iframe src={map} width={"480"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
+                        <Container style={{display: 'flex'}}><iframe src={map} width={"800"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
                     </CardContent>
                 </Card>
             </Container>
