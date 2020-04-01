@@ -182,6 +182,7 @@ export const Login = () => {
     };
 
     return (
+        <Container id='loginWrapper'>
         <Box className={classes.paper}>
             <Container component="main" maxWidth="xs">
                 <Avatar className={classes.avatar}>
@@ -283,5 +284,6 @@ export const Login = () => {
                 </form>
             </Container>
         </Box>
+        </Container>
     );
 };

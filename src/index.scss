@@ -5,7 +5,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 
-
+@font-face {
+  font-family: 'RobotoCondensed';
+  src: url('components/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf') format('truetype');
+}
 
 * {
   box-sizing: border-box;
@@ -15,8 +18,9 @@
 
 body {
   padding-top: 0;
+
   }
-#root {
+#root, body, html {
   background-color: #f7faf1;
   color: black;
  }
@@ -33,7 +37,12 @@ body {
   // margin-bottom: 1rem;
   padding-top: 360px;
 }
-
+#loginWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
+}
 #backgroundImage {
   background-image: url(components/img/networking2.jpg);
   margin-bottom: 1rem;
