@@ -139,18 +139,18 @@ export default function EventList({ eventData, addToCart }) {
                 <Grid container spacing={2}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={4}>
-                            <Link
+                            {/* <Link
                                 to={{
                                     pathname: `/events/${event.event_id}`,
                                     state: event
                                 }}
-                            >
+                            > */}
                                 <Card className={classes.card}>
                                     <CardContent
                                         className={classes.cardContent}
                                     >
-                                        <Grid container border={1}>
-                                            <Grid item xs={6}>
+                                        <Grid container border={1} >
+                                            <Grid item xs={12} style={{minHeight: '100%', borderBottom: "2px solid black", padding: '0.5rem 0'}}>
                                                 <Typography
                                                     className={classes.title1}
                                                     variant="body1"
@@ -158,7 +158,7 @@ export default function EventList({ eventData, addToCart }) {
                                                     {event.title}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item xs={6} align="right">
+                                            <Grid item xs={12} align="center" style={{padding: '0.5rem 0'}}>
                                                 <Typography
                                                     className={classes.title2}
                                                     variant="body1"
@@ -175,8 +175,8 @@ export default function EventList({ eventData, addToCart }) {
                                                     )}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item xs={6}></Grid>
-                                            <Grid item xs={6} align="right">
+                                            {/* <Grid item xs={6}></Grid> */}
+                                            <Grid item xs={12} align="center" style={{padding: '0.5rem 0'}}>
                                                 <Typography
                                                     className={
                                                         classes.marginBottom
@@ -192,29 +192,33 @@ export default function EventList({ eventData, addToCart }) {
                                                     {event.event_description}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item xs={8}></Grid>
-                                            <Grid item xs={4} align="right">
+                                            {/* <Grid item xs={8}></Grid> */}
+                                            <Grid item xs={12} align="center" style={{padding: '1rem 0 0 0', borderTop: '2px solid black'}}>
                                                 <Button
-                                                    className={classes.margin}
+                                                    // className={classes.margin}
                                                     variant="outlined"
                                                     size="small"
                                                     color="black"
-                                                    onClick={() =>
-                                                        applyAddToCart(
-                                                            event.event_id
-                                                        )
-                                                    }
-                                                    endIcon={
-                                                        <AddShoppingCartIcon />
-                                                    }
+                                                    // onClick={() =>
+                                                    //     applyAddToCart(
+                                                    //         event.event_id
+                                                    //     )
+                                                    // }
+                                                    component={Link} to={{
+                                                        pathname: `/events/${event.event_id}`,
+                                                        state: event
+                                                    }}
+                                                    // endIcon={
+                                                    //     <AddShoppingCartIcon />
+                                                    // }
                                                 >
-                                                    Add to Cart
+                                                   Read more
                                                 </Button>
                                             </Grid>
                                         </Grid>
                                     </CardContent>
                                 </Card>
-                            </Link>
+                            {/* </Link> */}
                         </Grid>
                     ))}
                 </Grid>
