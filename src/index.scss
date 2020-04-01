@@ -43,7 +43,7 @@ body {
   // margin-bottom: 1rem;
   padding-top: 360px;
 }
-#loginWrapper {
+#loginWrapper, #signupWrapper {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -83,10 +83,6 @@ body {
 }
 
 #root > footer {
-//   position:absolute;
-// left:0;
-// bottom:0;
-// right:0;
   height: 2rem;
   padding-bottom: 1rem;
   clear: both;
@@ -96,11 +92,16 @@ body {
   margin-bottom: 3rem;
 }
 
-#email-label, #root > div.MuiBox-root.MuiBox-root-129.makeStyles-paper-124 > main > form > div:nth-child(2) > label, #firstName-label, #lastName-label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(4) > div > label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(5) > div > label {
+#email-label, #root > div.MuiBox-root.MuiBox-root-129.makeStyles-paper-124 > main > form > div:nth-child(2) > label, #firstName-label, 
+#lastName-label,
+ #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(4) > div > label, #root > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(5) > div > label, #loginWrapper > div > main > form > div:nth-child(2) > label,
+#signupWrapper > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(4) > div > label,
+#signupWrapper > main > div > form > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 > div:nth-child(5) > div > label {
   color: black;
 }
 label {
   margin: 0;
+  color: black
 }
 // #123 {
 //   height: 500px;

@@ -252,6 +252,7 @@ export default function SignUp() {
     };
 
     return (
+        <Container id="signupWrapper">
         <Container component="main" maxWidth="xs">
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -458,6 +459,7 @@ export default function SignUp() {
                     </Grid>
                 </form>
             </div>
+        </Container>
         </Container>
     );
 }
