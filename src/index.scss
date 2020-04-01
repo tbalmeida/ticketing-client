@@ -103,6 +103,12 @@ label {
   margin: 0;
   color: black
 }
+
+#footerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 // #123 {
 //   height: 500px;
 // }
