@@ -130,7 +130,6 @@ export const Login = () => {
             postData("/login", userData)
                 // axios.post("api/1.0/events/login", userData)
                 .then(response => {
-                    console.log("Login -> response.data[0]", response.data[0]);
                     sessionStorage.setItem("userId", response.data[0].handle); //creating a new user with key userId and value responce.bla.bla
                     sessionStorage.setItem(
                         "uName",

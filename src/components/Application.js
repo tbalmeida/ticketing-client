@@ -90,7 +90,6 @@ export default function Application() {
     useEffect(() => {
         Promise.all([getData("/events"), getData("/venues")])
             .then(all => {
-                console.log("Application -> all", all);
                 const [events, venues] = all;
                 setEvents(events.data);
                 setVenues(venues.data);

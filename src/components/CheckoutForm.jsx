@@ -23,7 +23,6 @@ const CardElementContainer = styled.div`
 `;
 
 const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
-    console.log("CheckoutForm -> cartItems", cartItems);
     const [isProcessing, setProcessingTo] = useState(false);
     const [checkoutError, setCheckoutError] = useState();
 
@@ -68,7 +67,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
                 card: cardElement,
                 billing_details: billingDetails
             });
-            console.log("CheckoutForm -> paymentMethodReq", paymentMethodReq);
 
             if (paymentMethodReq.error) {
                 setCheckoutError(paymentMethodReq.error.message);
