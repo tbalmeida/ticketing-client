@@ -12,7 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "./img/ticket-logo-png-clip-art2.png";
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Badge from "@material-ui/core/Badge";
 import { Link } from "react-router-dom";
 import { Collapse } from "@material-ui/core";
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1
     },
     menuButton: {
-        marginRight: theme.spacing(2) 
+        marginRight: theme.spacing(2)
     },
     title: {
         flexGrow: 1,
@@ -36,11 +36,11 @@ const useStyles = makeStyles(theme => ({
         margin: "5px",
         color: "inherit",
         "&:hover": {
-            // color: "white",
             border: "#8b8e94 solid 1px"
         }
     },
-    small: { //small here is just a small tag of html
+    small: {
+        //small here is just a small tag of html
         width: theme.spacing(3),
         height: theme.spacing(3)
     }
@@ -48,7 +48,8 @@ const useStyles = makeStyles(theme => ({
 
 const logoutFunction = () => sessionStorage.clear(); //removing all data from sessionStorage
 
-function HideOnScroll(props) { //hide the upper panel with login, signup etc when approaching the bottom of the page
+function HideOnScroll(props) {
+    //hide the upper panel with login, signup etc when approaching the bottom of the page
     const { children, window } = props;
     const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
@@ -68,46 +69,48 @@ HideOnScroll.propTypes = {
     window: PropTypes.func
 };
 
-export default function Header ({cartItems}) {
-    console.log("Header -> cartItems", cartItems)
+export default function Header({ cartItems }) {
+    console.log("Header -> cartItems", cartItems);
     const classes = useStyles();
     const cartTotalQuantity = cartItems.reduce((sum, cartItem) => {
         const quantity = cartItem.quantity;
         sum += quantity;
         return sum;
     }, 0);
-    
+
     return (
-        <Box className={classes.root} maxWidth="xs" marginTop={10} >
+        <Box className={classes.root} maxWidth="xs" marginTop={10}>
             <HideOnScroll>
                 <AppBar>
-                    
-                    <Toolbar id="back-to-top" >
-                        {/* <Typography>
-                            <img src={logo} alt="site logo" height={50} />
-                        </Typography> */}
+                    <Toolbar id="back-to-top">
                         <Tooltip
                             title="Home"
                             aria-label="Home button"
                             TransitionComponent={Zoom}
                             placement="bottom"
                         >
-                            <Button className={classes.buttonStyle} component={Link} to={"/"}>
+                            <Button
+                                className={classes.buttonStyle}
+                                component={Link}
+                                to={"/"}
+                            >
                                 Home
                             </Button>
                         </Tooltip>
                         <Typography
-                        align="center"
+                            align="center"
                             variant="h4"
                             className={classes.title}
-                        >Ticketing 4 Good</Typography>
+                        >
+                            Ticketing 4 Good
+                        </Typography>
                         {userId ? (
                             <>
                                 <Avatar
                                     style={{ marginRight: "5px" }}
                                     className={classes.small}
                                 />
-                               {uName}
+                                {uName}
                                 <Tooltip
                                     title="Logout"
                                     aria-label="Logout button"
@@ -115,6 +118,7 @@ export default function Header ({cartItems}) {
                                     placement="bottom"
                                 >
                                     <Button
+                                        style={{ margin: "0 1.5rem" }}
                                         className={classes.buttonStyle}
                                         onClick={logoutFunction}
                                         href="/"
@@ -122,9 +126,19 @@ export default function Header ({cartItems}) {
                                         Logout
                                     </Button>
                                 </Tooltip>
-                                <Badge style={{color:'black'}} component={Link}
-                to={"/cart"} size="large" badgeContent={cartItems[0] ? `${cartTotalQuantity}` : null}><ShoppingCartIcon  ></ShoppingCartIcon></Badge>
-                                  
+                                <Badge
+                                    style={{ color: "black" }}
+                                    component={Link}
+                                    to={"/cart"}
+                                    size="large"
+                                    badgeContent={
+                                        cartItems[0]
+                                            ? `${cartTotalQuantity}`
+                                            : null
+                                    }
+                                >
+                                    <ShoppingCartIcon></ShoppingCartIcon>
+                                </Badge>
                             </>
                         ) : (
                             <>

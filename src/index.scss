@@ -1,8 +1,6 @@
 @import "~normalize.css/normalize.css";
 @import "~bootstrap/scss/bootstrap";
 
-// @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
-
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 
 @font-face {
@@ -90,8 +88,7 @@ body {
 }
 
 #root > footer {
-  height: 2rem;
-  padding-bottom: 1rem;
+  height: 3rem;
   clear: both;
 }
 
@@ -116,36 +113,35 @@ label {
   flex-direction: row;
   justify-content: space-around;
 }
-
-#root > div.MuiBox-root.jss129.jss124 > main > form > div:nth-child(2) > label {
-  color: black;
+#orderWrapper {
+  background-image: url(components/img/handshake.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-// #123 {
-//   height: 500px;
-// }
+td {
+  min-height: 54px;
+}
 
+#clearCart:hover
+{
+  color: red;
+}
+#cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthSm > div > a:nth-child(2):hover {
+  color: green;
+}
 
-// .alert .alert-primary {
-//   padding: 2rem;
-//   margin: 2rem;
-// }
-// .layout {
-//   display: flex;
-//   min-height: 100vh;
-// }
+#footerWrapper p > svg {
+  color: #296a8c;
+}
 
-// @media only screen and (max-width: 960px) {
-//   html {
-//     font-size: 12px;
-//   }
+#editing-view-port > div:focus,
+.form-control:focus {
+  box-shadow: none;
+  color: white;
+}
 
-//   .layout {
-//     flex-direction: column;
-//   }
-// }
-
-// @media only screen and (max-width: 320px) {
-//   html {
-//     font-size: 10px;
-//   }
-// }
+input[type="search"]::-webkit-search-cancel-button {
+  /* Remove default */
+  -webkit-appearance: none;
+ }

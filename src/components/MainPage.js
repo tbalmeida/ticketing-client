@@ -9,7 +9,7 @@ export function getData(url) {
 }
 
 function MainPage({ events, addToCart }) {
-    console.log("MainPage -> events", events)
+    console.log("MainPage -> events", events);
     return (
         <>
             <div>

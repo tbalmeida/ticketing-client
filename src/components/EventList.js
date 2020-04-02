@@ -9,12 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
-import TypeSentence from "./TypedSentence";
 import { Alert } from "components/Alert";
 import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
-import Theatre from "./img/theatre.png";
-import Golden from "./img/golden-ticket.jpg";
 import BackspaceSharpIcon from "@material-ui/icons/BackspaceSharp";
 import moment from "moment";
 import { convertTime } from "components/EventInfo";
@@ -28,7 +25,7 @@ import { ScrollTop } from "components/Helper Functions/ScrollToTop";
 export default function EventList({ eventData, addToCart }) {
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
-    
+
     const { show, hide } = useContext(AlertContext);
     const applyAddToCart = eventID => {
         if (!userId) {
@@ -75,49 +72,14 @@ export default function EventList({ eventData, addToCart }) {
     return (
         <Fragment>
             <div id="backgroundImage" className={classes.fontFamily}>
-                {/* <Container maxWidth="md"> */}
-                {/* <Typography
-                        component="h1"
-                        variant="h2"
-                        align="center"
-                        color="textPrimary"
-                        gutterBottom
-                        className={classes.gutterBottom}
-                    > */}
-                {/* <img
-                            src={Golden}
-                            alt="site logo"
-                            height={100}
-                            margin="1em"
-                        />
-                        <img src={Theatre} alt="site logo" height={70} /> */}
-                {/* </Typography> */}
-                {/* <TypeSentence /> */}
-                {/* </Container>
-                <Container maxWidth="sm"> */}
-
-                {/* <Button
-                            size="medium"
-                            variant="outlined"
-                            color="primary"
-                            onClick={clearSearch}
-                            endIcon={<BackspaceSharpIcon />}
-                        >
-                            Clear
-                        </Button> */}
-
-                {/* </Container> */}
-
-                {/* {!userId && (
-                    <div className={classes.loginRequest}>
-                        Please login or signup to buy an event ticket
-                    </div>
-                )} */}
-
-                <Container id="search" maxWidth="md" className={classes.fontFamily}>
+                <Container
+                    id="search"
+                    maxWidth="md"
+                    className={classes.fontFamily}
+                >
                     <form>
                         <input
-                        className={classes.fontFamily}
+                            className={classes.fontFamily}
                             variant="outlined"
                             color="primary"
                             id="searchEvents"
@@ -135,109 +97,119 @@ export default function EventList({ eventData, addToCart }) {
             </div>
 
             <Divider variant="middle" />
-            <Container className={classes.cardGrid} maxWidth="lg" >
+            <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={2}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={4}>
-                            {/* <Link
-                                to={{
-                                    pathname: `/events/${event.event_id}`,
-                                    state: event
-                                }}
-                            > */}
-                                <Card className={classes.card}>
-                                    <CardContent
-                                        className={classes.cardContent}
-                                    >
-                                        <Grid container border={1} >
-                                            <Grid item xs={12} style={{minHeight: '100%', borderBottom: "2px solid black", padding: '0.5rem 0'}}>
-                                                <Typography
-                                                    className={classes.title1}
-                                                    variant="body1"
-                                                >
-                                                    {event.title}
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={12} align="center" style={{padding: '0.5rem 0'}}>
-                                                <Typography
-                                                    className={classes.title2}
-                                                    variant="body1"
-                                                >
-                                                    {moment(
-                                                        event.event_date
-                                                    ).format(
-                                                        "MMM Do YYYY",
-                                                        event.event_date
-                                                    )}{" "}
-                                                    at{" "}
-                                                    {convertTime(
-                                                        event.event_time
-                                                    )}
-                                                </Typography>
-                                            </Grid>
-                                            {/* <Grid item xs={6}></Grid> */}
-                                            <Grid item xs={12} align="center" style={{padding: '0.5rem 0'}}>
-                                                <Typography
-                                                    className={
-                                                        classes.marginBottom
-                                                    }
-                                                    variant="body1"
-                                                    >
-                                                    {event.venue_name}
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={12} align="justify" style={{minHeight: '5rem'}}>
-                                                <Typography variant="body1" >
-                                                    {" "}
-                                                    {event.event_description}
-                                                </Typography>
-                                            </Grid>
-                                            {/* <Grid item xs={8}></Grid> */}
-                                            <Grid item xs={12} align="center" style={{padding: '1rem 0 0 0', fontWeight: "bold"}}>
-                                                <Button
-                                                    // className={classes.margin}
-                                                    variant="outlined"
-                                                    size="small"
-                                                    color="black"
-                                                    // onClick={() =>
-                                                    //     applyAddToCart(
-                                                    //         event.event_id
-                                                    //     )
-                                                    // }
-                                                    component={Link} to={{
-                                                        pathname: `/events/${event.event_id}`,
-                                                        state: event
-                                                    }}
-                                                    // endIcon={
-                                                    //     <AddShoppingCartIcon />
-                                                    // }
-                                                >
-                                                   Read more
-                                                </Button>
-                                            </Grid>
+                            <Card className={classes.card}>
+                                <CardContent className={classes.cardContent}>
+                                    <Grid container border={1}>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            style={{
+                                                minHeight: "100%",
+                                                borderBottom: "2px solid black",
+                                                padding: "0.5rem 0"
+                                            }}
+                                        >
+                                            <Typography
+                                                className={classes.title1}
+                                                variant="body1"
+                                            >
+                                                {event.title}
+                                            </Typography>
                                         </Grid>
-                                    </CardContent>
-                                </Card>
-                            {/* </Link> */}
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            align="center"
+                                            style={{ padding: "0.5rem 0" }}
+                                        >
+                                            <Typography
+                                                className={classes.title2}
+                                                variant="body1"
+                                            >
+                                                {moment(
+                                                    event.event_date
+                                                ).format(
+                                                    "MMM Do YYYY",
+                                                    event.event_date
+                                                )}{" "}
+                                                at{" "}
+                                                {convertTime(event.event_time)}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            align="center"
+                                            style={{ padding: "0.5rem 0" }}
+                                        >
+                                            <Typography
+                                                className={classes.marginBottom}
+                                                variant="body1"
+                                            >
+                                                {event.venue_name}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            align="justify"
+                                            style={{ minHeight: "5rem" }}
+                                        >
+                                            <Typography
+                                                variant="body1"
+                                                align="justify"
+                                            >
+                                                {event.event_description}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            align="center"
+                                            style={{
+                                                padding: "1rem 0 0 0",
+                                                fontWeight: "bold"
+                                            }}
+                                        >
+                                            <Button
+                                                variant="outlined"
+                                                size="small"
+                                                color="black"
+                                                component={Link}
+                                                to={{
+                                                    pathname: `/events/${event.event_id}`,
+                                                    state: event
+                                                }}
+                                            >
+                                                Read more
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
                         </Grid>
                     ))}
                 </Grid>
-            <ScrollTop>
-                <Tooltip
-                    title="Go to Top"
-                    aria-label="Go to Top button"
-                    TransitionComponent={Zoom}
-                >
-                    <Fab
-                        color="primary"
-                        size="medium"
-                        aria-label="scroll back to top"
-                        style={{ outline: "none" }}
+                <ScrollTop>
+                    <Tooltip
+                        title="Go to Top"
+                        aria-label="Go to Top button"
+                        TransitionComponent={Zoom}
                     >
-                        <KeyboardArrowUpIcon />
-                    </Fab>
-                </Tooltip>
-            </ScrollTop>
+                        <Fab
+                            color="primary"
+                            size="medium"
+                            aria-label="scroll back to top"
+                            style={{ outline: "none" }}
+                        >
+                            <KeyboardArrowUpIcon />
+                        </Fab>
+                    </Tooltip>
+                </ScrollTop>
             </Container>
         </Fragment>
     );

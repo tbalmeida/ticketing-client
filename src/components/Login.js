@@ -22,7 +22,7 @@ import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import clsx from "clsx";
-import { useToasts } from 'react-toast-notifications'
+import { useToasts } from "react-toast-notifications";
 
 export function postData(url, data) {
     // return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//for local
@@ -58,30 +58,28 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const Login = () => {
-    const { addToast } = useToasts()
-  
-  const [form, setForm] = useState({
-    //alternative to use useReducer or Redux
-    email: "",
-    password: "",
-    emailError: false,
-    passwordError: false,
-    emailHelperText: "",
-    passwordHelperText: ""
-  });
-  const { show, hide } = useContext(AlertContext); 
-  useEffect(() => {
-    return hide;
-}, [])
-  const changeHandler = event => {
-    //will be used later as onChange method while rendering
-    setForm({ ...form, [event.target.name]: event.target.value }); //form is our state and it changes everything, event.target.name = name, email etc
-  };
-  
+    const [form, setForm] = useState({
+        //alternative to use useReducer or Redux
+        email: "",
+        password: "",
+        emailError: false,
+        passwordError: false,
+        emailHelperText: "",
+        passwordHelperText: ""
+    });
+    const { show, hide } = useContext(AlertContext);
+    useEffect(() => {
+        return hide;
+    }, []);
+    const changeHandler = event => {
+        //will be used later as onChange method while rendering
+        setForm({ ...form, [event.target.name]: event.target.value }); //form is our state and it changes everything, event.target.name = name, email etc
+    };
+
     const handleChange = prop => event => {
         setForm({ ...form, [prop]: event.target.value });
     };
-  const handleClickShowPassword = () => {
+    const handleClickShowPassword = () => {
         setForm({ ...form, showPassword: !form.showPassword });
     };
 
@@ -130,7 +128,7 @@ export const Login = () => {
 
         if (dataValid) {
             postData("/login", userData)
-            // axios.post("api/1.0/events/login", userData)
+                // axios.post("api/1.0/events/login", userData)
                 .then(response => {
                     console.log("Login -> response.data[0]", response.data[0]);
                     sessionStorage.setItem("userId", response.data[0].handle); //creating a new user with key userId and value responce.bla.bla
@@ -147,13 +145,10 @@ export const Login = () => {
                     // show('the user was successfully logged in', 'success')
                 })
                 .catch(error => {
-                    // addToast('Hello world!', {
-                    //     appearance: 'error',
-                    //     autoDismiss: true,
-                    //   })
                     show(error.response.data.message, "danger");
-                    setTimeout(() => { hide()}, 3000); //use alert context with danger class
-                    // console.log('the following error occurred', error)
+                    setTimeout(() => {
+                        hide();
+                    }, 3000); //use alert context with danger class
                 });
         }
     };

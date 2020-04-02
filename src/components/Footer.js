@@ -3,6 +3,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import MailIcon from '@material-ui/icons/Mail';
+import CallIcon from '@material-ui/icons/Call';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const useStyles = makeStyles({  //creating function that's using styles 
   root: {    
@@ -20,19 +23,19 @@ function Copyright() { //will be rendered
     <div id="footerWrapper">
       <Box style={{padding: '0 5rem'}}>
     <Typography variant="body2" color="black" align="center">
-      Our phone number is +1855555555
+      <CallIcon fontSize="large"/>
+      Call us: +1855555555
     </Typography>
       </Box>
       <Box style={{padding: '0 5rem'}}>
     <Typography variant="body2" color="black" align="center">
-      {'Copyright © '} Anton and Thiago's <strong>ticketing</strong> incorporation! 
-      {new Date().getFullYear()}
-      {'.'}
+      <LocationOnIcon fontSize="large"/>Calgary, Canada
     </Typography >
       </Box>
       <Box style={{padding: '0 5rem'}}>
+        
     <Typography variant="body2" color="black" align="center">
-      Email: ticketing4goog@gmail.com
+    <MailIcon fontSize="large" style={{}}/> ticketing4goog@gmail.com
     </Typography>
       </Box>
     </div>

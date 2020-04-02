@@ -88,14 +88,9 @@ export default function Application() {
         }
     };
     useEffect(() => {
-        Promise.all([
-            getData("/events"),
-            //  axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/events`),
-            //  axios.get(`https://radiant-escarpment-02459.herokuapp.com/api/1.0/venues`)
-            getData("/venues")
-        ])
+        Promise.all([getData("/events"), getData("/venues")])
             .then(all => {
-            console.log("Application -> all", all)
+                console.log("Application -> all", all);
                 const [events, venues] = all;
                 setEvents(events.data);
                 setVenues(venues.data);
