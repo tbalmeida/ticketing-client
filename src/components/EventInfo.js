@@ -18,7 +18,8 @@ export const getEventFromEventsByEventId = (eventId, events) => {
         event => event.event_id === eventId || event.id === eventId
     );
 };
-const map = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d160599.78948270393!2d-114.22825994752141!3d51.02775509633721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170039f843fd5%3A0x266d3bb1b652b63a!2sCalgary%2C%20AB!5e0!3m2!1sen!2sca!4v1585719190554!5m2!1sen!2sca";
+const map = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
+
 export const convertDuration = function(string) {
     let finalResult = "";
     let stringArr = string.split(":");
