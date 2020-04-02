@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import React from 'react';
 

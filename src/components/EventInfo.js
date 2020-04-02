@@ -18,7 +18,8 @@ export const getEventFromEventsByEventId = (eventId, events) => {
         event => event.event_id === eventId || event.id === eventId
     );
 };
-const map = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
+const map =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
 
 export const convertDuration = function(string) {
     let finalResult = "";
@@ -60,12 +61,16 @@ export default function EventInfo({
     const applyAddToCart = eventID => {
         if (!userId) {
             show("Please login first", "danger");
-            setTimeout(() => { hide()}, 5000); 
+            setTimeout(() => {
+                hide();
+            }, 5000);
         } else {
             //if item in the cart don't do anything and show the
             show("Item was added to the card", "success");
             addToCart(eventID);
-            setTimeout(() => { hide()}, 5000);
+            setTimeout(() => {
+                hide();
+            }, 5000);
         }
     };
 
@@ -81,10 +86,7 @@ export default function EventInfo({
             : getEventFromEventsByEventId(match.params.id, events);
     return (
         <div className={classes.height}>
-            {/* <Typography gutterBottom align="center" variant="h4" style={{padding: "1rem", textTransform: "uppercase", fontWeight: "bold"}}>
-                Event Info page
-            </Typography> */}
-            <Container maxWidth="lg" style={{marginTop: '2rem'}}>
+            <Container maxWidth="lg" style={{ marginTop: "2rem" }}>
                 <Alert />
                 <Card className={classes.card}>
                     <CardContent className={classes.cardContent}>
@@ -102,7 +104,8 @@ export default function EventInfo({
                                     direction="column"
                                     justify="space-between"
                                 >
-                                    <Typography id="card_title"
+                                    <Typography
+                                        id="card_title"
                                         className={classes.title3}
                                         variant="body1"
                                     >
@@ -126,7 +129,11 @@ export default function EventInfo({
                                     >
                                         {event.venue_name}
                                     </Typography>
-                                    <Typography align="left" className={classes.title2} variant="body1">
+                                    <Typography
+                                        align="left"
+                                        className={classes.title2}
+                                        variant="body1"
+                                    >
                                         {event.total_issued} available -{" "}
                                         {event.price}
                                     </Typography>
@@ -141,15 +148,17 @@ export default function EventInfo({
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography align="justify" className={classes.title2} variant="body1">
+                                <Typography
+                                    align="justify"
+                                    className={classes.title2}
+                                    variant="body1"
+                                >
                                     {event.event_description}
                                 </Typography>
                             </Grid>
-                            {/* <Grid item xs={8}></Grid> */}
                             <Grid item xs={12}>
                                 <Box align="center">
                                     <Button
-
                                         className={classes.margin}
                                         variant="outlined"
                                         size="medium"
@@ -164,7 +173,18 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
-                        <Container style={{display: 'flex'}}><iframe src={map} width={"1110"} height={"360"} frameborder={"0"} style={{border: "0", margin: '0 auto'}} allowfullscreen={"true"} aria-hidden={"false"} tabindex={"0"}></iframe></Container>
+                        <Container style={{ display: "flex" }}>
+                            <iframe
+                                src={map}
+                                width={"1110"}
+                                height={"360"}
+                                frameborder={"0"}
+                                style={{ border: "0", margin: "0 auto" }}
+                                allowfullscreen={"true"}
+                                aria-hidden={"false"}
+                                tabindex={"0"}
+                            ></iframe>
+                        </Container>
                     </CardContent>
                 </Card>
             </Container>

@@ -22,10 +22,10 @@ import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import clsx from "clsx";
-import { useToasts } from 'react-toast-notifications'
+import { useToasts } from "react-toast-notifications";
 
 export function postData(url, data) {
-    return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//for local
+    return axios.post(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data); //for local
     // return axios.post(`/api/1.0${url}`, data);//for heroku
 }
 
@@ -58,30 +58,28 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const Login = () => {
-    const { addToast } = useToasts()
-  
-  const [form, setForm] = useState({
-    //alternative to use useReducer or Redux
-    email: "",
-    password: "",
-    emailError: false,
-    passwordError: false,
-    emailHelperText: "",
-    passwordHelperText: ""
-  });
-  const { show, hide } = useContext(AlertContext); 
-  useEffect(() => {
-    return hide;
-}, [])
-  const changeHandler = event => {
-    //will be used later as onChange method while rendering
-    setForm({ ...form, [event.target.name]: event.target.value }); //form is our state and it changes everything, event.target.name = name, email etc
-  };
-  
+    const [form, setForm] = useState({
+        //alternative to use useReducer or Redux
+        email: "",
+        password: "",
+        emailError: false,
+        passwordError: false,
+        emailHelperText: "",
+        passwordHelperText: ""
+    });
+    const { show, hide } = useContext(AlertContext);
+    useEffect(() => {
+        return hide;
+    }, []);
+    const changeHandler = event => {
+        //will be used later as onChange method while rendering
+        setForm({ ...form, [event.target.name]: event.target.value }); //form is our state and it changes everything, event.target.name = name, email etc
+    };
+
     const handleChange = prop => event => {
         setForm({ ...form, [prop]: event.target.value });
     };
-  const handleClickShowPassword = () => {
+    const handleClickShowPassword = () => {
         setForm({ ...form, showPassword: !form.showPassword });
     };
 
@@ -130,7 +128,7 @@ export const Login = () => {
 
         if (dataValid) {
             postData("/login", userData)
-            // axios.post("api/1.0/events/login", userData)
+                // axios.post("api/1.0/events/login", userData)
                 .then(response => {
                     console.log("Login -> response.data[0]", response.data[0]);
                     sessionStorage.setItem("userId", response.data[0].handle); //creating a new user with key userId and value responce.bla.bla
@@ -147,13 +145,10 @@ export const Login = () => {
                     // show('the user was successfully logged in', 'success')
                 })
                 .catch(error => {
-                    // addToast('Hello world!', {
-                    //     appearance: 'error',
-                    //     autoDismiss: true,
-                    //   })
                     show(error.response.data.message, "danger");
-                    setTimeout(() => { hide()}, 3000); //use alert context with danger class
-                    // console.log('the following error occurred', error)
+                    setTimeout(() => {
+                        hide();
+                    }, 3000); //use alert context with danger class
                 });
         }
     };
@@ -182,109 +177,120 @@ export const Login = () => {
     };
 
     return (
-        <Container id='loginWrapper'>
-        <Box className={classes.paper}>
-            <Container component="main" maxWidth="xs">
-                <Avatar className={classes.avatar}>
-                    <VpnKeyRoundedIcon />
-                </Avatar>
-                <Typography component="h1" align="center" variant="h5" color="black">
-                    Sign in
-                </Typography>
-                <Alert />
-                <form
-                    className={classes.form}
-                    noValidate
-                    onSubmit={loginValidation}
-                >
-                    <TextField
-                        variant="filled"
-                        margin="normal"
-                        value={form.email}
-                        required
-                        fullWidth
-                        type="email"
-                        id="email"
-                        label="Email Address"
+        <Container id="loginWrapper">
+            <Box className={classes.paper}>
+                <Container component="main" maxWidth="xs">
+                    <Avatar className={classes.avatar}>
+                        <VpnKeyRoundedIcon />
+                    </Avatar>
+                    <Typography
+                        component="h1"
+                        align="center"
+                        variant="h5"
                         color="black"
-                        name="email"
-                        autoComplete="email"
-                        onChange={changeHandler}
-                        onFocus={clearForm}
-                        error={form.emailError}
-                        helperText={form.emailHelperText}
-                        autoFocus
-                    />
-                    <FormControl
-                        fullWidth
-                        className={clsx(classes.margin, classes.textField)}
-                        variant="filled"
-                        margin="normal"
-                        name="password"
-                        color="black"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"
                     >
-                        <InputLabel htmlFor="password">Password*</InputLabel>
-                        <FilledInput
-                            id="password"
-                            type={form.showPassword ? "text" : "password"}
-                            value={form.password}
-                            onChange={handleChange("password")}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {form.showPassword ? (
-                                            <Visibility />
-                                        ) : (
-                                            <VisibilityOff />
-                                        )}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
+                        Sign in
+                    </Typography>
+                    <Alert />
+                    <form
+                        className={classes.form}
+                        noValidate
+                        onSubmit={loginValidation}
+                    >
+                        <TextField
+                            variant="filled"
+                            margin="normal"
+                            value={form.email}
+                            required
+                            fullWidth
+                            type="email"
+                            id="email"
+                            label="Email Address"
+                            color="black"
+                            name="email"
+                            autoComplete="email"
+                            onChange={changeHandler}
+                            onFocus={clearForm}
+                            error={form.emailError}
+                            helperText={form.emailHelperText}
+                            autoFocus
                         />
-                    </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="black" />}
-                        label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="outlined"
-                        color="black"
-                        className={classes.submit}
-                    >
-                        Sign In
-                    </Button>
+                        <FormControl
+                            fullWidth
+                            className={clsx(classes.margin, classes.textField)}
+                            variant="filled"
+                            margin="normal"
+                            name="password"
+                            color="black"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                        >
+                            <InputLabel htmlFor="password">
+                                Password*
+                            </InputLabel>
+                            <FilledInput
+                                id="password"
+                                type={form.showPassword ? "text" : "password"}
+                                value={form.password}
+                                onChange={handleChange("password")}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={
+                                                handleMouseDownPassword
+                                            }
+                                            edge="end"
+                                        >
+                                            {form.showPassword ? (
+                                                <Visibility />
+                                            ) : (
+                                                <VisibilityOff />
+                                            )}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="remember" color="black" />
+                            }
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="outlined"
+                            color="black"
+                            className={classes.submit}
+                        >
+                            Sign In
+                        </Button>
 
-                    <Button
-                        type="button"
-                        fullWidth
-                        variant="outlined"
-                        className={classes.clear}
-                        onClick={clearData}
-                        style={{marginTop: '0.75rem'}}
-                    >
-                        Clear
-                    </Button>
-                    <Grid container>
-                        <Grid item xs></Grid>
-                        <Grid item>
-                            <Link href="/signup" variant="body2">
-                                Don't have an account? Sign Up
-                            </Link>
+                        <Button
+                            type="button"
+                            fullWidth
+                            variant="outlined"
+                            className={classes.clear}
+                            onClick={clearData}
+                            style={{ marginTop: "0.75rem" }}
+                        >
+                            Clear
+                        </Button>
+                        <Grid container>
+                            <Grid item xs></Grid>
+                            <Grid item>
+                                <Link href="/signup" variant="body2">
+                                    Don't have an account? Sign Up
+                                </Link>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </form>
-            </Container>
-        </Box>
+                    </form>
+                </Container>
+            </Box>
         </Container>
     );
 };
