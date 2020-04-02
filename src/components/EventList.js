@@ -187,8 +187,7 @@ export default function EventList({ eventData, addToCart }) {
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={12} align="justify" style={{minHeight: '5rem'}}>
-                                                <Typography variant="body1" >
-                                                    {" "}
+                                                <Typography variant="body1" align='justify'>
                                                     {event.event_description}
                                                 </Typography>
                                             </Grid>

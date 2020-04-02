@@ -140,7 +140,7 @@ export default function EventInfo({
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography align="center" className={classes.title2} variant="body1">
+                                <Typography align="justify" className={classes.title2} variant="body1">
                                     {event.event_description}
                                 </Typography>
                             </Grid>
