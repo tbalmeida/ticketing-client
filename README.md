@@ -12,4 +12,18 @@ Install dependencies with `npm install`.
 
 Main page
 !["Main page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Main%20page.png)
+Login page
+!["Login page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Sign%20in%20page.png)
+Sign up page
+!["Sign up page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Sign%20up%20page.png)
+Event info page
+!["Event info page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Event%20info%20page.png)
+Cart page
+!["Cart page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Cart%20page.png)
+Checkout page
+!["Checkout page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Checkout%20page.png)
+Stripe successful page
+!["Stripe successful page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Stripe%20successful%20page.png)
+Email confirmation page
+!["Email confirmation page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Email%20confirmation.png)
 
