@@ -8,6 +8,11 @@ To see a production version on Netlify please go here [Netlify](https://ticketin
 
 Install dependencies with `npm install`.
 
+## Stack
+
+- [React](https://reactjs.org/)
+- [MaterialUI](http://material-ui.com/)
+
 ## Screenshot of the app
 
 Main page
