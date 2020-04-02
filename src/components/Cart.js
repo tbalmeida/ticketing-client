@@ -89,7 +89,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 <Typography
                     align="center"
                     variant="h4"
-                    style={{ padding: "1rem" }}
+                    style={{ padding: "2rem 0" }}
                 >
                     Checkout details
                 </Typography>
