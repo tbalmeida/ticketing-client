@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 const Container = styled.div`
-  width: 575px;
+  // width: 575px;
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
-  color: red;
+  color: black;
+  min-height: 90vh;
+  background-image: url(components/img/handshake.jpg);
 `;
 
 const Title = styled.div`
@@ -17,7 +19,7 @@ const Title = styled.div`
 
 const Message = styled.div`
   margin-top: 40px;
-  font-size: 24px;
+  font-size: 36px;
 `;
 
 export default () => {
@@ -32,8 +34,7 @@ export default () => {
   });
 
   return (
-      <Container>
-        <Confetti width={width} height={height} numberOfPieces={450} />
+      <Container id='orderWrapper'>
         <Title>Congrats!</Title>
         <Message>Stripe has successfully processed your payment</Message>
       </Container>

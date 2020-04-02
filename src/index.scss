@@ -116,7 +116,12 @@ label {
   flex-direction: row;
   justify-content: space-around;
 }
-
+#orderWrapper {
+  background-image: url(components/img/handshake.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 td {
   min-height: 54px;
 }

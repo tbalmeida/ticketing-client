@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "./EventListStyles.js";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
-import TypeSentence from "./TypedSentence";
 import { Alert } from "components/Alert";
 import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
