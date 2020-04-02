@@ -126,8 +126,6 @@ td {
   min-height: 54px;
 }
 
-#cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthSm > div > a.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.makeStyles-marginR-330:hover,
-#cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthSm > div > a.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.makeStyles-marginR-328:hover,
 #clearCart:hover
 {
   color: red;
@@ -139,3 +137,18 @@ td {
 #footerWrapper p > svg {
   color: #296a8c;
 }
+
+#editing-view-port > div:focus,
+.form-control:focus {
+  box-shadow: none;
+  color: white;
+}
+
+#search-clear::-webkit-search-cancel-button {
+  color: white;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  /* Remove default */
+  -webkit-appearance: none;
+ }
