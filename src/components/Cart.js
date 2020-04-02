@@ -31,6 +31,7 @@ const StyledTableCell = withStyles(theme => ({
     // backgroundColor: theme.palette.common.grey,
     backgroundColor: '#e8e8e8',
     color: theme.palette.common.black,
+    border: 'none',
     fontSize: '1.2rem'
   },
   body: {
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
     fontSize: '1.2rem',
   },
   marginR: {
-      marginRight: 10
+      marginRight: "3rem"
   }
 });
 
@@ -101,10 +102,10 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                         </TableHead>
                         <TableBody>
                             {cartItems.map(event => (
-                            <StyledTableRow key={event.id}>
-                                <StyledTableCell component="th" scope="row">{event.title}</StyledTableCell>
-                                <StyledTableCell align="right">{formatPrice(event.price * 100)}</StyledTableCell>
-                                <StyledTableCell align="right" style={{ display: "flex" }}>
+                            <StyledTableRow style={{borderBottom: '1px solid black'}} key={event.id}>
+                                <StyledTableCell component="th" style={{border: 'none'}} scope="row">{event.title}</StyledTableCell>
+                                <StyledTableCell align="right" style={{border: 'none'}}>{formatPrice(event.price * 100)}</StyledTableCell>
+                                <StyledTableCell align="right" style={{ display: "flex", border: 'none' }}>
                                     <Badge max={5}
                                         color="secondary"
                                         badgeContent={event.quantity}
@@ -131,8 +132,8 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                                         </ButtonGroup>
                                     </div>
                                         </StyledTableCell>
-                                <StyledTableCell align="right">{event.limit}</StyledTableCell>
-                                <StyledTableCell align="right">
+                                <StyledTableCell align="right" style={{border: 'none'}}>{event.limit}</StyledTableCell>
+                                <StyledTableCell align="right" style={{border: 'none'}}>
                                         {formatPrice(
                                            event.quantity * event.price * 100
                                         )}
@@ -158,18 +159,6 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 className={classes.marginR}
                 variant="outlined"
                 size="medium"
-                color="black"
-                component={Link}
-                to={"/checkout"}
-                aria-label="delete"
-                endIcon={<CreditCardIcon />}
-            >
-                Checkout
-            </Button>
-            <Button
-                className={classes.margin}
-                variant="outlined"
-                size="medium"
                 onClick={removeCartItems}
                 color="black"
                 component={Link}
@@ -178,6 +167,18 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                 endIcon={<DeleteIcon />}
                 >
                 Clear cart
+            </Button>
+            <Button
+                className={classes.margin}
+                variant="outlined"
+                size="medium"
+                color="black"
+                component={Link}
+                to={"/checkout"}
+                aria-label="delete"
+                endIcon={<CreditCardIcon />}
+            >
+                Checkout
             </Button>
                   </Box>
               </Container>  
