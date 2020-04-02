@@ -156,6 +156,7 @@ export default function Cart({ cartItems, updateQuantity, removeCartItems }) {
                   <Box style={{margin: "1rem"}}>
 
             <Button
+            id='clearCart'
                 className={classes.marginR}
                 variant="outlined"
                 size="medium"
