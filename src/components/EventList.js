@@ -12,8 +12,6 @@ import Divider from "@material-ui/core/Divider";
 import { Alert } from "components/Alert";
 import { AlertContext } from "components/context/alert/alertContext";
 import PropTypes from "prop-types";
-import Theatre from "./img/theatre.png";
-import Golden from "./img/golden-ticket.jpg";
 import BackspaceSharpIcon from "@material-ui/icons/BackspaceSharp";
 import moment from "moment";
 import { convertTime } from "components/EventInfo";
@@ -74,45 +72,6 @@ export default function EventList({ eventData, addToCart }) {
     return (
         <Fragment>
             <div id="backgroundImage" className={classes.fontFamily}>
-                {/* <Container maxWidth="md"> */}
-                {/* <Typography
-                        component="h1"
-                        variant="h2"
-                        align="center"
-                        color="textPrimary"
-                        gutterBottom
-                        className={classes.gutterBottom}
-                    > */}
-                {/* <img
-                            src={Golden}
-                            alt="site logo"
-                            height={100}
-                            margin="1em"
-                        />
-                        <img src={Theatre} alt="site logo" height={70} /> */}
-                {/* </Typography> */}
-                {/* <TypeSentence /> */}
-                {/* </Container>
-                <Container maxWidth="sm"> */}
-
-                {/* <Button
-                            size="medium"
-                            variant="outlined"
-                            color="primary"
-                            onClick={clearSearch}
-                            endIcon={<BackspaceSharpIcon />}
-                        >
-                            Clear
-                        </Button> */}
-
-                {/* </Container> */}
-
-                {/* {!userId && (
-                    <div className={classes.loginRequest}>
-                        Please login or signup to buy an event ticket
-                    </div>
-                )} */}
-
                 <Container id="search" maxWidth="md" className={classes.fontFamily}>
                     <form>
                         <input
@@ -138,12 +97,6 @@ export default function EventList({ eventData, addToCart }) {
                 <Grid container spacing={2}>
                     {[...EventsList].map(event => (
                         <Grid item key={event.event_id} xs={12} sm={6} md={4}>
-                            {/* <Link
-                                to={{
-                                    pathname: `/events/${event.event_id}`,
-                                    state: event
-                                }}
-                            > */}
                                 <Card className={classes.card}>
                                     <CardContent
                                         className={classes.cardContent}
