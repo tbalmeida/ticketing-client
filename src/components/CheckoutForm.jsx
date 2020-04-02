@@ -131,7 +131,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout, cartItems }) => {
     };
 
     return (
-        <form style={{ padding: "1rem" }} onSubmit={handleFormSubmit}>
+        <form style={{ padding: "2rem 0" }} onSubmit={handleFormSubmit}>
             <Row>
                 <BillingDetailsFields />
             </Row>
