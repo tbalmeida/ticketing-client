@@ -8,3 +8,8 @@ To see a production version on Netlify please go here [Netlify](https://ticketin
 
 Install dependencies with `npm install`.
 
+## Screenshot of the app
+
+Main page
+!["Main page"](https://github.com/antosha-85/Jungle-rails/blob/master/vendor/assets/img/Main%20page.png)
+
