@@ -1,8 +1,6 @@
 @import "~normalize.css/normalize.css";
 @import "~bootstrap/scss/bootstrap";
 
-// @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
-
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 
 @font-face {
@@ -91,7 +89,6 @@ body {
 
 #root > footer {
   height: 3rem;
-  // padding-bottom: 1rem;
   clear: both;
 }
 

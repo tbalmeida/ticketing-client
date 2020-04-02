@@ -23,7 +23,6 @@ import IconButton from "@material-ui/core/IconButton";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles(theme => ({
-    
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -44,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 function putData(url, data) {
-    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//localhost
+    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data); //localhost
     // return axios.put(`/api/1.0${url}`, data);
 }
 export default function SignUp() {
@@ -253,213 +252,223 @@ export default function SignUp() {
 
     return (
         <Container id="signupWrapper">
-        <Container component="main" maxWidth="xs">
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <VpnKeyRoundedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
-                </Typography>
-                <form className={classes.form} noValidate onSubmit={signUpData}>
-                    <Alert />
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                autoComplete="fname"
-                                name="firstName"
-                                value={form.firstName}
-                                variant="filled"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                onChange={changeHandler}
-                                autoFocus
-                                helperText={form.firstNameText}
-                                error={form.firstNameError}
-                                onFocus={clearForm}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="filled"
-                                required
-                                fullWidth
-                                id="lastName"
-                                value={form.lastName}
-                                label="Last Name"
-                                onChange={changeHandler}
-                                name="lastName"
-                                helperText={form.lastNameText}
-                                error={form.lastNameError}
-                                onFocus={clearForm}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="filled"
-                                required
-                                fullWidth
-                                type="email"
-                                id="email"
-                                value={form.email}
-                                label="Email Address"
-                                onChange={changeHandler}
-                                name="email"
-                                helperText={form.emailText}
-                                error={form.emailError}
-                                onFocus={clearForm}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormControl
-                                fullWidth
-                                className={clsx(
-                                    classes.margin,
-                                    classes.textField
-                                )}
-                                required
-                                variant="filled"
-                                name="password"
-                                label="Password should have minimum 3 characters"
-                                type="password"
-                                autoComplete="current-password"
-                                helperText={form.passwordText}
-                                error={form.passwordError}
-                                onFocus={clearForm}
-                            >
-                                <InputLabel htmlFor="password">
-                                    Password min 3 characters
-                                </InputLabel>
-                                <FilledInput
-                                    id="password"
-                                    type={
-                                        form.showPassword ? "text" : "password"
-                                    }
-                                    value={form.password}
-                                    onChange={handleChange("password")}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={
-                                                    handleClickShowPassword
-                                                }
-                                                onMouseDown={
-                                                    handleMouseDownPassword
-                                                }
-                                                edge="end"
-                                            >
-                                                {form.showPassword ? (
-                                                    <Visibility />
-                                                ) : (
-                                                    <VisibilityOff />
-                                                )}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
+            <Container component="main" maxWidth="xs">
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <VpnKeyRoundedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign up
+                    </Typography>
+                    <form
+                        className={classes.form}
+                        noValidate
+                        onSubmit={signUpData}
+                    >
+                        <Alert />
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    autoComplete="fname"
+                                    name="firstName"
+                                    value={form.firstName}
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="firstName"
+                                    label="First Name"
+                                    onChange={changeHandler}
+                                    autoFocus
+                                    helperText={form.firstNameText}
+                                    error={form.firstNameError}
+                                    onFocus={clearForm}
                                 />
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormControl
-                                fullWidth
-                                className={clsx(
-                                    classes.margin,
-                                    classes.textField
-                                )}
-                                required
-                                variant="filled"
-                                name="passwordConfirmation"
-                                label="Password confirmation"
-                                type="password"
-                                autoComplete="current-password"
-                                helperText={form.passwordConfirmationText}
-                                error={form.passwordConfirmationError}
-                                onFocus={clearForm}
-                            >
-                                <InputLabel htmlFor="passwordConfirmation">
-                                    Password Confirmation
-                                </InputLabel>
-                                <FilledInput
-                                    id="passwordConfirmation"
-                                    type={
-                                        form.showPasswordConfirmation
-                                            ? "text"
-                                            : "password"
-                                    }
-                                    value={form.passwordConfirmation}
-                                    onChange={handleChange(
-                                        "passwordConfirmation"
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="lastName"
+                                    value={form.lastName}
+                                    label="Last Name"
+                                    onChange={changeHandler}
+                                    name="lastName"
+                                    helperText={form.lastNameText}
+                                    error={form.lastNameError}
+                                    onFocus={clearForm}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    type="email"
+                                    id="email"
+                                    value={form.email}
+                                    label="Email Address"
+                                    onChange={changeHandler}
+                                    name="email"
+                                    helperText={form.emailText}
+                                    error={form.emailError}
+                                    onFocus={clearForm}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControl
+                                    fullWidth
+                                    className={clsx(
+                                        classes.margin,
+                                        classes.textField
                                     )}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle passwordConfirmation visibility"
-                                                onClick={
-                                                    handleClickShowPasswordConfirmation
-                                                }
-                                                onMouseDown={
-                                                    handleMouseDownPasswordConfirmation
-                                                }
-                                                edge="end"
-                                            >
-                                                {form.showPasswordConfirmation ? (
-                                                    <Visibility />
-                                                ) : (
-                                                    <VisibilityOff />
-                                                )}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-                            </FormControl>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        onChange={handleCheckBox}
-                                        required
-                                        value="allowExtraEmails"
-                                        color="black"
+                                    required
+                                    variant="filled"
+                                    name="password"
+                                    label="Password should have minimum 3 characters"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    helperText={form.passwordText}
+                                    error={form.passwordError}
+                                    onFocus={clearForm}
+                                >
+                                    <InputLabel htmlFor="password">
+                                        Password min 3 characters
+                                    </InputLabel>
+                                    <FilledInput
+                                        id="password"
+                                        type={
+                                            form.showPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        value={form.password}
+                                        onChange={handleChange("password")}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={
+                                                        handleClickShowPassword
+                                                    }
+                                                    onMouseDown={
+                                                        handleMouseDownPassword
+                                                    }
+                                                    edge="end"
+                                                >
+                                                    {form.showPassword ? (
+                                                        <Visibility />
+                                                    ) : (
+                                                        <VisibilityOff />
+                                                    )}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
                                     />
-                                }
-                                label="I agree with the terms of service"
-                            />
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControl
+                                    fullWidth
+                                    className={clsx(
+                                        classes.margin,
+                                        classes.textField
+                                    )}
+                                    required
+                                    variant="filled"
+                                    name="passwordConfirmation"
+                                    label="Password confirmation"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    helperText={form.passwordConfirmationText}
+                                    error={form.passwordConfirmationError}
+                                    onFocus={clearForm}
+                                >
+                                    <InputLabel htmlFor="passwordConfirmation">
+                                        Password Confirmation
+                                    </InputLabel>
+                                    <FilledInput
+                                        id="passwordConfirmation"
+                                        type={
+                                            form.showPasswordConfirmation
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        value={form.passwordConfirmation}
+                                        onChange={handleChange(
+                                            "passwordConfirmation"
+                                        )}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle passwordConfirmation visibility"
+                                                    onClick={
+                                                        handleClickShowPasswordConfirmation
+                                                    }
+                                                    onMouseDown={
+                                                        handleMouseDownPasswordConfirmation
+                                                    }
+                                                    edge="end"
+                                                >
+                                                    {form.showPasswordConfirmation ? (
+                                                        <Visibility />
+                                                    ) : (
+                                                        <VisibilityOff />
+                                                    )}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            onChange={handleCheckBox}
+                                            required
+                                            value="allowExtraEmails"
+                                            color="black"
+                                        />
+                                    }
+                                    label="I agree with the terms of service"
+                                />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="outlined"
-                        color="black"
-                        className={classes.submit}
-                    >
-                        Sign Up
-                    </Button>
-                    <Button
-                        type="button"
-                        fullWidth
-                        variant="outlined"
-                        className={classes.submit}
-                        onClick={clearData}
-                        style={{ backgroundColor: "#e8e8e8", outline: "none", marginTop: '0.75rem' }}
-                    >
-                        Clear
-                    </Button>
-                    <Grid container justify="flex-end">
-                        <Grid item>
-                            <Link href="/login" variant="body2">
-                                Already have an account? Sign in
-                            </Link>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="outlined"
+                            color="black"
+                            className={classes.submit}
+                        >
+                            Sign Up
+                        </Button>
+                        <Button
+                            type="button"
+                            fullWidth
+                            variant="outlined"
+                            className={classes.submit}
+                            onClick={clearData}
+                            style={{
+                                backgroundColor: "#e8e8e8",
+                                outline: "none",
+                                marginTop: "0.75rem"
+                            }}
+                        >
+                            Clear
+                        </Button>
+                        <Grid container justify="flex-end">
+                            <Grid item>
+                                <Link href="/login" variant="body2">
+                                    Already have an account? Sign in
+                                </Link>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </form>
-            </div>
-        </Container>
+                    </form>
+                </div>
+            </Container>
         </Container>
     );
 }

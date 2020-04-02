@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useState, useEffect } from "react";
 import React from 'react';
 
 const Container = styled.div`
@@ -22,16 +21,7 @@ const Message = styled.div`
 `;
 
 export default () => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-    }, 100);
-  });
-
+  
   return (
       <Container id='orderWrapper'>
         <Title>Congrats!</Title>
