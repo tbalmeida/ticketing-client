@@ -12,8 +12,6 @@ import Application from "components/Application";
 import axios from 'axios';
 
 const stripePromise = loadStripe("pk_test_Ai6UIyP2tbBXxsisSjUcXCKm00UfGStLmk");
-// const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY);
-
 
 if (process.env.REACT_APP_API_BASE_URL) {
   axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
