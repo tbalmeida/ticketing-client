@@ -11,5 +11,5 @@ Install dependencies with `npm install`.
 ## Screenshot of the app
 
 Main page
-!["Main page"](img_github/Main page.png)
+!["Main page"](https://github.com/tbalmeida/ticketing-client/blob/master/img_github/Main%20page.png)
 
