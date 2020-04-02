@@ -115,6 +115,7 @@ export default function Header ({cartItems}) {
                                     placement="bottom"
                                 >
                                     <Button
+                                        style={{margin: '0 1.5rem'}}
                                         className={classes.buttonStyle}
                                         onClick={logoutFunction}
                                         href="/"
