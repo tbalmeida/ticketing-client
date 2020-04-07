@@ -49,10 +49,16 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles({
     table: {
         minWidth: 700,
-        fontSize: "1.2rem"
+        fontSize: "1.2rem",
+        [`@media (max-width:380px)`]:{
+            minWidth: 'auto'
+          }   
     },
     marginR: {
-        marginRight: "3rem"
+        marginRight: "3rem",
+        [`@media (max-width:380px)`]:{
+            marginRight: 0
+          }  
     }
 });
 

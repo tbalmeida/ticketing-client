@@ -37,11 +37,16 @@ body {
 
  @media only screen and (max-width: 768px) {
   #back-to-top > h4 {
-padding-left: 0;
-font-size: 1rem;
+// padding-left: 0;
+// font-size: 1rem;
+display: none;
   };
   #back-to-top > a:nth-child(4) {
     margin: 0!important;
+  };
+  #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd > div > table {
+    font-size: 0.8rem;
+    padding: 0;
   }
 }
 
@@ -65,7 +70,7 @@ font-size: 1rem;
   flex-direction: column;
   background-color: white;
   min-height: 90vh;
-  width: 600px;
+  max-width: 600px;
 }
 #backgroundImage {
   background-image: url(components/img/networking2.jpg);
@@ -135,6 +140,11 @@ label {
     #root  div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4 {
       flex-basis: 10%;
     };
+    .MuiTableCell-root, #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd table th,
+    #cartWrapper div.MuiContainer-root.MuiContainer-maxWidthMd table tr > td {
+      font-size: 0.8rem;
+      padding: 0;
+    }
   }
 ul {
   margin-bottom: 0em;
