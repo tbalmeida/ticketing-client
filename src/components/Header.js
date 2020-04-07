@@ -78,7 +78,7 @@ export default function Header({ cartItems }) {
     }, 0);
 
     return (
-        <Box className={classes.root} maxWidth="xs" marginTop={10}>
+        <Box className={classes.root} marginTop={10}>
             <HideOnScroll>
                 <AppBar>
                     <Toolbar id="back-to-top">

@@ -70,11 +70,10 @@ export default function EventList({ eventData, addToCart }) {
     const userId = sessionStorage.getItem("userId");
 
     return (
-        <Fragment>
-            <div id="backgroundImage" className={classes.fontFamily}>
+        <Box maxWidth="sm">
+            <Box id="backgroundImage" className={classes.fontFamily}>
                 <Container
                     id="search"
-                    maxWidth="md"
                     className={classes.fontFamily}
                 >
                     <form>
@@ -84,7 +83,6 @@ export default function EventList({ eventData, addToCart }) {
                             color="primary"
                             id="searchEvents"
                             value={select}
-                            className="form-control mr-2 mx-sm-auto"
                             onChange={selectEvent}
                             type="search"
                             placeholder="SEARCH FOR AN EVENT"
@@ -94,7 +92,7 @@ export default function EventList({ eventData, addToCart }) {
                     </form>
                     <Alert />
                 </Container>
-            </div>
+            </Box>
 
             <Divider variant="middle" />
             <Container className={classes.cardGrid} maxWidth="lg">
@@ -211,7 +209,7 @@ export default function EventList({ eventData, addToCart }) {
                     </Tooltip>
                 </ScrollTop>
             </Container>
-        </Fragment>
+        </Box>
     );
 }
 

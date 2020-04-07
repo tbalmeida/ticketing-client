@@ -14,11 +14,11 @@ const useStyles = makeStyles({  //creating function that's using styles
     justifyContent: 'center',
     alignItems: 'center',       
     width: '100%',
-    height: '10vh'
-  }
+    height: '10vh',
+},
 });
-
-function Copyright() { //will be rendered
+function Copyright() {
+   //will be rendered
   return (
     <div id="footerWrapper">
       <Box style={{padding: '0 5rem'}}>
