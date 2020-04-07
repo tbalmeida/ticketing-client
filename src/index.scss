@@ -34,12 +34,18 @@ body {
  #back-to-top > h4 {
    padding-left: 8rem;
  }
+
  @media only screen and (max-width: 768px) {
   #back-to-top > h4 {
 padding-left: 0;
 font-size: 1rem;
+  };
+  #back-to-top > a:nth-child(4) {
+    margin: 0!important;
   }
 }
+
+
 
  #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd > h4 {
    padding-right: 6rem;
@@ -51,7 +57,7 @@ font-size: 1rem;
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 500px;
+  max-width: 500px;
 }
 
 #checkoutWrapper {
@@ -95,7 +101,7 @@ font-size: 1rem;
 }
 
 #root > footer {
-  height: 3rem;
+  height: auto;
   clear: both;
 }
 
@@ -122,14 +128,17 @@ label {
   }
 
   @media only screen and (max-width: 576px) {
-    #footerWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-    }
+    #root div img, #root > footer {
+      display: none;
+    };
+    
+    #root  div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4 {
+      flex-basis: 10%;
+    };
   }
-  
-
+ul {
+  margin-bottom: 0em;
+}
 
 #orderWrapper {
   background-image: url(components/img/handshake.jpg);
