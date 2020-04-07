@@ -34,6 +34,13 @@ body {
  #back-to-top > h4 {
    padding-left: 8rem;
  }
+ @media only screen and (max-width: 768px) {
+  #back-to-top > h4 {
+padding-left: 0;
+font-size: 1rem;
+  }
+}
+
  #cartWrapper > div.MuiContainer-root.MuiContainer-maxWidthMd > h4 {
    padding-right: 6rem;
  }
