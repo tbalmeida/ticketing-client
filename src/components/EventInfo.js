@@ -12,16 +12,17 @@ import { Alert } from "components/Alert";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 
 export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(
-        event => event.event_id === eventId || event.id === eventId
+        (event) => event.event_id === eventId || event.id === eventId
     );
 };
-const map =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
+// const map =
+//     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
 
-export const convertDuration = function(string) {
+export const convertDuration = function (string) {
     let finalResult = "";
     let stringArr = string.split(":");
     if (stringArr[0][0] === "0") {
@@ -36,7 +37,7 @@ export const convertDuration = function(string) {
     return finalResult;
 };
 
-export const convertTime = function(time) {
+export const convertTime = function (time) {
     let splitTime = time.split(":").splice(0, 2);
     if (time.length > 1) {
         splitTime[2] = +splitTime[0] < 12 ? "AM" : "PM";
@@ -50,7 +51,7 @@ export default function EventInfo({
     events,
     location,
     match,
-    cartItems
+    cartItems,
 }) {
     const { show, hide } = useContext(AlertContext);
 
@@ -58,7 +59,7 @@ export default function EventInfo({
         return hide;
     }, []);
 
-    const applyAddToCart = eventID => {
+    const applyAddToCart = (eventID) => {
         if (!userId) {
             show("Please login first", "danger");
             setTimeout(() => {
@@ -84,6 +85,18 @@ export default function EventInfo({
         location && location.state
             ? location.state
             : getEventFromEventsByEventId(match.params.id, events);
+    console.log("event", event);
+
+    function Map() {
+        return (
+            <GoogleMap
+                defaultZoom={12}
+                defaultCenter={{ lat: 51.0447, lng: -114.0719 }}
+            />
+        );
+    }
+
+    const WrappedMap = withScriptjs(withGoogleMap(Map));
     return (
         <div className={classes.height}>
             <Container maxWidth="lg" style={{ marginTop: "2rem" }}>
@@ -152,7 +165,7 @@ export default function EventInfo({
                                     align="justify"
                                     className={classes.title2}
                                     variant="body1"
-                                    style={{paddingLeft: '2rem'}}
+                                    style={{ paddingLeft: "2rem" }}
                                 >
                                     {event.event_description}
                                 </Typography>
@@ -174,7 +187,7 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
-                        <Container style={{ display: "flex" }}>
+                        {/* <Container style={{ display: "flex" }}>
                             <iframe
                                 src={map}
                                 width={"1110"}
@@ -185,6 +198,27 @@ export default function EventInfo({
                                 aria-hidden={"false"}
                                 tabindex={"0"}
                             ></iframe>
+                        </Container> */}
+                        <Container
+                            id="map"
+                            style={{
+                                // display: "flex",
+                                width: "1110px",
+                                height: "360px",
+                            }}
+                        >
+                            <WrappedMap
+                                googleMapURL={
+                                    "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                                }
+                                loadingElement={
+                                    <div style={{ height: `100%` }} />
+                                }
+                                containerElement={
+                                    <div style={{ height: `400px` }} />
+                                }
+                                mapElement={<div style={{ height: `100%` }} />}
+                            ></WrappedMap>
                         </Container>
                     </CardContent>
                 </Card>

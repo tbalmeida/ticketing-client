@@ -23,6 +23,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { ScrollTop } from "components/Helper Functions/ScrollToTop";
 
 export default function EventList({ eventData, addToCart }) {
+    console.log("EventList -> eventData", eventData)
     const [select, setSelect] = useState("");
     const [EventsList, setEventsList] = useState("");
 

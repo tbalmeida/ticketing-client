@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <!--
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- <script crossorigin src="https://js.stripe.com/v3"></script> -->
-    <!--
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <!-- <script crossorigin src="https://js.stripe.com/v3"></script> -->
+        <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -23,12 +26,12 @@
 
       
     -->
-    <title>Ticketing 4 Good</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+        <title>Ticketing 4 Good</title>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -38,5 +41,76 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+        <!-- <script>
+            function initMap() {
+                //Map options
+                const options = {
+                    zoom: 12,
+                    center: { lat: 51.0447, lng: -114.0719 },
+                };
+                // New map
+                const map = new google.maps.Map(
+                    document.getElementById("map"),
+                    options
+                );
+
+                //listen for click on map
+                google.maps.event.addListener(map, "click", (event) => {
+                    //Add marker
+                    addMarker({ coords: event.latLng, content: "<h1>hi</h1>" });
+                });
+                //array of markers
+                const markers = [
+                    {
+                        coords: { lat: 51.046494, lng: -114.057732 },
+                        iconImage:
+                            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                        content: "<h1>Calgary Library</h1>",
+                    },
+                    {
+                        coords: { lat: 51.07, lng: -114.08 },
+                        content: "<h1>BMO Room</h1>",
+                    },
+                ];
+
+                //loop through markers
+                for (let i = 0; i < markers.length; i++) {
+                    //Add marker
+                    addMarker(markers[i]);
+                }
+
+                //Add Marker Function
+                function addMarker({ coords, iconImage, content }) {
+                    //new Marker
+                    const marker = new google.maps.Marker({
+                        position: coords,
+                        map,
+                        // icon: iconImage
+                    });
+                    //check for custom icon
+                    if (iconImage) {
+                        //set icon image
+                        marker.setIcon(iconImage);
+                    }
+
+                    //check for content
+                    if (content) {
+                        //set content
+                        const infoWindow = new google.maps.InfoWindow({
+                            content,
+                        });
+
+                        marker.addListener("click", function () {
+                            infoWindow.open(map, marker);
+                        });
+                    }
+                }
+            }
+        </script>
+        <script
+            async
+            defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRozQ2sLZEIdcHfcmRFKjX9mA8kVHonlI&callback=initMap"
+        ></script> -->
+    </body>
 </html>
