@@ -3,8 +3,8 @@ import axios from "axios";
 import EventList from "./EventList";
 
 export function getData(url) {
-    // return axios.get(`${process.env.REACT_APP_API_URL}/api/1.0${url}`);//localhost
-    return axios.get(`/api/1.0${url}`);
+    return axios.get(`${process.env.REACT_APP_API_URL}/api/1.0${url}`);//localhost
+    // return axios.get(`/api/1.0${url}`);
 }
 
 function MainPage({ events, addToCart }) {

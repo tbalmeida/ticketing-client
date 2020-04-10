@@ -43,8 +43,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 function putData(url, data) {
-    // return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//localhost
-    return axios.put(`/api/1.0${url}`, data);
+    return axios.put(`${process.env.REACT_APP_API_URL}/api/1.0${url}`, data);//localhost
+    // return axios.put(`/api/1.0${url}`, data);
 }
 export default function SignUp() {
     const { show, hide } = useContext(AlertContext);
