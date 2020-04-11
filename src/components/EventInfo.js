@@ -211,6 +211,7 @@ export default function EventInfo({
                                         }
                                         endIcon={<AddShoppingCartIcon />}
                                     >
+                                        
                                         Add to Cart
                                     </Button>
                                 </Box>
