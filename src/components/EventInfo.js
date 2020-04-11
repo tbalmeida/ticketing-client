@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -12,15 +12,19 @@ import { Alert } from "components/Alert";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
+import {
+    GoogleMap,
+    withScriptjs,
+    withGoogleMap,
+    Marker,
+    InfoWindow,
+} from "react-google-maps";
 
 export const getEventFromEventsByEventId = (eventId, events) => {
     return events.find(
         (event) => event.event_id === eventId || event.id === eventId
     );
 };
-// const map =
-//     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.4295232651157!2d-114.05683164845155!3d51.045156352114795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537170003cb69fe3%3A0x65642e5fb9371572!2sCentral%20Library!5e0!3m2!1sen!2sca!4v1585799756838!5m2!1sen!2sca";
 
 export const convertDuration = function (string) {
     let finalResult = "";
@@ -88,11 +92,36 @@ export default function EventInfo({
     console.log("event", event);
 
     function Map() {
+        const [selectedEvent, setSelectedEvent] = useState(null);
         return (
             <GoogleMap
                 defaultZoom={12}
                 defaultCenter={{ lat: 51.0447, lng: -114.0719 }}
-            />
+            >
+                <Marker
+                    key={event.event_id}
+                    position={{
+                        lat: event.lat,
+                        lng: event.lng,
+                    }}
+                    onClick={() => {
+                        setSelectedEvent(event);
+                    }}
+                />
+                {selectedEvent && (
+                    <InfoWindow
+                        position={{
+                            lat: event.lat,
+                            lng: event.lng,
+                        }}
+                        onCloseClick={() => {
+                            setSelectedEvent(null);
+                        }}
+                    >
+                        <h6>{event.title}</h6>
+                    </InfoWindow>
+                )}
+            </GoogleMap>
         );
     }
 
@@ -187,30 +216,10 @@ export default function EventInfo({
                                 </Box>
                             </Grid>
                         </Grid>
-                        {/* <Container style={{ display: "flex" }}>
-                            <iframe
-                                src={map}
-                                width={"1110"}
-                                height={"360"}
-                                frameborder={"0"}
-                                style={{ border: "0", margin: "0 auto" }}
-                                allowfullscreen={"true"}
-                                aria-hidden={"false"}
-                                tabindex={"0"}
-                            ></iframe>
-                        </Container> */}
-                        <Container
-                            id="map"
-                            style={{
-                                // display: "flex",
-                                // width: "1110px",
-                                // height: "360px",
-                            }}
-                        >
+
+                        <Container id="map">
                             <WrappedMap
-                                googleMapURL={
-                                    "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                                }
+                                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
                                 loadingElement={
                                     <div style={{ height: `100%` }} />
                                 }
