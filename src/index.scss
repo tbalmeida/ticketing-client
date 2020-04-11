@@ -133,7 +133,7 @@ label {
   }
 
   @media only screen and (max-width: 576px) {
-    #root div img, #root > footer {
+    #root div img, #root > footer, #map {
       display: none;
     };
     

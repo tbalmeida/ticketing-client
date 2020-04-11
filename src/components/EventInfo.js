@@ -203,8 +203,8 @@ export default function EventInfo({
                             id="map"
                             style={{
                                 // display: "flex",
-                                width: "1110px",
-                                height: "360px",
+                                // width: "1110px",
+                                // height: "360px",
                             }}
                         >
                             <WrappedMap
