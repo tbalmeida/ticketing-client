@@ -57,18 +57,24 @@ export default function EventInfo({
     match,
     cartItems,
 }) {
+    console.log("cartItems", cartItems)
     const { show, hide } = useContext(AlertContext);
 
     useEffect(() => {
         return hide;
     }, []);
 
-    const applyAddToCart = (eventID) => {
+    const applyAddToCart = (eventID, ticket_available, tickets_needed) => {
         if (!userId) {
             show("Please login first", "danger");
             setTimeout(() => {
                 hide();
             }, 5000);
+        } else if (ticket_available === null || ticket_available < tickets_needed) {
+            show("There are no tickets available according to your request", "danger");
+            setTimeout(() => {
+                hide();
+            })
         } else {
             //if item in the cart don't do anything and show the
             show("Item was added to the card", "success");
@@ -207,7 +213,7 @@ export default function EventInfo({
                                         size="medium"
                                         color="black"
                                         onClick={() =>
-                                            applyAddToCart(event.event_id)
+                                            applyAddToCart(event.event_id, event.ticket_available, cartItems.quantity)
                                         }
                                         endIcon={<AddShoppingCartIcon />}
                                     >
