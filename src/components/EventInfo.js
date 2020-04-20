@@ -176,7 +176,7 @@ export default function EventInfo({
                                         className={classes.title2}
                                         variant="body1"
                                     >
-                                        {event.total_issued} available -{" "}
+                                        {event.ticket_available === null ? '0 available' : `${event.ticket_available} available`}  -{" "}
                                         {event.price}
                                     </Typography>
                                     <Typography
